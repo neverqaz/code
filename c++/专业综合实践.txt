@@ -1,0 +1,2239 @@
+1. A
+#include<iostream>
+using namespace std;
+int main()
+{
+	int i,a,b,c,d;
+	while(cin>>a)
+	{
+		d=1;
+		for(i=1;i<a;i++)
+		{
+			cin>>b;
+			if(b%2==0)
+			{
+				d=d*b;
+			}
+		}
+		cout<<d<<endl;
+	}
+	
+	return 0;
+}
+
+2. As Easy As A+B
+Problem Description
+These days, I am thinking about a question, how can I get a problem as easy as A+B? It is fairly difficulty to do such a thing. Of course, I got it after many waking nights.
+Give you some integers, your task is to sort these number ascending (升序).
+You should know how easy the problem is now!
+Good luck!
+Input
+Input contains multiple test cases. The first line of the input is a single integer T which is the number of test cases. T test cases follow. Each test case contains an integer N (1<=N<=1000 the number of integers to be sorted) and then N integers follow in the same line. It is guarantied that all integers are in the range of 32-int. 
+Output
+For each case, print the sorting result, and one line one case. 
+
+#include<iostream>
+using namespace std;
+using namespace std;
+void sort(int arr[],int n)
+{
+    int x;
+    bool change =true;
+    for(int i = 1;i < n&&change;++i)
+    {
+        change = false;
+        for(int j = 0;j < n - i;++j)
+        {
+            if(arr[j] > arr[j+1])
+            {
+                x=arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1]=x;
+                change = true;
+            }
+        }
+    }
+}
+void print(int arr[],int length)
+{
+    for(int i = 0;i <length;++i)
+    {
+        cout << arr[i];
+        if(i!=length-1)cout <<" ";
+        
+    }
+}
+int main()
+{
+    int n,num;
+    int cnt = 0;
+    int arr[1001];
+    cin >> n;
+    while(cin >> num)
+    {
+        
+        for(int i = 0;i < num;++i)
+            cin >> arr[i];
+            sort(arr,num);
+            print(arr,num);
+            cout << endl;
+            ++cnt;
+            if(cnt==n)break;
+    }
+    system("pause");
+    return 0;
+}
+
+3. ASCII码排序
+Problem Description
+输入三个字符后，按各字符的ASCII码从小到大的顺序输出这三个字符。
+Input
+输入数据有多组，每组占一行，有三个字符组成，之间无空格。
+Output
+对于每组输入数据，输出一行，字符中间用一个空格分开。
+#include<iostream>
+using namespace std;
+int main()
+{
+    char a,b,c,t;
+    while(cin>>a>>b>>c)
+    {
+        if(a>b)
+        {
+            t=a;
+            a=b;
+            b=t;
+        }
+        if(a>c)
+        {
+            t=a;
+            a=c;
+            c=t;
+        }
+        if(b>c)
+        {
+            t=b;
+            b=c;
+            c=t;
+        }
+        cout<<a<<" "<<b<<" "<<c<<endl;
+    }
+    return 0;
+}
+
+4. can you solve the equation
+Problem Description
+Now,given the equation 8*x^4 + 7*x^3 + 2*x^2 + 3*x + 6 == Y,can you find its solution between 0 and 100;
+Now please try your lucky.
+Input
+The first line of the input contains an integer T(1<=T<=100) which means the number of test cases. Then T lines follow, each line has a real number Y (fabs(Y) <= 1e10);
+Output
+For each test case, you should just output one real number(accurate up to 4 decimal places),which is the solution of the equation,or “No solution!”,if there is no solution for the equation between 0 and 100.
+#include<iostream>
+#include<stdio.h>
+#include<math.h>
+double f(double x)
+{
+	return 8*pow(x,4.0)+7*pow(x,3.0)+2*pow(x,2.0)+3*x+6;
+}
+int main()
+{
+	double l,h,m,ans,y;
+	int n;
+	while(scanf("%d",&n)!=EOF)
+	{
+		while(n--)
+		{
+			scanf("%lf",&y);
+			if(f(0)<y&&y<=f(100))
+			{
+				l=0,h=100;
+				while(h-l>1e-6)
+				{
+					m=(l+h)/2;
+					ans=f(m);
+					if(ans>y)
+					{
+						h=m-1e-7;
+					}
+					else
+					{
+						l=m+1e-7;
+					}
+				}
+				printf("%.4lf\n",(l+h)/2);
+			}
+			else
+				printf("No solution!\n");
+		}
+	}
+	return 0;
+}
+
+5. Elevator
+Problem Description
+The highest building in our city has only one elevator. A request list is made up with N positive numbers. The numbers denote at which floors the elevator will stop, in specified order. It costs 6 seconds to move the elevator up one floor, and 4 seconds to move down one floor. The elevator will stay for 5 seconds at each stop.
+For a given request list, you are to compute the total time spent to fulfill the requests on the list. The elevator is on the 0th floor at the beginning and does not have to return to the ground floor when the requests are fulfilled.
+Input
+There are multiple test cases. Each case contains a positive integer N, followed by N positive numbers. All the numbers in the input are less than 100. A test case with N = 0 denotes the end of input. This test case is not to be processed. 
+Output
+Print the total time on a single line for each test case. 
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n,sum,cur,next,i,up,down;
+	while(cin>>n&&n!=0)
+	{
+		sum=0;
+		cur=0;
+		up=0;
+		down=0;
+		for(i=1;i<=n;i++)
+		{
+			cin>>next;
+			if(cur-next<0)
+				up=up+(next-cur);
+			else if(cur-next>0)
+				down=down+(cur-next);
+		}
+		sum=up*6+down*4+n*5;
+		cout<<sum<<endl;
+	}
+	return 0;
+}
+
+6. FatMouse' Trade
+FatMouse prepared M pounds of cat food, ready to trade with the cats guarding the
+ warehouse containing his favorite food, JavaBean.<br>The warehouse has N rooms. 
+The i-th room contains J[i] pounds of JavaBeans and requires F[i] pounds of cat food.
+ FatMouse does not have to trade for all the JavaBeans in the room, instead, 
+he may get J[i]* a% pounds of JavaBeans if he pays F[i]* a% pounds of cat food. 
+Here a is a real number. Now he is assigning this homework to you: tell him 
+the maximum amount of JavaBeans he can obtain.<br>
+输入The input consists of multiple test cases. Each test case begins with a line
+ containing two non-negative integers M and N. Then N lines follow, each contains two 
+non-negative integers J[i] and F[i] respectively. The last test case is followed by 
+two -1's. All integers are not greater than 1000.<br>
+输出For each test case, print in a single line a real number accurate up to 3 decimal
+ places, which is the maximum amount of JavaBeans that FatMouse can obtain.<br>
+5 3
+7 2
+4 3
+5 2
+20 3
+25 18
+24 15
+15 10
+-1 -1
+输出
+13.333
+31.500
+
+#include<iostream>
+#include<iomanip>
+#include<algorithm>
+using namespace std;
+class room
+{
+public:
+	int j,f;
+};
+bool cmp(room r1,room r2)
+{
+	return (double)r1.f/r1.j<(double)r2.f/r2.j;
+}
+int main()
+{
+	int m,n,i;
+	room r[1001];
+	double sum;
+	while(cin>>m>>n&&(m!=-1||n!=-1))
+	{
+		sum=0;
+		for(i=0;i<n;i++)
+			cin>>r[i].j>>r[i].f;
+		sort(r,r+n,cmp);
+		i=0;
+		while(m>=0&&i<n)
+		{
+			if(m>=r[i].f)
+			{
+				sum=sum+r[i].j;
+			m=m-r[i].f;
+			}
+			else
+			{
+				sum=sum+(double)m*r[i].j/r[i].f;
+			m=0;
+			}
+			i++;
+		}
+		printf("%.3f\n",sum);
+
+	}
+	return 0;
+}
+
+7. Let the Balloon Rise
+Problem Description
+Contest time again! How excited it is to see balloons floating around. But to tell you a secret, the judges' favorite time is guessing the most popular problem. When the contest is over, they will count the balloons of each color and find the result.
+This year, they decide to leave this lovely job to you. 
+Input
+Input contains multiple test cases. Each test case starts with a number N (0 < N <= 1000) -- the total number of balloons distributed. The next N lines contain one color each. The color of a balloon is a string of up to 15 lower-case letters. A test case with N = 0 terminates the input and this test case is not to be processed. 
+Output
+For each case, print the color of balloon for the most popular problem on a single line. It is guaranteed that there is a unique solution for each test case. 
+ 
+
+#include<iostream>
+#include<string>
+#include<map>
+using namespace std;
+int main()
+{    
+    int n;    
+    map<string,int> mp;    
+    while(cin>>n&&n)    
+    {        
+        mp.clear();        
+        string color;        
+        for(int i=1;i<=n;++i)        
+        {            
+            cin>>color;            
+            ++mp[color];        
+        }     
+        int max=0;        
+        string maxColor;        
+        for(map<string,int>::iterator mapiter=mp.begin();
+        mapiter!=mp.end();++mapiter)        
+        {            
+            if(mapiter->second>max)            
+            {                
+                max=mapiter->second;                
+                maxColor=mapiter->first;        
+            }        
+        }        
+        cout<<maxColor<<endl;    
+    }    
+    return 0;
+}
+
+8. Moving Tables
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+using namespace std;
+int a[205];
+int main()
+{
+    int t,n;
+    scanf("%d",&t);
+    while(t--)
+    {
+        memset(a,0,sizeof(a));
+        int start,finish;
+        scanf("%d",&n);
+        for(int i=0;i<n;i++)
+        {
+            scanf("%d%d",&start,&finish);
+            if(start>finish)
+            {
+                swap(start,finish);
+            }
+            start = (start+1)/2;
+            finish = (finish+1)/2;
+            for(int j=start;j<=finish;j++)
+            {
+                a[j]++;
+            }
+        }
+        int MAX = 0;
+        for(int i=0;i<205;i++)
+        {
+            if(a[i]>MAX)
+            {
+                MAX=a[i];
+            }
+        }
+        printf("%d\n",MAX*10);
+    }
+    return 0;
+}
+
+9. n以的素数有多少个
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+	int n;
+int a[100000]={0};
+while(cin>>n){
+	for(int i=2;i<=sqrt(n);i++)
+		if(a[i]==0)
+			for(int j=i+i;j<n;j=j+i)
+				a[j]=1;
+			int count=0;
+			for(i=2;i<n;i++)
+				if(a[i]==0)
+					count++;
+				cout<<count<<endl;
+}
+return 0;
+}
+/*	for(int i=2;i<=sqrt(10000);i++)
+		if(a[i]==0)
+			for(j=i+i;j<10000;j=j+i)
+				a[j]=1;
+				预处理将10000以内的都算出来保留，需要用的时候拿出来
+*/
+
+10. sort
+#include<iostream>
+#include<string>
+#define MAX 1100000
+using namespace std;
+long int a[MAX];
+int main()
+{
+	int n,m,i,t,k;
+	char c;
+	while(cin>>n>>m)
+	{
+		while(n--)
+		{
+			cin>>t;
+			a[t+500000]=1;
+		}
+		t=MAX;
+		for(i=0;i<m;i++)
+		{
+			for(;;)
+			{
+				if(a[t]==1)
+				{
+					k=t-500000;
+					a[t]=0;
+					break;
+				}
+				else
+					t--;
+			}
+			if(i==0)
+				cout<<k;
+			else
+				cout<<" "<<k;
+		}
+		cout<<endl;
+	}
+	return 0;
+}
+
+11. The Hardest Problem Ever
+Problem Description
+Julius Caesar lived in a time of danger and intrigue. The hardest situation Caesar ever faced was keeping himself alive. In order for him to survive, he decided to create one of the first ciphers. This cipher was so incredibly sound, that no one could figure it out without knowing how it worked. 
+You are a sub captain of Caesar's army. It is your job to decipher the messages sent by Caesar and provide to your general. The code is simple. For each letter in a plaintext message, you shift it five places to the right to create the secure message (i.e., if the letter is 'A', the cipher text would be 'F'). Since you are creating plain text out of Caesar's messages, you will do the opposite: 
+Cipher text
+A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+Plain text
+V W X Y Z A B C D E F G H I J K L M N O P Q R S T U 
+Only letters are shifted in this cipher. Any non-alphabetical character should remain the same, and all alphabetical characters will be upper case.
+Input
+Input to this problem will consist of a (non-empty) series of up to 100 data sets. Each data set will be formatted according to the following description, and there will be no blank lines separating data sets. All characters will be uppercase. A single data set has 3 components: Start line - A single line, "START" Cipher message - A single line containing from one to two hundred characters, inclusive, comprising a single message from Caesar End line - A single line, "END" Following the final data set will be a single line, "ENDOFINPUT". 
+Output
+For each data set, there will be exactly one line of output. This is the original message by Caesar. 
+
+#include<stdio.h>
+#include<string.h>
+#include<iostream>
+using namespace std;
+int main()
+{    
+    char a[27]="VWXYZABCDEFGHIJKLMNOPQRSTU";    
+    char str[1000];    
+    int i,len;    
+    while(cin.getline(str,1000))    
+    {        
+        if(strcmp(str,"ENDOFINPUT")==0)          
+            break;        
+        if(strcmp(str,"START")!=0&&strcmp(str,"END")!=0)        
+        {        
+            len=strlen(str);        
+            for(i=0;i<len;i++)        
+            {            
+                if(str[i]>='A'&&str[i]<='Z')               
+                    printf("%c",a[str[i]-'A']);            
+                else               
+                    printf("%c",str[i]);        
+            }         
+            cout<<endl;           
+        }                
+    }    
+    return 0;    
+}
+
+12. 背包问题（贪心算法）
+Problem D:背包问题
+Time Limit:1000MS  Memory Limit:65536K
+Total Submit:98 Accepted:26 
+Description 
+有一个背包，背包容量是M。现有5个物品，每个物品有其重量W和价值V，物品可以分割成任意大小。要求尽可能让装入背包中的物品总价值最大，但不能超过总容量。 
+Input 
+输入数据首先包括一个整数T，表示有T组测试用例，每组测试用例包括3行，第一行有一个整数表示背包容量，第二行有5个整数分别表示5个物品的重量，第三行有5个整数分别表示5个物品的价值。
+Output 
+对于每组测试用例，计算装入背包的最大价值并输出，结果保留两位小数，每个输出占一行。
+Sample Input 
+2
+100
+35 30 60 50 40
+10 40 30 50 35
+10
+1 2 3 4 5
+2 6 9 8 10
+Sample Output 
+107.50
+25.00
+
+#include<iostream>
+#include<iomanip>
+#include<algorithm>
+using namespace std;
+class bag
+{
+public:
+	int w,v;
+};
+bool cmp(bag bag1,bag bag2)
+{
+	return (double)bag1.v/bag1.w>(double)bag2.v/bag2.w;
+		
+
+}
+int main()
+{
+	int n;
+	cin>>n;
+	bag b[6];
+	while(n--)
+	{
+		double sum=0;
+		int m;
+	    while(cin>>m)
+		{
+		for(int i=0;i<5;i++)
+		{
+			cin>>b[i].w;
+		}
+		for( i=0;i<5;i++)
+		{
+			cin>>b[i].v;
+		}
+		sort(b,b+5,cmp);
+		 i=0;
+		while(m>=0&&i<5)
+		{
+		if(m>=b[i].w)
+		{
+			sum=sum+b[i].v;
+		    m=m-b[i].w;
+		}
+		else
+		{
+			sum=sum+(double)m*b[i].v/b[i].w;
+		    m=0;
+		}
+		i++;
+		}
+			cout<<fixed<<setprecision(2)<<sum<<endl;
+		}
+	
+	}
+	return 0;
+}
+
+13. 查找最大元素
+Problem Description
+对于输入的每个字符串，查找其中的最大字母，在该字母后面插入字符串“(max)”。
+Input
+输入数据包括多个测试实例，每个实例由一行长度不超过100的字符串组成，字符串仅由大小写字母构成。 
+Output
+对于每个测试实例输出一行字符串，输出的结果是插入字符串“(max)”后的结果，如果存在多个最大的字母，就在每一个最大字母后面都插入"(max)"。 
+ 
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	int n,i,j,l,len,count;
+	char s[10010],c;
+	while(~scanf("%s",s))
+	{
+		count=0;
+		c='A';
+		l=strlen(s);
+		for(i=0;i<l;i++)
+			if(s[i]>c)
+				c=s[i];
+			for(i=0;i<l;i++)
+				if(s[i]==c)
+					count++;
+				len=l+count*5;
+				for(i=0;i<len;i++)
+					if(s[i]==c)
+					{
+						l=l+5;
+						for(j=l;j>i+5;j--)
+						{
+							s[j]=s[j-5];
+						}
+						s[i+1]='(';s[i+2]='m';s[i+3]='a';s[i+4]='x';s[i+5]=')';
+						i=i+5;
+					}
+				printf("%s\n",s);
+	}
+	return 0;
+}
+
+14. 超级楼梯
+有一楼梯共M级，刚开始时你在第一级，若每次只能跨上一级或二级，要走上第M级，共有多少种走法？
+Input输入数据首先包含一个整数N，表示测试实例的个数，然后是N行数据，每行包含一个整数M（1<=M<=40）,表示楼梯的级数。
+Output对于每个测试实例，请输出不同走法的数量
+Sample Input2
+2
+3
+Sample Output1
+2 
+
+#include<iostream>
+using namespace std;
+int f(int m)
+{
+	if(m==2)
+		return 1;
+	else 
+		return f(m-1)+f(m-2);
+}
+int main()
+{
+	int n,m;
+	cin>>n;
+for(int i=0;i<n;i++)
+	{
+	cin>>m;
+			cout<<f(m)<<endl;
+	}
+	return 0;
+}
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int ans[41];
+	int n;
+	cin>>n;
+	int M;
+	ans[1]=1;
+	ans[2]=1;
+	for(int i=3;i<=40;i++)
+		ans[i]=ans[i-1]+ans[i-2];
+	while(n--){
+		cin>>M;
+		cout<<ans[M]<<endl;
+	}
+	return 0;
+}
+
+15. 成绩转换
+Problem Description
+输入一个百分制的成绩t，将其转换成对应的等级，具体转换规则如下：
+90~100为A;
+80~89为B;
+70~79为C;
+60~69为D;
+0~59为E;
+Input
+输入数据有多组，每组占一行，由一个整数组成。
+Output
+
+对于每组输入数据，输出一行。如果输入数据不在0~100范围内，请输出一行：“Score is error!”。
+
+#include<iostream>
+using namespace std;
+int main()
+{
+    int g;
+    while(cin>>g)
+    if(g>100||g<0)
+    {
+        cout<<"Score is error!"<<endl;
+    }
+    else switch(int(g/10))
+    {
+    case 10:cout<<"A"<<endl;break;
+    case 9 :cout<<"A"<<endl;break;
+    case 8 :cout<<"B"<<endl;break;
+    case 7 :cout<<"C"<<endl;break;
+    case 6 :cout<<"D"<<endl;break;
+    default:cout<<"E"<<endl;break;
+    }
+    return 0;
+}
+
+16. 大写转小写
+#include<iostream>
+using namespace std;
+int main()
+{
+	char a,b;
+	while((a=getchar())!=EOF)
+	{
+		b=(a>='A'&&a<='Z')?a+32:a;
+		cout<<b;
+	}
+	cout<<endl;
+	return 0;
+}
+
+17. 递归函数
+#include<iostream>
+using namespace std;
+int main()
+{
+	int f,f1,f2;
+	f1=f2=1;
+	cout<<f1<<" "<<f2<<" ";
+		for(int i=1;i<=8;i++)
+		{
+		f=f1+f2;
+		f1=f2;
+		f2=f;
+		cout<<f<<" ";
+		}
+	return 0;
+}
+数组
+#include<iostream>
+using namespace std;
+int main()
+{
+	int f[10]={1,1};
+		for(int i=2;i<10;i++)
+		{
+			f[i]=f[i-1]+f[i-2];
+		}
+		for(i=0;i<10;i++)
+		{
+			cout<<f[i]<<" ";
+		}
+	return 0;
+}
+递归函数
+#include<iostream>
+using namespace std;
+int f(int n)
+{
+	if(n==0||n==1)
+		return 1;
+	else 
+		return f(n-1)+f(n-2);
+}
+int main()
+{
+	for(int i=0;i<10;i++)
+	{
+		cout<<f(i)<<" ";
+	}
+	return 0;
+}
+
+18. 第几天
+Problem Description
+给定一个日期，输出这个日期是该年的第几天。
+Input
+输入数据有多组，每组占一行，数据格式为YYYY/MM/DD组成，具体参见sample input ,另外，可以向你确保所有的输入数据是合法的。
+Output
+对于每组输入数据，输出一行，表示该日期是该年的第几天。
+ 
+#include<iostream>
+using namespace std;
+int main()
+{
+	int year,month,day,days,i;
+	char c;
+	int a[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+	while(cin>>year>>c>>month>>c>>day)
+	{
+		days=0;
+		for(i=1;i<month-1;i++)
+		{
+			days=days+a[i];
+		}
+		days=days+day;
+		if(month>2)
+			if(year%4==0&&year%100!=0||year%400==0)
+				days++;
+			cout<<days<<endl;
+	}
+	return 0;
+}
+
+19. 动态规划
+数塔问题
+分析：从上往下
+计算：从下往上   倒数第2层开始（此时可预判与最后一层的结果）
+用数组保存数字（下三角）只保存了数组的一半
+a[i][j]+=max（a[i+1][j]，a[i+1][j+1]）	
+	
+20. 红绿蓝涂格子
+不容易系列之(3)—— LELE的RPG难题 
+Time Limit : 2000/1000ms (Java/Other)   Memory Limit : 65536/32768K (Java/Other)
+Total Submission(s) : 387   Accepted Submission(s) : 172
+Problem Description人称“AC女之杀手”的超级偶像LELE最近忽然玩起了深沉，这可急坏了众多“Cole”
+（LELE的粉丝,即&quot;可乐&quot;）,经过多方打探，某资深Cole终于知道了原因，原来，
+LELE最近研究起了著名的RPG难题:<br><br>有排成一行的ｎ个方格，用红(Red)、粉(Pink)、绿(Green)三色涂每个格子，
+每格涂一色，要求任何相邻的方格不能同色，且首尾两格也不同色．求全部的满足要求的涂法.<br><br>以上就是著名的RPG难题.<br><br>如果你是Cole,我想你一定会想尽办法帮助LELE解决这个问题的;如果不是,看在众多漂亮的痛不欲生的Cole女的面子上,你也不会袖手旁观吧?<br><br>
+Input输入数据包含多个测试实例,每个测试实例占一行,由一个整数N组成，(0<n<=50)。<br>
+Output对于每个测试实例，请输出全部的满足要求的涂法，每个实例的输出占一行。<br>
+Sample Input1
+2
+Sample Output3
+6
+Source递推求解专题练习（For Beginner）
+include<cstdio>
+#include<cstring>
+#include<iostream>
+using namespace std;
+int a[2000],n,s;
+int main()
+{
+    long long  b[55];
+    b[1]=3,b[2]=6,b[3]=6;
+    for(int i=4;i<=50;i++) b[i]=b[i-1]+2*b[i-2];
+    while(cin>>n)
+     {
+       cout<<b[n]<<endl;
+     }
+}			
+
+ /*找规律用dfs测试
+void dfs(int r)
+{
+     if(r==n) {s++;return;}
+     if(r!=n-1)
+    {
+         for(int j=1;j<=3;j++)
+             if(j!=a[r-1])
+            {
+                 a[r]=j;
+                 dfs(r+1);
+             }
+     }
+     else if(r==n-1)
+     {
+         for(int j=1;j<=3;j++)
+             if(j!=a[r-1]&&j!=a[0])
+             {
+         　　    a[r]=j;
+        　　    dfs(r+1);
+            }
+     }
+}
+*/
+
+21. 今年暑假不AC
+#今年暑假不AC？”<br>“是的。”<br>“那你干什么呢？”<br>“看世界杯呀，笨蛋！”<br>
+“@#$%^&amp;*%...”<br><br>确实如此，世界杯来了，球迷的节日也来了，估计很多ACMer也会抛
+开电脑，奔向电视了。<br>作为球迷，一定想看尽量多的完整的比赛，当然，作为新时代的好青年，
+你一定还会看一些其它的节目，比如新闻联播（永远不要忘记关心国家大事）、非常6+7、超级女生，
+以及王小丫的《开心辞典》等等，假设你已经知道了所有你喜欢看的电视节目
+转播时间表，你会合理安排吗？（目标是能看尽量多的完整节目）<br>
+#输入数据包含多个测试实例，每个测试实例的第一行只有一个整数n(n<=100)，表示你喜欢看的节目的
+总数，然后是n行数据，每行包括两个数据Ti_s,Ti_e (1<=i<=n)，分别表示第i个节目的开始和结束时
+间，为了简化问题，每个时间都用一个正整数表示。n=0表示输入结束，不做处理。<br>
+ 12
+1 3
+3 4
+0 7
+3 8
+15 19
+15 20
+10 15
+8 18
+6 12
+5 10
+4 14
+2 9
+0
+输出5
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+class pro
+{
+public:
+	int s,e;
+};
+bool cmp(pro p1,pro p2)
+{
+	return p1.e<p2.e;
+}
+int main()
+{
+	int m,i,max,index;
+	pro p[101];
+	while(cin>>m&&m!=0)
+	{
+		for(i=0;i<m;i++)
+			cin>>p[i].s>>p[i].e;
+		sort(p,p+m,cmp);//按节目升序排序
+		max=1;
+		index=0;
+		for(i=1;i<m;i++)
+		{
+			if(p[i].s>=p[index].e)
+			{
+				max++;
+				index=i;
+			}
+		}
+		cout<<max<<endl;
+	}
+	return 0;
+}
+22. 绝对值排序
+Problem Description
+输入n(n<=100)个整数，按照绝对值从大到小排序后输出。题目保证对于每一个测试实例，所有的数的绝对值都不相等。
+Input
+输入数据有多组，每组占一行，每行的第一个数字为n,接着是n个整数，n=0表示输入数据的结束，不做处理。 
+Output
+对于每个测试实例，输出排序后的结果，两个数之间用一个空格隔开。每个测试实例占一行
+
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main()
+{
+int n,a[1000],b,c;
+while(cin>>n,n)
+{
+for(int i=0;i<n;i++)
+cin>>a[i];
+int max; 
+for(int i=0;i<n-1;i++)
+{ 
+max=i;b=abs(a[max]);
+for(int j=i;j<n;j++)
+{ 
+c=abs(a[j]); 
+if(b<c)
+{max=j;b=abs(a[max]);} 
+}
+if(max!=i)
+{ 
+int t;
+t=a[max];
+a[max]=a[i];
+a[i]=t;
+}
+} 
+cout<<a[0];
+for(int i=1;i<n;i++)
+cout<<" "<<a[i];
+cout<<endl;
+}
+return 0;
+}
+
+23. 考试晋级
+考试晋级
+Time Limit:1000MS  Memory Limit:65536K
+Total Submit:136 Accepted:61 
+Description 
+有n个人参加了期末考试，为了检测大家真正的学习成绩老师决定对于成绩好的同学进行第二轮测试，当然不是每个人都有进入第二轮的机会，这里有个根据期末考试分数制定的晋级规则： 
+1)分数高的优先晋级 
+2)至多只能允许k个人晋级下一轮 
+3)为了保证公平分数相同的人要么一起晋级要么一起出局 
+老师最近很忙不知道最终到底有多少人可以晋级下一轮而且晋级的最低分数是多少。作为优秀的程序员这个任务当然就交给你来完成了！ 
+Input 
+第一行是一个数T(T<=100)，表示有T组测试数据。 
+每组测试样例的第一行是两个数n 和k(1<=k<=n<=10000)代表参加考试的总人数和至多能晋级的总人数。然后接下来一行有n个数字s代表每个学生的考试分数(1<=s<=100)。 
+Output 
+对于每组测试数据，首先输出"Case #X: "，X代表测试用例的编号（具体可参见sample output）， 然后输出两个整数sum，min，表示可以晋级多少人和最低的晋级分数.如果无人能晋级则输出两个-1。
+Sample Input 
+3
+1 1 
+5
+10 7
+1 2 3 4 5 6 7 8 9 10
+10 2
+1 1 2 3 3 4 4 5 5 5
+Sample Output 
+Case #1: 1 5
+Case #2: 7 4
+Case #3: -1 -1
+
+24. 两点间的距离
+Problem Description	
+输入两点坐标（X1,Y1）,（X2,Y2）,计算并输出两点间的距离。
+Input
+输入数据有多组，每组占一行，由4个实数组成，分别表示x1,y1,x2,y2,数据之间用空格隔开。
+Output
+对于每组输入数据，输出一行，结果保留两位小数。
+ 
+#include<iostream>
+#include<cmath>
+#include<iomanip>
+using namespace std;
+int main()
+{
+    int n,m,i;
+    double sum,a;
+    while(cin>>n>>m)
+    {
+        sum=0;
+        a=(double)n;
+        for(i=0;i<m;i++)
+        {
+            sum+=a;
+            a=sqrt(a);
+        }
+        cout<<fixed<<setprecision(2)<<sum<<endl;
+    }
+    return 0;
+}
+
+25. 两个数之间的水仙花数
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n,m,o,p,q,d;
+	while(cin>>n>>m)
+	{
+		d=0;
+		while(n<=m)
+		{
+			o=n/100;
+			p=n%100/10;
+			q=n%100%10;
+			if(n==o*o*o+p*p*p+q*q*q)
+			{
+				if(d=0)
+					cout<<n<<" ";
+				else
+					cout<<n<<" ";
+				d++;
+			}
+			n++;
+		}
+		if(d==0)
+			cout<<"no"<<endl;
+		else
+			cout<<endl;
+	}
+	return 0;
+}
+
+26. 免费馅饼
+Time Limit : 2000/1000ms (Java/Other)   Memory Limit : 65536/32768K (Java/Other)
+Total Submission(s) : 190   Accepted Submission(s) : 96
+Problem Description都说天上不会掉馅饼，但有一天gameboy正走在回家的小径上，忽然天上掉下大把大把的馅饼。说来gameboy的人品实在是太好了，这馅饼别处都不掉，就掉落在他身旁的10米范围内。馅饼如果掉在了地上当然就不能吃了，所以gameboy马上卸下身上的背包去接。但由于小径两侧都不能站人，所以他只能在小径上接。由于gameboy平时老呆在房间里玩游戏，虽然在游戏中是个身手敏捷的高手，但在现实中运动神经特别迟钝，每秒种只有在移动不超过一米的范围内接住坠落的馅饼。现在给这条小径如图标上坐标：<br><center><img src=../../../data/images/1176_1.jpg></center><br>为了使问题简化，假设在接下来的一段时间里，馅饼都掉落在0-10这11个位置。开始时gameboy站在5这个位置，因此在第一秒，他只能接到4,5,6这三个位置中其中一个位置上的馅饼。问gameboy最多可能接到多少个馅饼？（假设他的背包可以容纳无穷多个馅饼）<br>
+Input输入数据有多组。每组数据的第一行为以正整数n(0<n<100000)，表示有n个馅饼掉在这条小径上。在结下来的n行中，每行有两个整数x,T(0<T<100000),表示在第T秒有一个馅饼掉在x点上。同一秒钟在同一点上可能掉下多个馅饼。n=0时输入结束。<br>
+Output每一组输入数据对应一行输出。输出一个整数m，表示gameboy最多可能接到m个馅饼。<br>提示：本题的输入数据量比较大，建议用scanf读入，用cin可能会超时。<br><br>
+Sample Input6
+5 1
+4 1
+6 1
+7 2
+7 2
+8 3
+0
+Sample Output4
+ 4
+
+#include <iostream> 
+using namespace std;
+int a[100000][11];
+int max(int a,int b){
+	return a>b?a:b;
+}
+int max(int a,int b,int c)
+{
+	return max(a,b)>c?max(a,b):c;
+}
+int main()
+{
+	int n,i,j,x,t,t_max;
+	while(cin>>n&&n!=0)
+	{
+		for(i=0;i<100000;i++)
+			for(j=0;j<11;j++)
+				a[i][j]=0;
+			    t_max=1;
+			for(i=1;i<=n;i++){	
+				cin>>x>>t;
+				if(t>t_max)
+					t_max=t;
+				a[t-1][x]++;//二维数组初始化
+			}
+			for(i=t_max-2;i>=0;i--)
+				for(j=0;j<=10;j++)
+				{
+					if(j==0)
+						a[i][j]+=max(a[i+1][j],a[i+1][j+1]);
+					else if(j==10)
+							a[i][j]+=max(a[i+1][j-1],a[i+1][j]);
+					else
+							a[i][j]+=max(a[i+1][j-1],a[i+1][j],a[i+1][j+1]);
+				}
+				cout<<max(a[0][5],a[0][4],a[0][6])<<endl;
+	}
+	return 0;
+}
+
+27. 母牛的故事 
+Problem Description有一头母牛，它每年年初生一头小母牛。每头小母牛从第四个年头开始，每年年初也生一头小母牛。
+请编程实现在第n年的时候，共有多少头母牛？
+Input输入数据由多个测试实例组成，每个测试实例占一行，包括一个整数n(0<n<55)，n的含义如题目中描述。
+n=0表示输入数据的结束，不做处理。
+Output对于每个测试实例，输出在第n年的时候母牛的数量。<br>每个输出占一行。
+Sample Input2
+4
+5
+0 
+Sample Output2
+4
+6
+
+#include <iostream> 
+using namespace std;
+int main()
+{
+	int f[57]={1,1,2,3},n,i;
+	for(i=4;i<57;i++)
+	{
+		f[i]=f[i-1]+f[i-3];
+	}
+	while(cin>>n&&n!=0)
+	{
+		cout<<f[n]<<endl;
+	}
+	return 0;
+}
+
+28. 逆序输出
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	string s;
+	int i;
+	while(cin>>s)
+	{
+		for(i=(s.length()-1);i>=0;i--)
+			cout<<s[i];
+		cout<<endl;
+	}
+	return 0;
+}
+
+29. 排序
+Problem B:排序
+Time Limit:1000MS  Memory Limit:65536K
+Total Submit:132 Accepted:52 
+Description 
+输入n(n<=100)个整数，按照从大到小排序后输出。
+Input 
+输入数据有多组，每组占一行，每行的第一个数字为n,接着是n个整数，n=0表示输入数据的结束，不做处理。
+Output 
+对于每个测试实例，输出排序后的结果，两个数之间用一个空格隔开。每个测试实例占一行。
+Sample Input 
+3 3 4 2
+4 0 1 2 3
+0
+Sample Output 
+4 3 2
+3 2 1 0
+[Submit]   [Go Back]   [Status]   [Clarify] 
+Home Page   Go Back  To top
+
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n,a[99],max,j;
+	while(cin>>n&&n!=0)
+	{
+		for(int i=0;i<n;i++)
+		{
+			cin>>a[i];
+		}
+		for(i=0;i<n-1;i++)
+		{
+			max=i;
+			for(j=i+1;j<n;j++)
+			{
+				if(a[max]<a[j])
+					max=j;
+				int t=a[i];
+				a[i]=a[max];
+				a[max]=t;
+			}
+		}
+		for(i=0;i<n;i++)
+		{
+		cout<<a[i]<<" ";
+		}
+		cout<<endl;
+	}
+	return 0;
+}
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+bool cmp(int a,int b)
+{
+	return a>b;
+}
+int main()
+{
+	int n,a[101];
+	while(cin>>n&&n!=0)
+	{
+			for(int i=0;i<n;i++)
+			{
+				cin>>a[i];
+			}
+			sort(a,a+n,cmp);
+		for(i=0;i<n;i++)
+		{
+		cout<<a[i]<<" ";
+		}
+		cout<<endl;
+	}
+	return 0;
+}
+
+30. 蟠桃记
+喜欢西游记的同学肯定都知道悟空偷吃蟠桃的故事，你们一定都觉得这猴子太闹腾了，其实你们是有所不知：悟空是在研究一个数学问题！<br>什么问题？他研究的问题是蟠桃一共有多少个！<br>不过，到最后，他还是没能解决这个难题，呵呵^-^<br>当时的情况是这样的：<br>第一天悟空吃掉桃子总数一半多一个，第二天又将剩下的桃子吃掉一半多一个，以后每天吃掉前一天剩下的一半多一个，到第n天准备吃的时候只剩下一个桃子。聪明的你，请帮悟空算一下，他第一天开始吃的时候桃子一共有多少个呢？<br>
+Input输入数据有多组，每组占一行，包含一个正整数n（1<n<30），表示只剩下一个桃子的时候是在第n天发生的。
+Output对于每组输入数据，输出第一天开始吃的时候桃子的总数，每个测试实例占一行。
+Sample Input2
+4 
+Sample Output4
+22
+
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n;
+    while(cin>>n)
+    {
+        int sum=1;
+        for(int i=1;i<n;i++)
+        {
+        sum=(sum+1)*2;
+        }
+        cout<<sum<<endl;
+    }
+    return 0;
+}
+
+31. 判断素数
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main(){
+	int m;
+	while(cin>>m){
+	for(int i=2;i<=sqrt(m);i++)  //因子成对出现
+	
+		if(m%i==0)
+			break;  //m不是素数
+		if(i>sqrt(m))
+			cout<<"yes"<<endl;
+		else 
+			cout<<"no"<<endl;
+	}
+	return 0;
+}
+
+32. 平方和与立方和
+#include<iostream>
+using namespace std;
+int main()
+{
+	int i,a,b,c,d,sum=0;
+	while(cin>>a>>b)
+	{
+		if(a>=b)
+		{
+			c=0;
+			d=0;
+			for(i=b;i<=a;i++)
+			{
+				if(i%2==0)
+					c=c+i*i;
+				if(i%2==1)
+					d=d+i*i*i;
+			}
+			cout<<c<<" "<<endl;
+		}
+		if(a>b)
+		{
+			c=0;
+			d=0;
+			for(i=a;i<=b;i++)
+			{
+				if(i%2==0)
+					c=c+i*i;
+				if(i%2==1)
+					d=d+i*i*i;
+			}
+			cout<<c<<" "<<endl;
+		}
+	}
+	return 0;
+}
+
+33. 七夕节 
+Time Limit : 2000/1000ms (Java/Other)   Memory Limit : 65536/32768K (Java/Other)
+Total Submission(s) : 219   Accepted Submission(s) : 112
+Problem Description七夕节那天,月老来到数字王国,他在城门上贴了一张告示,并且和数字王国的人们说:"你们想知道你们的另一半是谁吗?那就按照告示上的方法去找吧!"
+人们纷纷来到告示前,都想知道谁才是自己的另一半.告示如下:
+数字N的因子就是所有比N小又能被N整除的所有正整数,如12的因子有1,2,3,4,6.
+你想知道你的另一半吗?
+Input输入数据的第一行是一个数字T(1<=T<=500000),它表明测试数据的组数.然后是T组测试数据,每组测试数据只有一个数字N(1<=N<=500000). 
+Output对于每组测试数据,请输出一个代表输入数据N的另一半的编号. 
+Sample Input3
+2
+10
+20
+Sample Output1
+8
+22
+
+#include <iostream>
+using namespace std;
+int a[500001];
+int main()
+{    int m,n,i,j;  
+  for(i=1; i<=500000; i++) /////1每个人都有先加上去       
+	  a[i]=1;   
+  for(i=2; i<=250001; i++) //只要一半就好，超过了连除2都不可能，就更别说因子了
+  {for(j=i+i; j<=500000; j+=i) ////只要是i的倍数的数肯定含有i这个因子，i自身就不加了，从i的下个开始 
+  {            a[j]+=i;    //所以加i上去
+    }    }    
+  cin>>m;   
+  while(m--)   
+  {        cin>>n;        
+  cout<<a[n];  
+  }   
+  return 0;
+}
+
+34. 青年歌手大赛_评委会打分
+Problem Description
+青年歌手大奖赛中，评委会给参赛选手打分。选手得分规则为去掉一个最高分和一个最低分，然后计算平均得分，请编程输出某选手的得分。
+Input
+输入数据有多组，每组占一行，每行的第一个数是n(2<n<=100)，表示评委的人数，然后是n个评委的打分。
+Output
+对于每组输入数据，输出选手的得分，结果保留2位小数，每组输出占一行。
+
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int x;
+	int i;
+	int max,min;
+	int a[100];
+	int sum;
+	double ave;
+	while(cin>>x&&(x>2&&x<=100))
+	{
+		sum=0;
+		max=0;
+		min=0;
+		for(i=0;i<x;i++)
+		{
+			cin>>a[i];
+		}
+		for(i=0;i<x;i++)
+		{
+			if(a[i]>a[max])
+			{
+				max=i;
+			}
+			if(a[i]<a[min])
+			{
+				min=i;
+			}
+		}
+		a[max]=0;
+		a[min]=0;
+		for(i=0;i<x;i++)
+		{
+			sum+=a[i];
+		}
+			ave=sum/((x-2)*1.000);
+			cout<<fixed<<setprecision(2)<<ave<<endl;
+	}
+	return 0;
+}
+
+35. 求素数和
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+	int i,t,sum=0,s,j,d;
+	cin>>t;
+	for(i=1;i<=t;i++)
+	{
+		sum=0;
+		cin>>s;
+		for(d=2;d<=s;d++)
+		{
+			for(j=2;j<sqrt(d);j++)
+			{
+				if(d%j==0)
+					break;
+			}
+			if(j>sqrt(d))
+			{
+				sum=sum+d;
+			}
+		}
+		cout<<sum<<endl;
+	}
+	return 0;
+}
+
+36. 求最小值
+Problem A:求最小值
+Time Limit:1000MS  Memory Limit:65536K
+Total Submit:172 Accepted:56 
+Description 
+输入n个整数计算最小值并输出。
+Input 
+输入数据有多组，每组占一行，每行的第一个数字为n,接着是n个整数，n=0表示输入数据的结束，不做处理。
+Output 
+对于每个测试实例，输出最小值。每个测试实例占一行。
+Sample Input 
+3 1 2 3
+5 1 9 7 3 6
+0
+Sample Output 
+1
+1
+
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n,a[1000],min;
+	while(cin>>n&&n!=0)
+	{
+	for(int i=0;i<n;i++)
+	{ 
+		cin>>a[i];
+		
+	}
+	min=a[0];
+	for(i=0;i<n;i++)
+	{
+		if(a[i]<min)
+			min=a[i];
+	}
+		cout<<min<<endl;
+	}
+	return 0;
+}
+
+37.Problem B:排序
+Time Limit:1000MS  Memory Limit:65536K
+Total Submit:132 Accepted:52 
+Description 
+输入n(n<=100)个整数，按照从大到小排序后输出。
+Input 
+输入数据有多组，每组占一行，每行的第一个数字为n,接着是n个整数，n=0表示输入数据的结束，不做处理。
+Output 
+对于每个测试实例，输出排序后的结果，两个数之间用一个空格隔开。每个测试实例占一行。
+Sample Input 
+3 3 4 2
+4 0 1 2 3
+0
+Sample Output 
+4 3 2
+3 2 1 0
+
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n,a[99],max,j;
+	while(cin>>n&&n!=0)
+	{
+		for(int i=0;i<n;i++)
+		{
+			cin>>a[i];
+		}
+		for(i=0;i<n-1;i++)
+		{
+			max=i;
+			for(j=i+1;j<n;j++)
+			{
+				if(a[max]<a[j])
+					max=j;
+				int t=a[i];
+				a[i]=a[max];
+				a[max]=t;
+			}
+		}
+		for(i=0;i<n;i++)
+		{
+		cout<<a[i]<<" ";
+		}
+		cout<<endl;
+	}
+	return 0;
+}
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+bool cmp(int a,int b)
+{
+	return a>b;
+}
+int main()
+{
+	int n,a[101];
+	while(cin>>n&&n!=0)
+	{
+			for(int i=0;i<n;i++)
+			{
+				cin>>a[i];
+			}
+			sort(a,a+n,cmp);
+		for(i=0;i<n;i++)
+		{
+		cout<<a[i]<<" ";
+		}
+		cout<<endl;
+	}
+	return 0;
+}
+
+38.Problem E:直线分割圆
+
+Time Limit:1000MS  Memory Limit:65536K
+Total Submit:162 Accepted:94 
+Description 
+在一个平面上有一个圆和n条直线，这些直线中每一条在圆内同其他直线相交，假设没有3条直线相交于一点，试问这些直线将圆分成多少区域。 
+Input 
+输入数据的第一行是一个整数C,表示测试实例的个数，然后是C 行数据，每行包含一个整数n(0 < n <=1000),表示直线的数量。
+Output 
+对于每个测试实例，请输出圆的最大分割数，每个实例的输出占一行
+Sample Input 
+2
+2
+3
+Sample Output 
+4
+7
+
+#include<iostream>
+using namespace std;
+int f(int n)
+{
+	return n*(n+1)/2+1;
+}
+int main()
+{
+	int c;
+	cin>>c;
+for(int j=0;j<c;j++)
+{
+	int i;				
+	cin>>i;
+	if(0<i&&i<=1000)
+    	cout<<f(i)<<endl;
+}
+	return 0;
+}
+
+39.Problem C:输出子串
+Time Limit:1000MS  Memory Limit:65536K
+Total Submit:194 Accepted:75
+Description 
+给定一个字符串，将其第n到m位的子串输出。
+Input 
+输入包含多组测试数据，每个数据占一行，包含一个长度为k的字符串（只由字母和数字组成）和两个整数n、m（1 <= n <= m <= k <= 100 ）。 
+Output 
+对于每组测试数据，输出第n到m位的子串，每个输出占一行。
+Sample Input 
+123ABC 1 3
+xyzabcdef 4 6
+Sample Output 
+123
+Abc
+
+#include<iostream>
+using namespace std;
+int main()
+{
+	char str[100];
+	while(cin>>str)
+	{
+		int m,n;
+		cin>>n>>m;
+		for(int i=n-1;i<m;i++)
+			cout<<str[i];
+		cout<<endl;
+	}
+	return 0;
+}
+
+40.Problem D:背包问题
+Time Limit:1000MS  Memory Limit:65536K
+Total Submit:98 Accepted:26 
+Description 
+有一个背包，背包容量是M。现有5个物品，每个物品有其重量W和价值V，物品可以分割成任意大小。要求尽可能让装入背包中的物品总价值最大，但不能超过总容量。 
+Input 
+输入数据首先包括一个整数T，表示有T组测试用例，每组测试用例包括3行，第一行有一个整数表示背包容量，第二行有5个整数分别表示5个物品的重量，第三行有5个整数分别表示5个物品的价值。
+Output 
+对于每组测试用例，计算装入背包的最大价值并输出，结果保留两位小数，每个输出占一行。
+Sample Input 
+2
+100
+35 30 60 50 40
+10 40 30 50 35
+10
+1 2 3 4 5
+2 6 9 8 10
+Sample Output 
+107.50
+25.00
+
+#include<iostream>
+#include<iomanip>
+#include<algorithm>
+using namespace std;
+class bag
+{
+public:
+	int w,v;
+};
+bool cmp(bag bag1,bag bag2)
+{
+	return (double)bag1.v/bag1.w<(double)bag2.v/bag2.w;
+
+}
+int main()
+{
+	int n;
+	cin>>n;
+	bag b[6];
+	while(n--)
+	{
+		double sum=0;
+		int m;
+	    while(cin>>m)
+		{
+		for(int i=0;i<5;i++)
+		{
+			cin>>b[i].w>>b[i].v;
+		}
+		sort(b,b+5,cmp);
+		 i=0;
+		while(m>=0&&i<5)
+		{
+		if(m>=b[i].w)
+		{
+			sum=sum+b[i].v;
+		    m=m-b[i].w;
+		}
+		else
+		{
+			sum=sum+(double)m*b[i].v/b[i].w;
+		    m=0;
+		}
+		i++;
+		}
+			cout<<sum;
+		}
+	
+	}
+	return 0;
+}
+
+41.考试晋级
+Time Limit:1000MS  Memory Limit:65536K
+Total Submit:136 Accepted:61 
+Description 
+有n个人参加了期末考试，为了检测大家真正的学习成绩老师决定对于成绩好的同学进行第二轮测试，当然不是每个人都有进入第二轮的机会，这里有个根据期末考试分数制定的晋级规则： 
+1)分数高的优先晋级 
+2)至多只能允许k个人晋级下一轮 
+3)为了保证公平分数相同的人要么一起晋级要么一起出局 
+老师最近很忙不知道最终到底有多少人可以晋级下一轮而且晋级的最低分数是多少。作为优秀的程序员这个任务当然就交给你来完成了！ 
+Input 
+第一行是一个数T(T<=100)，表示有T组测试数据。 
+每组测试样例的第一行是两个数n 和k(1<=k<=n<=10000)代表参加考试的总人数和至多能晋级的总人数。然后接下来一行有n个数字s代表每个学生的考试分数(1<=s<=100)。 
+Output 
+对于每组测试数据，首先输出"Case #X: "，X代表测试用例的编号（具体可参见sample output）， 然后输出两个整数sum，min，表示可以晋级多少人和最低的晋级分数.如果无人能晋级则输出两个-1。
+Sample Input 
+3
+1 1 
+5
+10 7
+1 2 3 4 5 6 7 8 9 10
+10 2
+1 1 2 3 3 4 4 5 5 5
+Sample Output 
+Case #1: 1 5
+Case #2: 7 4
+Case #3: -1 -1
+
+#include<iostream>
+#include<iomanip>
+#include<algorithm>
+using namespace std;
+class bag
+{
+public:
+	int w,v;
+};
+bool cmp(bag bag1,bag bag2)
+{
+	return (double)bag1.v/bag1.w>(double)bag2.v/bag2.w;
+		
+}
+int main()
+{
+	int n;
+	cin>>n;
+	bag b[6];
+	while(n--)
+	{
+		double sum=0;
+		int m;
+	    while(cin>>m)
+		{
+		for(int i=0;i<5;i++)
+		{
+			cin>>b[i].w;
+		}
+		for( i=0;i<5;i++)
+		{
+			cin>>b[i].v;
+		}
+		sort(b,b+5,cmp);
+		 i=0;
+		while(m>=0&&i<5)
+		{
+		if(m>=b[i].w)
+		{
+			sum=sum+b[i].v;
+		    m=m-b[i].w;
+		}
+		else
+		{
+			sum=sum+(double)m*b[i].v/b[i].w;
+		    m=0;
+		}
+		i++;
+		}
+			cout<<fixed<<setprecision(2)<<sum<<endl;
+		}
+	
+	}
+	return 0;
+}
+42.筛选法
+不是素数的标为1
+步骤1、初始化数组
+    2、循环
+     3、输出标为0 的
+
+43. 输出奇数位
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	string c;
+	while(cin>>c)
+	{
+		for(int i=0;i<c.length();i+=2)
+		{
+			cout<<c[i];
+		}
+		cout<<endl;
+	}
+	return 0;
+}
+
+44. 输出子串
+Problem C:输出子串
+Time Limit:1000MS  Memory Limit:65536K
+Total Submit:194 Accepted:75 
+Description 
+给定一个字符串，将其第n到m位的子串输出。
+Input 
+输入包含多组测试数据，每个数据占一行，包含一个长度为k的字符串（只由字母和数字组成）和两个整数n、m（1 <= n <= m <= k <= 100 ）。 
+Output 
+对于每组测试数据，输出第n到m位的子串，每个输出占一行。
+Sample Input 
+123ABC 1 3
+xyzabcdef 4 6
+Sample Output 
+123
+abc
+#include<iostream>
+using namespace std;
+int main()
+{
+	char str[100];
+	while(cin>>str)
+	{
+		int m,n;
+		cin>>n>>m;
+		for(int i=n-1;i<m;i++)
+			cout<<str[i];
+		cout<<endl;
+	}
+	return 0;
+}
+
+45.数列的和
+Problem Description
+数列的定义如下：
+数列的第一项为n，以后各项为前一项的平方根，求数列的前m项的和。
+Input
+输入数据有多组，每组占一行，由两个整数n（n<10000）和m(m<1000)组成，n和m的含义如前所述。
+Output
+对于每组输入数据，输出该数列的和，每个测试实例占一行，要求精度保留2位小数。
+
+#include<iostream>
+#include<cmath>
+#include<iomanip>
+using namespace std;
+int main()
+{
+    int n,m,i;
+    double sum,a;
+    while(cin>>n>>m)
+    {
+        sum=0;
+        a=(double)n;
+        for(i=0;i<m;i++)
+        {
+            sum+=a;
+            a=sqrt(a);
+        }
+        cout<<fixed<<setprecision(2)<<sum<<endl;
+    }
+    return 0;
+}
+
+46. 数列有序
+Problem Description
+有n(n<=100)个整数，已经按照从小到大顺序排列好，现在另外给一个整数x，请将该数插入到序列中，并使新的序列仍然有序。
+Input
+输入数据包含多个测试实例，每组数据由两行组成，第一行是n和m，第二行是已经有序的n个数的数列。n和m同时为0标示输入数据的结束，本行不做处理。
+Output
+对于每个测试实例，输出插入新的元素后的数列。
+
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n,m,a[10000];
+	while(cin>>n>>m&&(m||n))
+	{
+		int flag=false;
+		for(int i=0;i<n;i++)
+		{
+			cin>>a[i];
+		}
+		for(int i=0;i<n;i++)
+		{
+			if(i==0&&m<=a[i]&&flag==false)
+			{
+				cout<<m<<" ";
+				flag=true;
+			}
+			cout<<a[i];
+			if(i==n-1&&a[i]<=m)
+				cout<<" "<<m;
+			else if(a[i]<=m&&a[i+1]>=m&&flag==false)
+			{
+				cout<<" "<<m;
+				flag=true;
+			}
+			if(i!=n-1)
+				cout<<" ";
+		}
+		cout<<endl;
+	}
+	return 0;
+}
+47. 数塔
+Problem Description在讲述DP算法的时候，一个经典的例子就是数塔问题，它是这样描述的：有如下所示的数塔，
+要求从顶层走到底层，若每一步只能走到相邻的结点，则经过的结点的数字之和最大是多少？已经告诉你了，这是个DP的题目，你能AC吗?
+Input输入数据首先包括一个整数C,表示测试实例的个数，每个测试实例的第一行是一个整数N(1 <= N <= 100),
+表示数塔的高度，接下来用N行数字表示数塔，其中第i行有个i个整数，且所有的整数均在区间[0,99]内。<br>
+Output对于每个测试实例，输出可能得到的最大和，每个实例的输出占一行。<br>
+Sample Input1
+5
+7
+3 8
+8 1 0 
+2 7 4 4
+4 5 2 6 5
+Sample Output30
+
+#include<iostream>
+using namespace std;
+int max(int a,int b)
+{
+	return a>b?a:b;
+}
+int main()
+{
+	int c,n,i,j,a[100][100];
+	cin>>c;
+   for(int k=1;k<=c;k++)
+	{
+	    cin>>n;
+		for(i=0;i<n;i++)
+			for(j=0;j<=i;j++)
+				cin>>a[i][j];
+		for(i=n-2;i>=0;i--)
+			for (j=0;j<=i;j++)
+				a[i][j]+=max(a[i+1][j],a[i+1][j+1]);
+			cout<<a[0][0]<<endl;
+	}
+	return 0;
+}
+48. 素数判定
+素数判定 
+Time Limit : 2000/1000ms (Java/Other)   Memory Limit : 65536/32768K (Java/Other)
+Total Submission(s) : 322   Accepted Submission(s) : 149
+Problem Description对于表达式n^2+n+41，当n在（x,y）范围内取整数值时（包括x,y）(-39<=x<y<=50)，判定该表达式的值是否都为素数。
+Input输入数据有多组，每组占一行，由两个整数x，y组成，当x=0,y=0时，表示输入结束，该行不做处理。
+Output对于每个给定范围内的取值，如果表达式的值都为素数，则输出"OK",否则请输出“Sorry”,每组输出占一行。 
+Sample Input
+0 1
+0 0 
+Sample Output
+OK 
+
+#include<stdio.h>
+#include<math.h>
+int fun(int n,int flag)
+{
+  int t,m;
+  m=(int)sqrt(n);
+  for(t=2;t<=m;t++)
+   if(n%t==0)
+   flag=0;
+  return flag;
+}
+int main()
+{
+    long x,y,sum,flag,i;
+    while(scanf("%ld%ld",&x,&y)!=EOF)
+    {
+      if(x==0&&y==0)
+      break;
+      flag=1;
+      for(i=x;i<=y;i++)
+      {
+        sum=i*i+i+41;
+        flag=fun(sum,flag);
+        if(flag==0)
+        break;
+      }
+      if(flag==1)
+      printf("OK\n");
+      else
+      printf("Sorry\n");
+    }
+return 0;
+} 
+49. 统计数字字符
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	string s;
+	while(cin>>s)
+	{
+		int i,t=0;
+		for(i=0;i<s.length();i++)
+		{
+			if(s[i]>='0'&&s[i]<='9')
+				t++;
+		}
+		cout<<t<<endl;
+	}
+	return 0;
+}
+
+50. 小蜜蜂
+有一只经过训练的蜜蜂只能爬向右侧相邻的蜂房，不能反向爬行。请编程计算蜜蜂从蜂房a爬到蜂房b的可能路线数。<br>其中，蜂房的结构如下所示。<br><img src=../data/images/C40-1001-1.jpg><br>
+Input输入数据的第一行是一个整数N,表示测试实例的个数，然后是N 行数据，每行包含两个整数a和b(0<a<b<50)。<br>
+Output对于每个测试实例，请输出蜜蜂从蜂房a爬到蜂房b的可能路线数，每个实例的输出占一行。<br>
+Sample Input2
+1 2
+3 6
+Sample Output1
+3
+Authorlcy
+Source递推求解专题练习（For Beginner）
+ 
+#include<iostream>
+#include<cstdio>
+#include<cmath>
+using namespace std;
+long long ans[50];
+int main(){
+	int n,a,b;
+	cin>>n;
+	ans[1] = 1;
+	ans[2] = 2;
+	for(int i=3 ;i<50 ;i++){
+		ans[i] = ans[i-1]+ans[i-2];
+	}
+	while(n--){
+		cin>>a>>b;
+		int temp = abs(a-b);
+		cout<<ans[temp]<<endl;
+	}
+	return 0;
+}
+
+51. 新建文本文档
+#include <iostream>
+using namespace std;
+int main()
+{
+	char a,b;
+	while((a=getchar())!=EOF)
+	{
+	
+		b=(a>='A'&&a<='Z')?a+32:a;
+		cout<<b;
+	}
+	cout<<endl;
+	return 0;
+}
+
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+	string str="";
+	while(cin>>str)
+	{
+		int n=str.size();
+		for(int i=1;i<=n;i++)
+			cout<<str[n-i];
+		cout<<endl;
+
+	}
+	return 0;
+}
+
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+	string str="";
+	while(cin>>str)
+	{
+		int n=str.size();
+		for(int i=0;i<n;i+=2)
+			cout<<str[i];
+		cout<<endl;
+	}
+	return 0;
+}
+
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+	int s=0;
+	string str="";
+	while(cin>>str)
+	{
+		s=0;
+		int n=str.size();
+		for(int i=0;i<n;i++)
+		{
+			if(str[i]>='0'&&str[i]<='9')
+				s=s+1;
+		}
+		cout<<s<<endl;
+	}
+	return 0;
+}
+
+#include <iostream>
+using namespace std;
+int main()
+{
+	int n,T,s=0,count=0;
+	cin>>T;
+	for(int i=1;i<=T;i++)
+	{
+		cin>>n;
+		s=0;
+		for(int i=2;i<=n;i++)
+		{
+			count=0;
+			for(int j=2;j<i;j++)
+			{
+				if(i%j==0)
+					count++;
+			}
+			if(count==0)
+				s=s+i;
+		}
+		cout<<s<<endl;
+	}
+	return 0;
+}
+
+#include <iostream>
+using namespace std;
+int main()
+{	
+	int n,m,a,b,c,count;
+	while(cin>>m>>n)
+	{
+		count=0;
+		for(int i=m;i<=n;i++)
+		{	
+			a=i/100;
+			b=i%100/10;
+			c=i%100%10;
+			if(i==a*a*a+b*b*b+c*c*c)
+			{
+				count++;
+				cout<<i<<" ";
+			}
+		}
+			if(count==0)
+				cout<<"no";
+			cout<<endl;
+	}
+	return 0;
+}
+
+#include <iostream>
+using namespace std;
+int main()
+{	
+	int n,m,x=0,y=0;
+	while(cin>>n>>m)
+	{
+		x=0;
+		y=0;
+		for(int i=n;i<=m;i++)
+		{
+			if(i%2==0)
+				x=x+i*i;
+			else
+				y=y+i*i*i;
+		}
+		cout<<x<<" "<<y<<endl;
+	}
+	return 0;
+}
+
+52. 折线分割法
+我们看到过很多直线分割平面的题目，今天的这个题目稍微有些变化，我们要求的是n条折线分割平面的最大数目。
+比如，一条折线可以将平面分成两部分，两条折线最多可以将平面分成7部分，具体如下所示。
+Input输入数据的第一行是一个整数C,表示测试实例的个数，然后是C 行数据，每行包含一个整数n(0<n<=10000),表示折线的数量。
+Output对于每个测试实例，请输出平面的最大分割数，每个实例的输出占一行。<br><br>
+Sample Input2
+1
+2
+Sample Output2
+7
+#include<iostream>
+using namespace std;
+int f(int n)
+{
+	if(n==1)
+		return 2;
+	else 
+		return f(n-1)+4*(n-1)+1;
+}
+int main()
+{
+	int c;
+	cin>>c;
+	for(int i=0;i<c;i++)
+	{
+		int n;
+	while(cin>>n)
+		{
+			cout<<f(n)<<endl;
+		}
+	}
+	return 0;
+}
+
+53. 直线分割圆
+Problem E:直线分割圆
+Time Limit:1000MS  Memory Limit:65536K
+Total Submit:162 Accepted:94 
+Description 
+在一个平面上有一个圆和n条直线，这些直线中每一条在圆内同其他直线相交，假设没有3条直线相交于一点，试问这些直线将圆分成多少区域。 
+Input 
+输入数据的第一行是一个整数C,表示测试实例的个数，然后是C 行数据，每行包含一个整数n(0 < n <=1000),表示直线的数量。
+Output 
+对于每个测试实例，请输出圆的最大分割数，每个实例的输出占一行
+Sample Input 
+2
+2
+3
+Sample Output 
+4
+7
+#include<iostream>
+using namespace std;
+int f(int n)
+{
+	return n*(n+1)/2+1;
+}
+int main()
+{
+	int c;
+	cin>>c;
+for(int j=0;j<c;j++)
+{
+	int i;				
+	cin>>i;
+	if(0<i&&i<=1000)
+    	cout<<f(i)<<endl;
+}
+	return 0;
+}kiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii

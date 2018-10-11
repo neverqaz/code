@@ -1,0 +1,49 @@
+package subframe;
+
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class ad extends JFrame{
+	b ji=new b();
+	JFrame jf=new JFrame();
+
+	 ad(){
+		 JButton jbt=new JButton("ok");
+		 jbt.addActionListener(new ads());
+		 add(jbt);
+		 
+		 
+	 }
+class ads implements ActionListener{
+
+	
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		jf.setVisible(true);
+		jf.setSize(500, 344);
+		jf.add(ji);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ad jr=new ad();
+		jr.setSize(800, 300);
+		jr.setVisible(true);
+		jr.setLocationRelativeTo(null);
+		jr.setDefaultCloseOperation(ad.EXIT_ON_CLOSE);
+
+	}
+
+}
+class b extends JPanel{
+	public void paint(Graphics g){
+		super.paint(g);
+		g.drawLine(100, 30, 50, 70);
+	}
+}

@@ -1,0 +1,205 @@
+Centos7.4
+上传服务器：$ sudo scp -r Python-3.5.2.tgz  root@123.206.43.75:/usr/local/download/
+
+一．修改镜像源阿里
+1、备份
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+2、下载新的CentOS-Base.repo 到/etc/yum.repos.d/
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+3.yum makecache
+
+
+二．升级python为3.5.2
+
+下面介绍安装Python3的方法
+(1)首先安装依赖包
+1.yum -y groupinstall "Development tools"
+2.yum -y install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
+(2)解压缩包tar -zxvf Python-3.5.0.tgz
+(3)编译
+3 sudo mkdir /usr/local/python3
+4 sudo Python-3.5.0/configure --prefix=/usr/local/python3
+5 sudo make
+6 sudo make install
+sudo mv python python.bak，
+mv /usr/bin/python /usr/bin/python_old
+sudo ln -s /usr/local/python3/bin/python3  /usr/bin/python
+10.sudo ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
+(4).修改yum配置文件 1.sudo vim /usr/bin/yum 和2.sudo vim /usr/libexec/urlgrabber-ext-down
+
+将第一行指定的python版本改为python2.7(#!/usr/bin/python 改为 #!/usr/bin/python2.7)
+
+三．安装nginx：
+1.下载nginx：wget http://nginx.org/download/nginx-1.11.6.tar.gz
+2.解压：tar -zxvf nginx-1.11.6.tar.gz，放到/usr/local/目录下(注意不要把名字改成nginx)
+3.先安装nginx的依赖库：
+1.PCRE：yum -y install pcre-devel
+2.zlib：yum install -y zlib-devel
+3.cd  /usr/local/nginx-1.11.6/
+4.进行 nginx初始化配置：./configure
+5.编译生成nginx：make install 完后会生成/usr/local/nginx目录
+6.默认监听80端口，如需修改：/usr/local/nginx/conf/nginx.conf文件，将http-->server-->listen后的80改为需要监听的端口号，保存退出。
+7.运行nginx
+8.目录下四个文件夹
+1.conf（配置信息）
+2.html（网站文件）
+3.logs（日志文件）
+4.sbin（服务器程序）
+ cd /usr/local/nginx/sbin
+ ./nginx
+
+正常情况无输出，访问127.0.0.1:8081(我的端口号)，若出现Welcome Nginx即正常
+9.常用nginx命令： cd /usr/local/nginx/sbin
+　　启动：./nginx
+　　停止：./nginx -s stop
+　　重启：./nginx -s reopen
+　　执行./nginx -h 可以看到命令的帮助信息
+三．安装uwsgi
+1.pip3 install --upgrade pip
+2.pip3 install uwsgi
+3.sudo ln -s /usr/local/python3/bin/uwsgi  /usr/bin/uwsgi
+五．安装mysql
+(1)下载mysql
+1.wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
+2.yum -y install mysql57-community-release-el7-10.noarch.rpm
+3.yum -y install mysql-community-server
+(2)配置mysql
+4.启动mysql    systemctl start  mysqld.service
+5.  查看MySQL运行状态 systemctl status mysqld.service
+6.查看初始密码 grep "password" /var/log/mysqld.log
+7.mysql -u root -p
+8. set global validate_password_policy=0;
+9. set global validate_password_length=1;
+10.ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
+（3）设置字符集编码
+登陆后查看数据库当前编码：SHOW VARIABLES LIKE 'character%';
+退出找配置文件vim /etc/my.cnf 中增加
+
+　　[mysqld]
+
+　 collation-server = utf8_unicode_ci
+   init-connect='SET NAMES utf8'
+   character-set-server= utf8
+
+　　[mysql]
+
+　　default-character-set= utf8
+
+　　[client]
+
+　　default-character-set = utf8
+（4）查询的一些命令
+
+　　停止MySQL数据库服务：
+
+　　$ systemctl stop mysql.service
+　　启动MySQL数据库服务：
+
+　　$  systemctl start mysql.service
+　　重启MySQL数据库服务：
+
+　　$ systemctl restart mysql.service
+　　查看MySQL运行状态：
+
+　　$ systemctl status mysql.service
+
+
+六．安装python django
+1.从本地上传相应的库文件
+2.pip3 install进行安装
+  pip3 install Django-1.11-py2.py3-none-any.whl
+pip3 install future-0.16.0-py3-none-any.whl
+pip3 install django_formtools-2.1-py2.py3-none-any.whl
+pip3 install six-1.11.0-py2.py3-none-any.whl
+pip3 install PyMySQL-0.8.0-py2.py3-none-any.whl
+pip3 install django_crispy_forms-1.7.2-py2.py3-none-any.whl
+pip3 install django_import_export-1.0.1-py2.py3-none-any.whl
+3.从网上下载
+pip3 install httplib2 --upgrade
+pip3 install Pillow
+三者结合（Django+Nginx+uwsgi）
+1.在项目根目录下添加myweb_uwsgi.ini（注意myweb是你的项目的名称）
+2.在创建的ini文件中添加以下内容
+
+
+# myweb_uwsgi.ini file
+[uwsgi]
+ 
+# Django-related settings
+ 
+http= :8000
+ 
+# the base directory (full path)
+chdir           = /home/fnngj/pydj/myweb
+ 
+# Django s wsgi file
+module          = myweb.wsgi
+ 
+# process-related settings
+# master
+master          = true
+ 
+# maximum number of worker processes
+processes       = 4
+ 
+# ... with appropriate permissions - may be needed
+# chmod-socket    = 664
+# clear environment on exit
+vacuum          = true
+
+1.执行命令初始化配置：uwsgi --ini myweb_uwsgi.ini
+2. python manage.py makemigrations
+3.python manage.py migrate
+4.python manage.py createsuperuser
+5.如果端口占用：可以用命令杀掉这个端口在重启：
+sudo fuser -k 8080/tcp
+
+
+
+七．域名映射
+
+（1）vim  /usr/local/nginx/conf/nginx.conf 中的http{}中添加
+
+    server {
+
+       listen       80;
+
+       server_name  neverqaz.cn;
+
+       location / {
+
+                     proxy_pass http://127.0.0.1:8080/;
+
+              }
+
+}
+（2）再重新启动nginx
+1.cd /usr/local/nginx/sbin
+2../nginx
+
+
+说明80端口被占用，杀掉这个进程：
+[root@localhost ~]# killall -9 nginx
+（1）Pycharm 永久激活：
+http://idea.lanyus.com/
+教材：
+https://blog.csdn.net/weixin_42290966/article/details/81120415
+
+
+
+
+卸载数据库：
+https://blog.csdn.net/li_wei_quan/article/details/78549891
+
+
+
+
+
+
+
+
+
+
+
+
+

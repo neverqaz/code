@@ -1,0 +1,38 @@
+public class h extends JFrame{
+			h(){
+                             b r=new b("拖动");
+				add(r);}
+			
+
+			public static void main(String[] args) {
+				// TODO Auto-generated method stub
+				h j=new h();
+				j.setSize(800,400);
+				j.setVisible(true);
+				j.setLocationRelativeTo(null);
+				j.setDefaultCloseOperation(h.EXIT_ON_CLOSE);
+
+			}
+
+		} 
+	
+		class b extends JPanel{
+			String d="hello";
+			int x=200,y=30;
+			public b(String d){
+				this.d=d;
+				addMouseMotionListener(new ms());
+				
+				}
+		class ms implements MouseMotionListener{
+			public void mouseDragged(MouseEvent f) {
+				x=f.getX()+10;
+				y=f.getY()+10;
+				repaint();
+				System.out.println("开始移动");}
+			public void mouseMoved(MouseEvent arg0) {}}
+			public void paintcomponent(Graphics g){
+				super.paintComponent(g);
+				g.drawString(d, x, y);
+				System.out.println("绘画");
+			}}

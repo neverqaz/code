@@ -1,0 +1,13 @@
+	 public imagePanel(){
+		 icon = new ImageIcon("Éú.jpg");
+		 img=icon.getImage();
+	 }
+	 public void paint(Graphics g){
+		 super.paint(g);
+		 g.drawImage(img, 0, 0, null);
+	 }
+	public void isPaintingForPrint() {
+		// TODO Auto-generated method stub
+		
+	}
+}

@@ -1,0 +1,182 @@
+
+
+
+import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import javax.swing.JFrame;
+import javax.swing.event.MouseInputListener;
+public class h extends JFrame{
+			h(){
+				JPanel jp=new JPanel();
+				jp.setLayout(new BorderLayout());
+				b r=new b("hello");
+				jp.add(r,BorderLayout.CENTER);
+				jp.add(new zidong(),BorderLayout.NORTH);
+				add(jp,BorderLayout.SOUTH);
+				addWindowListener(new v());
+				key s=new key();
+				s.setFocusable(true);
+				add(s,BorderLayout.CENTER);
+			
+				
+			
+			}
+			
+			class v implements WindowListener{
+				public void windowActivated(WindowEvent arg0) {
+			 System.out.println("激活");}
+
+			public void windowClosed(WindowEvent arg0) {
+				
+				System.out.println("激活");
+			}
+
+			public void windowClosing(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("正在关闭");
+			}
+
+			public void windowDeactivated(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("不激活");
+			}
+
+			public void windowDeiconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("还原");
+			}
+
+			public void windowIconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("最小化窗口");
+			}
+
+			public void windowOpened(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("已打开");
+			}}
+			public static void main(String[] args) {
+				// TODO Auto-generated method stub
+				h j=new h();
+				j.setSize(800,800);
+				j.setVisible(true);
+				j.setLocationRelativeTo(null);
+				j.setDefaultCloseOperation(h.EXIT_ON_CLOSE);
+
+			}
+
+		} 
+	
+		class b extends JPanel{
+			String d="hello";
+			int x=2,y=3;
+			public b(String d){
+				this.d=d;
+				addMouseMotionListener(new ms());
+				System.out.println("鼠标注册以响应");
+				}
+		class ms implements MouseMotionListener{
+			public void mouseDragged(MouseEvent f) {
+				x=f.getX()+10;
+				y=f.getY()+10;
+				repaint();
+				System.out.println("开始移动");}
+			public void mouseMoved(MouseEvent arg0) {}}
+			public void paintcomponent(Graphics g){
+				super.paintComponent(g);
+				g.drawString(d, x, y);
+				System.out.println("绘画");
+			}
+			
+			
+			
+		}	
+class zidong extends JPanel{
+	int m=20;
+	int u=20;
+	Timer sd=new Timer(1000,new s());
+	zidong(){
+		
+		sd.start();
+		addKeyListener(new press());
+	}
+		
+	class s implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(m>getWidth())m=-10;
+			m=m+10;
+			repaint();
+			System.out.println("正在自动动中。。。。");
+		}}
+	class press implements KeyListener{
+
+		public void keyPressed(KeyEvent r) {
+			// TODO Auto-generated method stub
+			if(r.getKeyCode()==KeyEvent.VK_UP)sd.stop();
+		}
+
+		public void keyReleased(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void keyTyped(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}}
+	protected void paintComponenet(Graphics g){
+		super.paintComponent(g);
+		g.drawOval(m, u, 10,10);
+		
+	}}
+
+class key extends JPanel {
+	char n='k';
+	int u=100;
+	int e=100;
+	key(){
+		addKeyListener(new key1());
+	}
+	class key1 implements KeyListener{
+
+		public void keyPressed(KeyEvent r) {
+			// TODO Auto-generated method stub
+			
+			
+			switch (r.getKeyCode()){
+			case KeyEvent.VK_UP:e=e-5;break;
+			case KeyEvent.VK_RIGHT:u=u+5;break;
+			case KeyEvent.VK_LEFT:u=u-5;break;
+			case KeyEvent.VK_DOWN:e=e+5;break;
+			}repaint();
+		}
+
+		public void keyReleased(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void keyTyped(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}}
+	protected void paintComponent(Graphics g){
+		super.paintComponent(g);
+		g.drawString(String.valueOf(n), u, e);
+	}}

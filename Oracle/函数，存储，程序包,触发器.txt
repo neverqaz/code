@@ -1,0 +1,75 @@
+sqlplus sys/oracle123456@oracle10 as sysdba;
+alter user scott identified by s1234;
+alter user scott account unlock;
+conn scott/s1234@oracle10;
+desc emp
+select *from emp;
+存储过程：
+create or replace procedure get_ename(n IN emp.empno%type,name OUT emp.ename%type)
+is 
+begin 
+select ename into name from emp where empno=n;
+end get_ename;
+调用存储过程：
+declare 
+ename emp.ename%type;
+begin 
+ get_ename(7844,ename);
+dbms_output.put_line(ename);
+end;
+
+函数：
+create or replace function getname(n emp.empno%type)
+return emp.ename%type
+as
+name emp.ename%type;
+begin
+select ename into name from emp where empno=n;
+return (name);
+end getname;
+函数调用:
+select getname(7844) from dual;
+程序包：查看包：desc px;
+程序包的定义：
+create or replace package px is
+procedure getn(id in scott.emp.empno%type,name out emp.ename%type);
+function getna(id scott.emp.empno%type) return emp.ename%type;
+end;
+程序包的实现：
+create or replace package body px is
+procedure getn(id in scott.emp.empno%type,name out emp.ename%type)
+is 
+begin 
+select ename into name from emp where empno=id;
+end getn;
+function getna(id scott.emp.empno%type) return emp.ename%type
+as
+name emp.ename%type;
+begin
+select ename into name from emp where empno=id;
+return (name);
+end getna;
+end;
+标准输出：set serveroutput on;
+程序包的使用：execute px.getn(7844);
+删除包： drop package px;
+触发器：
+创建学生表:create table student(id int,name varchar(20));
+创建日志表：create table log(id int primary key,log_type varchar(20),log_date date);
+创建日志表当中的id序列自增：create sequence log_id start with 1 increment by 1;
+创建触发器：
+create or replace trigger student_log 
+after insert or update or delete on student
+for each row 
+begin
+if inserting then insert into log values(log_id.nextval,'insert',sysdate);
+elsif deleting then insert into log values(log_id.nextval,'delete',sysdate);
+else insert into log values(log_id.nextval,'update',sysdate);
+end if;
+end;
+插入一行数据：insert into student values(1,'zhangsan');
+更新一行数据：update student set sname=sname||'_imau';
+删除一行数据：delete from student where sname='zhangsan';
+查看数据： select *from student;
+查看日志：select *from log;
+select id,log_type,to_char(log_date,'yyyyy-mm-dd hh:MM:ss')from log;

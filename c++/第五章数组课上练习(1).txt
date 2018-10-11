@@ -1,0 +1,78 @@
+1.—°‘Ò≈≈–Ú∑®
+#include<iostream>
+using namespace std;
+int main(){
+	const n=4;
+	int c,d,a[n];
+	for(int i=0;i<n;i++)
+		cin>>a[i];
+	for(int j=0;j<n-1;j++){
+	  c=j;
+	for(i=j+1;i<n;i++)
+		if(a[i]>a[c])c=i;
+		if(c!=j){
+			d=a[j];
+			a[j]=a[c];
+			a[c]=d;}}
+	for(i=0;i<n;i++)cout<<a[i]<<" ";
+		cout<<endl;
+return 0;}
+2.fibonacci
+#include<iostream>
+using namespace std;
+int main(){
+	const n=20;
+	int a[n]={1,1};
+	for(int i=2;i<n;i++){
+		a[i]=a[i-1]+a[i-2];}
+	for(i=0;i<n;i++){
+		cout<<a[i]<<" ";
+		if((i+1)%5==0)cout<<endl;}
+	cout<<endl;
+return 0;}
+3.ƒÊ–Ú ‰≥ˆ
+#include<iostream>
+using namespace std;
+int main(){
+	const n=4;
+	int a[n];
+	for(int i=0;i<n;i++)
+		cin>>a[i];
+	for(i=n-1;i>=0;i--)
+		cout<<a[i]<<" ";
+	cout<<endl;
+return 0;}
+4.√∞≈›≈≈–Ú∑®
+#include<iostream>
+using namespace std;
+int main (){
+        const n=6;
+		int a[n],f;	
+		for(int i=0;i<n;i++)
+			cin>>a[i];
+		for(int j=1;j<n;j++){
+        for(i=0;i<n-j;i++)
+			if(a[i]>a[i+1]){
+				f=a[i];
+				a[i]=a[i+1];
+				a[i+1]=f;}}
+		for(i=0;i<6;i++)
+			cout<<a[i]<<" ";
+return 0;
+}
+acm.
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main (){
+	int n;
+	double p,sum,a[100];
+	while(cin>>n){
+		sum=0;
+	for(int i=0;i<n;i++)
+		cin>>a[i];
+		for(i=0;i<n;i++)
+			sum=sum+a[i];
+		p=sum/n;
+cout<<setiosflags(ios::fixed)<<setprecision(2)<<p<<endl;
+return 0;}

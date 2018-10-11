@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>time</title>
+</head>
+<body>
+{% block Top %}
+<div>
+
+    上策导航
+</div>
+{% endblock %}
+{% block Left %}
+<div>
+    左侧导航栏
+</div>
+{% endblock %}
+{% block context %}
+<div>
+    内容区
+</div>
+{% endblock %}
+{% comment %}
+{# 单行注释 #}
+<h1>it is time:{{ now }}</h1>
+<h1>学生信息：</h1>
+
+<p>姓名：{{ name }}</p>
+<p>性别：{{ sex }}</p>
+<p>年龄：{{ age }}</p>
+<p>姓名：{{ num }}</p>
+{% endcomment %}
+   {% for student1 in student%}
+       {% if student1.num == 3 %}
+ <h1>it is time:{{ student1.now }}</h1>
+  <h1>学生信息：</h1>
+     <p>姓名：{{ student1.name }}</p>
+     <p>性别：{{ student1.sex }}</p>
+     <p>年龄：{{ student1.age }}</p>
+    <p>姓名：{{ student1.num }}</p>
+
+       {%  elif  student1.num == 4  %}
+           <p>这是学生四<p>
+        {% endif   %}
+   {% endfor %}
+
+</body>
+</html>

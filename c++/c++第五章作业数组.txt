@@ -1,0 +1,243 @@
+2.
+#include<iostream>
+using namespace std;
+const n=10;
+int main(){
+	void inputa(int x[],int h);
+	void select(int b[],int x);
+	void outputa(int x[],int h);
+	int a[n];
+	inputa(a,n);
+	select(a,n);	
+	outputa(a,n);
+return 0;}
+void inputa(int x[],int h){
+	for(int i=0;i<n;i++)cin>>x[i];}
+void select(int b[],int x){
+	int i,j,k,m;
+	for( i=0;i<n-1;i++){
+		k=i;
+		for(j=i+1;j<n;j++){
+            if(b[k]<b[j])k=j;		
+		}
+		if(k!=i){m=b[k];
+		b[k]=b[i];
+		b[i]=m;}}}
+void outputa(int x[],int h){
+	for(int i=0;i<n;i++)cout<<x[i]<<" ";cout<<endl;}
+3.
+#include<iostream>
+using namespace std;
+const n=3;
+int main(){
+	void input (int b[][n]);
+	void process(int x[][n]);
+	int a[n][n];
+	input(a);
+	process(a);
+	return 0;}
+void input (int b[][n]){
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++)cin>>b[i][j];}}
+void process(int x[][n]){
+	int sum=0;
+	for(int i=0;i<n;i++){
+			sum=sum+x[i][i];}
+cout<<sum<<endl;}
+4．
+#include<iostream>
+using namespace std;
+const n=5;
+int main(){
+	int a[n]={0},v;
+	void array(int n[],int f,int s);
+	for(int i=0;i<n-1;i++)cin>>a[i];
+	cin>>v;
+array(a,n,v);
+for(i=0;i<n;i++)
+cout<<a[i]<<" ";
+cout<<endl;
+return 0;}
+void array(int n[],int f,int s){
+	int t,k;
+	for(int i=0;i<f-1;i++)
+	{if(s>n[i]&&s<n[i+1])k=i+1;break;}
+		for(i=f;i>k;i--)
+		n[i]=n[i-1];
+		t=n[k];
+		n[k]=s;
+		s=t;}
+5.
+#include<iostream>
+const n=5;
+using namespace std;
+int main(){
+	int a[n],b[n],i,j;
+	for(i=0;i<n;i++)
+	cin>>a[i];
+	for( j=n-1,i=0;i<n,j>=0;i++,j--)
+		b[j]=a[i];
+	for(i=0;i<n;i++)cout<<b[i]<<" ";
+	cout<<endl;
+return 0;}
+8.
+#include<iostream>
+using namespace std;
+const m=15;
+int main(){
+	int s,high,low,mid;
+	bool d=false;
+	int a[m]={3,4,5,7,9,10,24,56,78,90,122,345,678,890,1000};
+	cin>>s;
+	high=m-1,low=0;
+	while(low<=high){
+		mid=(low+high)/2;
+		if(a[mid]==s) {mid=mid+1;d=true;break;}
+		else if(a[mid]<s)low=mid+1;
+		else high=mid-1;
+	}
+	if(d)cout<<"该数列中第"<<mid<<"个数"<<endl;
+	else cout<<"不存在"<<endl;
+return 0;}
+10.
+#include<iostream>
+using namespace std;
+const n=3,m=80;
+int main(){
+	void input(char x[][m]);
+	void p(char d[][m]);
+	char b [n][m];
+	input(b);
+	p(b);
+return 0;}
+void input(char x[][m]){
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+		x[i][j]=getchar();
+		if(x[i][j]=='\0')break;}
+		if(x[i][j]=getchar()=='\0')break;}}
+void p(char d[][m]){
+	int count[5]={0};
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			if(d[i][j]>='a'&&d[i][j]<='z'){count[0]++;continue;}
+			else if(d[i][j]>='A'&&d[i][j]<='Z'){count[1]++;continue;}
+			else if(d[i][j]>='0'&&d[i][j]<='9'){count[2]++;continue;}
+			else if(d[i][j]>=' '){count[3]++;continue;}
+			else{ count[4]++;continue;}
+	}}
+	cout<<"小写字母:"<<count[0]<<"\n"<<"大写字母:"<<count[1]<<"\n"<<"数字:"<<count[2]<<"\n"<<"空格:"<<count[3]<<"\n"<<"其他字符:"<<count[4]<<endl;
+
+
+}
+
+13-1
+#include<iostream>
+#include<string>
+using namespace std;
+const n=20;
+int main(){
+	 char a[n],b[n];
+	 int x,y,i,j;    
+	 cin>>a>>b; 
+	 x=strlen(a);  
+	 y=strlen(b);  
+	 for(i=x,j=0;j<y;i++,j++)    
+		 a[i]=b[j];
+	a[x+y]='\0';	 
+	cout<<a<<endl; 
+return 0;}
+13-2.
+#include<iostream>
+#include<string>
+using namespace std;
+const n=20;
+int main(){
+	 char a[n],b[n];
+	cin>>a>>b; 
+	cout<< strcat(a,b)<<endl;
+	return 0;}
+13-3.
+#include<iostream>
+#include<string>
+using namespace std;
+int main(){
+	 string a,b;
+	cin>>a>>b; 
+	cout<< a+b<<endl;
+	return 0;}
+14.
+#include<iostream>
+#include<string>
+using namespace std;
+const m=20;
+int main(){
+	void process(string b[],int p);
+	int n;
+	cin>>n;
+	string a[m];
+	for(int i=0;i<n;i++)
+		cin>>a[i];
+	process(a,n);
+	for(i=0;i<n;i++)
+		cout<<a[i]<<endl;
+	return 0;} 
+void process(string b[],int p){
+string n;
+for(int i=1;i<p-1;i++){
+for(int j=0;j<p-i;j++)
+if(b[j]<b[j+1]){n=b[j];
+b[j]=b[j+1];
+b[j+1]=n;}}}
+15.
+#include<iostream>
+#include<string>
+using namespace std;
+const m=20;
+int main(){
+	void process(string b[],int p);
+	int n;
+	cin>>n;
+	string a[m];
+	for(int i=0;i<n;i++)
+		cin>>a[i];
+	process(a,n);	
+	return 0;} 
+void process(string b[],int p){
+	for(int i=0;i<p;i++){
+		if(b[i][0]=='A')cout<<b[i]<<endl;}}
+16-1
+#include<iostream>
+using namespace std;
+const n=80;
+int main(){
+ char a[n];
+ cin>>a;
+ int i,k;
+ for(i=0;i<n;i++)
+        if(a[i]=='\0'){
+         k=i;
+         break;}
+		k=k-1;
+for(k;k>=0;k--)
+       cout<<a[k];
+ cout<<endl;
+ return 0;
+}
+16-2
+#include<iostream>
+#include<string>
+using namespace std;
+int main(){
+ string a;
+ cin>>a;
+ int i,k;
+ for(i=0;i<a.max_size();i++)
+        if(a[i]=='\0'){
+         k=i;
+         break;}
+	k=k-1;
+for(k;k>=0;k--)
+       cout<<a[k];
+ cout<<endl;
+ return 0;}

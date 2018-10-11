@@ -1,0 +1,65 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+public class d { 
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		JFrame j=new JFrame("个人简历");
+		j.setSize(600, 600);
+		j.setVisible(true);
+		j.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		j.setLocationRelativeTo(null);
+		JPanel p=new JPanel();
+		p.setLayout(new GridLayout(5,2,-1200,0));
+		p.add(new JLabel("姓名：" ));
+		p.add(new JTextField(4));
+		p.add(new JLabel("学号："));
+		p.add(new JTextField(17));
+		p.add(new JLabel("大学名称："));
+		p.add(new JTextField(8));
+		p.add(new JLabel("地址："));
+		p.add(new JTextField(22));
+		JPanel p2=new JPanel();
+		p2.setLayout(new GridLayout(3,2,-1200,0));
+		JLabel l=new JLabel("个人爱好：");
+		p2.add(l);
+		JTextArea t=new JTextArea(2,4);
+		t.setBackground(Color.blue);
+		t.setForeground(Color.white);
+		p2.add(t);
+		p2.add(new JLabel("个人经历："));
+		JTextArea t1=new JTextArea(2,4);
+		t1.setBackground(Color.white);
+		t1.setForeground(Color.black);
+		p2.add(t1);
+		p2.add(new JLabel("获得的证书："));
+		JTextArea t3=new JTextArea(2,4);
+		t3.setBackground(Color.blue);
+		t3.setForeground(Color.white);
+		p2.add(t3);
+		JPanel p3=new JPanel();
+		p3.setLayout(new BorderLayout());
+		p3.add(p,BorderLayout.NORTH);
+		p3.add(p2,BorderLayout.CENTER);
+		Font f=new Font("宋体",1,34);
+		JLabel jl=new JLabel("个人简历",JLabel.CENTER);
+		jl.setFont(f);		
+		JPanel p4=new JPanel();
+		p4.add(new JLabel("性别"));
+		p4.add(new JRadioButton("男"));
+		p4.add(new JRadioButton("女"));
+		p4.add(new JButton("确认"));
+		p4.add(new JButton("取消"));
+		j.add(jl,BorderLayout.NORTH);
+		j.add(p4,BorderLayout.SOUTH);
+		j.add(p3,BorderLayout.CENTER);
+		}
+}

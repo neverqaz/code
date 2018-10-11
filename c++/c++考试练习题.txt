@@ -1,0 +1,715 @@
+1．定义整型变量r,x,y,z，并输入x,y,z的值，根据下式计算结果并放入变量r中后输出到屏幕
+
+
+
+2．输入圆柱的半径和高，计算圆柱体体积。
+#include<iostream>
+using namespace std;
+int main(){
+	double r,h;
+	cin>>r>>h;
+	cout<<"体积是"<<3.14*r*r*h<<endl;
+	return 0;
+}
+3．输入圆半径，计算圆球体积。4/3*πr3
+#include<iostream>
+using namespace std;
+int main(){
+	double r;
+	cin>>r;
+	cout<<3.14*r*r*r*4/3<<endl;
+	return 0;
+}
+4．输入圆半径，计算圆周长。
+#include<iostream>
+using namespace std;
+int main(){
+	double r;
+	cin>>r;
+	cout<<3.14*2*r<<endl;
+	return 0;
+}
+5．输入圆半径，计算圆面积。
+#include <stdio.h>
+int main(){
+	double r,s;
+	scanf("%lf",&r);
+	s=3.14*r*r;
+	printf("%lf\n",s); 
+}
+6．输入华氏温度f计算摄氏温度c并输出。计算公式为c=5/9(f-32)。
+#include<iostream>
+using namespace std;
+int main(){
+	double h;
+	cin>>h;
+	cout<<(h-32)*5/9<<endl;
+	return 0;
+}
+7．输入英里数计算对应的公里数。1英里=1.60931公里
+#include<iostream>
+using namespace std;
+int main(){
+	double i,sum;
+cin>>i;
+sum=i*1.60931;
+cout<<sum<<endl;
+return 0;
+}
+8．输入加仑数（gallon），在输出等价的公升数（liter）。1加仑等于3.78533公升。
+#include<iostream>
+using namespace std;
+int main(){
+	double h;
+	cin>>h;
+	cout<<3.78533*h<<endl;
+	return 0;
+}
+9．输入磅数输出等价的公斤数。1磅(lb)=0.4535924公斤(kg)。
+#include<iostream>
+using namespace std;
+int main(){
+	double h;
+	cin>>h;
+	cout<<0.4535924*h<<endl;
+	return 0;
+}
+10．根据输入的1元，5元，10元的张数，计算总钱数。
+#include<iostream>
+using namespace std;
+int main(){
+	int a,b,c;
+	cin>>a>>b>>c;
+	cout<<a+b*5+c*10<<endl;
+	return 0;
+}
+11．输入两个值到变量a，b中，交换两个变量中的值后输出。
+
+#include<stdio.h>
+int main(){	
+	double a,b,c;
+	scanf("%lf%lf",&a,&b);
+	c=a;
+	a=b;
+	b=c;
+	printf("%lf %lf\n",a,b);
+return 0;}
+
+
+12．输入用米表示的长度，输出等价的英尺长度。1英尺=0.3.48米
+#include<iostream>
+using namespace std;
+int main(){
+	double h;
+	cin>>h;
+	cout<<h/0.348<<endl;
+	return 0;
+}
+
+二．分支
+1．编写程序，输入三个整数计算其最大值并输出。
+#include<stdio.h>
+int main(){
+	int a,b,c,max;
+	scanf("%d%d%d",&a,&b,&c);
+	max=a;
+	if(b>max)max=b;
+	if(c>max)max=c;
+	printf("%d\n",max);
+return 0;} 
+2.判断输入的数字是偶数还是奇数。
+#include<stdio.h>
+int main(){
+	int a;
+	scanf("%d",&a);
+	if(a%2==0)
+		printf("%d是偶数\n",a);
+	else
+		printf("%d是奇数\n",a);
+	return 0;}
+
+
+2．输入一个字符，判断是大写字母、小写字母还是其他字符
+#include<stdio.h>
+int main(){
+	char a;
+		scanf("%c",&a);
+	if(a>='a'&&a<='z')
+		printf("%c是小写字母:\n",a);
+	else if(a>='A'&&a<='Z')
+		printf("%c是大写字母:\n",a);
+	else 
+		printf("%c是其它字符:\n",a);
+    return 0;
+}
+
+3．输入一个整数输出该数的绝对值。
+#include<stdio.h>
+#include<math.h>
+int main(){
+	int a;
+	
+	scanf("%d",&a);
+	if(a<=0)a=fabs(a);
+	else 
+		a=a;
+     printf("%d\n",a);
+    return 0;
+}
+4．输入两个数到a和b中，如果a2+b2 >100，则输出“大于100”，否则输出a+b之和。
+#include<stdio.h>
+int main(){
+	double a,b,s;
+	scanf("%lf%lf",&a,&b);
+	if(a*a+b*b>100)
+		printf("大于100\n");
+
+
+	else{ 
+		s=a+b;
+		printf("%lf\n",s);}
+    return 0;
+}
+5．	从键盘读入一个整数，判断它的正负。是正数，则输出"+"，是负数，则输出"-"。
+#include<iostream>
+using namespace std;
+int main()
+{  
+    int c;
+	cin>>c;
+	if(c>0)
+		cout<<"+"<<endl;
+	 if(c<0)
+		cout<<"-"<<endl;
+
+	return 0;
+} 
+6．输入两个整型变量a,b中，输出较大数的平方值。
+#include<iostream>
+using namespace std;
+int main(){
+int a,b;
+cin>>a>>b;
+if(a>b)
+cout<<a*a<<endl;
+else
+cout<<b*b<<endl;
+return 0;
+}
+7．输入两个整型变量a,b中，输出最大值。
+#include<iostream>
+using namespace std;
+int main()
+{ 
+	int a,b;
+	cin>>a>>b;
+if(a<b)
+ cout<<b<<endl;
+else
+cout<<a<<endl;
+return 0;
+}
+8．输入两个整型变量a,b中，输出最小值。
+#include<iostream>
+using namespace std;
+int main()
+{ 
+	int a,b;
+	cin>>a>>b;
+if(a>b)
+ cout<<b<<endl;
+else
+cout<<a<<endl;
+return 0;
+}
+9．编写程序判断某一年份是否为闰年。闰年的条件是符合下列情形之一：①能够被4整除但不能被100整除。②能够被100整除同时又能够被400整除。
+#include<stdio.h>
+int main(){
+	int year;
+	scanf("%d",&year);
+	if((year%4==0&&year%100!=0)||(year%
+		400==0))printf("%d是闰年\n",year);
+		else printf("%d不是闰年\n",year);
+return 0;}
+	编写程序计算分段函数。
+
+#include<stdio.h>
+int main(){
+	int c=1;
+	double x,y;
+	scanf("%lf",&x);
+	if(x==0)y=x;
+	else if(x<=15)y=(4*x)/3;
+	else
+		y=25*x-105;
+	printf("x=%lf\ny=%lf\n",x,y);	
+
+
+}
+10．使用Harris-benedict公式计算在不锻炼的情况下保持体重所需要的热量（卡路里）。这称为基础代谢率BMR。
+女性保持体重所需要的热量使用以下公式
+BMR=655+（4.3*体重磅数）+（4.7*身高英寸数）-（4.7*年龄）
+男性保持体重所需要的热量使用以下公式
+BMR=66+（6.3*体重磅数）+（12.9*身高英寸数）-（6.8*年龄）
+英寸与米的换算   1英寸=0.0254米
+磅和公斤的换算   1 磅 ＝0.4536 千 克 
+#include<stdio.h>
+int main(){
+	double t,s,n,bmr,q;
+	char g='a';
+	scanf("%c%lf%lf%lf",&g,&t,&s,&n);
+	t=t*0.4536/2;
+	s=s*0.0254*100;
+	if(g==q)bmr=66+(6.3*t)+(12.9*s)-(6.8*n);
+	else
+		bmr=655+(4.3*t)+(4.7*s)+(4.7*n);
+	printf("%lf\n",bmr);
+	return 0;
+}
+11．写一个程序，使其可以输入两辆汽车消耗的汽油公升数和行驶的英里数，然后输出每辆车的里/加仑指标，并指出那一辆更省油。一公升等于0.264179加仑。程序应该为公升和加仑的换算关系使用一个全局定义的常量。
+12．编写程序输入三角形的三条边长，使用公式计算三角形面积。其中s为三角形半周长，a、b、c分别为三角形的三条边长。注意输入的三条边长能否组成三角形，在程序中作出判断。
+#include<stdio.h>
+#include<math.h>
+main(){
+	double a,b,c,p,s;
+		scanf("%lf%lf%lf",&a,&b,&c);
+	if(a+b>c&&a+c>b&&b+c>a)
+printf("构成三角形!\n");
+	}
+	else
+		printf("构不成三角形!\n");
+
+
+}
+
+13．编写程序，实现对输入的字符进行判别，如果是大写字母就转换为小写字母输出，如果为小写字母就转换为大写字母输出，如果是其他字符则原样输出。
+14．编写程序，读取纳税人的工资净收入（取整数），并根据这个收入计算个人所得税。
+当前计税方式如下，个税免征额3500/月
+0~1500，税率按3%计算，速算扣除0元
+超1500~4500.税率按10%计算，速算扣除105
+超4500~9000.税率按20%计算，速算扣除555
+超9000~35000.税率按25%计算，速算扣除1005
+超35000~55000.税率按30%计算，速算扣除2755
+超55000~80000.税率按35%计算，速算扣除5505
+超80000部分.税率按45%计算，速算扣除13505
+计算公式：(月工资金净收入-免征额)*税率-扣除
+#include<stdio.h>
+int main(){
+	int a;
+	double b;
+	char d;
+	scanf("%d",&a);
+	if(a<3500)b=a;
+	else if(a<4500)b=(a-3500)*0.1-105;
+	else if(a<9000)b=(a-3500)*0.2-555;
+	else if(a<35000)b=(a-3500)*0.25-1005;
+	else if(a<55000)b=(a-3500)*0.3-2755;
+	else if(a<80000)b=(a-3500)*0.35-5505;
+	else
+		b=(a-3500)*0.45-13505;
+	printf("你的工资净收入是:%d\n请交纳个人所得税为:%.3lf\n",a,b);
+	return 0;
+}
+15．
+
+
+
+
+
+
+}
+三．循环
+1.编写程序计算100以内的奇数和。
+#include<stdio.h>
+int main(){
+	int a,sum=0,i=1;
+	for(i=1;i<=100;i=i+2)
+sum=sum+i;
+	printf("%d\n",sum);
+
+return 0;}
+2.编写程序计算100以内的偶数和。
+#include<stdio.h>
+int main(){
+	int a,sum=0,i=2;
+	for(i=2;i<=100;i=i+2)
+sum=sum+i;
+	printf("=%d\n",sum);
+
+return 0;}
+3.编写程序计算1+2+3+...+n，n由用户输入。
+#include<iostream>
+using namespace std;
+int main(){
+	int n,sum=0;
+	cin>>n;
+for(int i=1;i<=n;i++)
+sum=sum+i;
+cout<<sum<<endl;
+return 0;
+4.编写程序计算1*2*3*....*n，n由用户输入。
+#include<stdio.h>
+int main(){
+	int a,i=1,sum=1;
+	scanf("%d",&a);
+    for(i=1;i<=a;i++)
+		sum=sum*i;
+	printf("%d\n",sum);
+return 0;}
+
+
+5.输入一个正整数，将其逆序输出。
+    #include<iostream>
+using namespace std;
+int main(){
+	int n,a;
+	cin>>n;
+	if(n<10)
+		cout<<n<<endl;
+	else{
+		while(n/10>=1){
+		a=n%10;
+		n=n/10;
+		cout<<a;}
+		cout<<n<<endl;}
+	return 0;
+}
+6.编写程序计算并输出1！，2！，3！，4！，……,5!
+#include<iostream>
+using namespace std;
+int main(){
+for(int i=1;i<=5;i++)
+{int ac(int a);
+cout<<ac(i)<<" ";}
+return 0;
+}
+int ac(int a)
+{int z=1,c;
+for(c=a;c>=1;c--)
+z=z*c;
+return z;
+}
+7.编写程序计算x的n次方，不能使用库函数。
+
+#include<iostream>
+using namespace std;
+int main(){
+int a,b;
+cin>>a>>b;
+int m=1;
+while(b--){
+	m=m*a;}
+cout<<m<<endl;
+return 0;
+}
+8.输入n的值，从键盘随机输入n个数，求这n个数的和、平均值。
+#include<iostream>
+using namespace std;
+int main(){
+	double n,a,sum=0;
+	double ave;
+	cin>>n;
+	for(int i=1;i<=n;i++)
+	{	cin>>a;
+	sum=sum+a;}
+ave=sum/n;
+   cout<<"sum="<<sum<<" "<<"ave="<<ave<<endl;
+   return 0;
+}
+
+9.输入n的值，从键盘随机输入n个数，求这n个数最小值和最大值
+#include<iostream>
+using namespace std;
+int main(){
+	int n;
+	cin>>n;
+	int a['n'],i,max,min;
+	for(i=1;i<=n;i++)
+		cin>>a[i];
+   max=a[1];
+   min=a[1];
+   for(i=1;i<=n;i++)
+   {if(a[i]>max)max=a[i];
+   if(a[i]<min)min=a[i];}
+   cout<<"max="<<max<<" "<<"min="<<min<<endl;
+   return 0;
+}
+10.随机输入一批正整数，求这些数的和。
+11.输入一批正整数，求这些数中的最大值和最小值。
+12..输入一个正整数,将其逆序输出
+#include<iostream>
+using namespace std;
+int main(){
+	int n,a;
+	cin>>n;
+	if(n<10)
+		cout<<n<<endl;
+	else{
+		while(n/10>=1){
+		a=n%10;
+		n=n/10;
+		cout<<a;}
+		cout<<n<<endl;}
+	return 0;
+}
+13.编写程序，计算两数最大公约数与最小公倍数
+14.编写程序，计算鸡兔共有30只，脚共有90只，问鸡兔各有多少的问题？
+15.输出100-1000之间所有能被5或6整除的数，每行输出10个。
+#include<stdio.h>
+ int main()
+ {int k,i=0;
+ for(k=100;k<=1000;k++)
+ {if(k%5==0||k%6==0)
+ {printf("%d ",k);
+ i++;
+ if(i%10==0)
+	 printf("\n");}}
+return 0;
+}
+16.求100-999中的水仙花数（若三位数abc,a3+b3+c3=abc,则称abc为水仙花数。例如153，13+33+53=153，则153称为水仙花数。）可以利用三重嵌套循环实现。
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main(){
+	int i,a,b,c;
+	for(i=100;i<=999;i++)
+	{a=i%10;
+	b=(i/10)%10;
+	c=i/100;
+	if(pow(a,3)+pow(b,3)+pow(c,3)==i)
+	cout<<i<<" ";}
+	return 0;
+}
+
+17.编程计算1/(1+2)+2/(2+3)+3/(3+4)+……100/(100+101)之和。
+
+#include<stdio.h>
+ int main(){
+double sum=0;
+for(double i=1;i<=100;i++)
+sum=i/(2.0*i+1)+sum;
+printf("%.2lf",sum);
+return 0;
+ }
+18.编程计算(0+1)/1+(1+2)/2+(2+3)/3+……(99+100)/100之和。
+#include<stdio.h>
+ int main(){
+double sum=0;
+for(double i=1;i<=100;i++)
+sum=(i+i-1)/(i)+sum;
+printf("%.2lf",sum);
+return 0;
+ }
+19.输入一个整数，计算它各位上数字的和并输出结果，注意输入的整数是任意位数。
+#include<stdio.h>
+ int main()
+ {int i,j,k,sum=0;
+ scanf("%d",&i);
+ if(i<10)
+	 printf("%d",i);
+ else{
+	 while(i>0){
+		 sum=sum+i%10;
+		 i=i/10;
+ }
+	 	 printf("%d",sum);}
+	 return 0;
+ }
+20.输出100~200之间所有的素数。
+#include<stdio.h>
+ int main()
+ {int i;
+	 for(i=100;i<=200;i++)
+	 for(int j=2;j<=i;j++)
+	 {	 if(i%j==0)
+			 break;
+	 if(j==i-1)
+			 printf("%d ",i);}
+		 return 0;
+ }
+21.计算1-100以内不能被7整除的数的和与平均。
+#include<stdio.h>
+ int main()
+ {int k,i=0;
+double sum=0;
+ for(k=1;k<=100;k++)
+ {if(k%7!=0)
+ {sum+=k;
+ i++;
+ }}
+ printf("%.0lf ",sum);
+ printf("%.2lf\n",sum/i);
+return 0;
+}
+22.任意输入10个数,求它们的最大值，并输出。
+#include<iostream>
+using namespace std;
+int main(){
+	int a[10],i,max;
+	for(i=1;i<=10;i++)
+		cin>>a[i];
+   max=a[1];
+   for(i=1;i<=10;i++)
+   if(a[i]>max)max=a[i];
+   cout<<"max="<<max<<endl;
+   return 0;
+}
+23.打印九九表，格式如下： 
+1*1=1  1*2=2  1*3=3  1*4=4  1*5=5  1*6=6  1*7=7  1*8=8  1*9= 9 
+2*1=2  2*2=4  2*3=6             ……                  2*9=18 
+……       
+9*1=9                          ……                   9*9=81   
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main()
+{
+cout<<left;
+for ( int i=1; i<=9; i++)
+{
+for (int j=1; j<=9; j++)
+{
+cout<< i <<"*"<<j<<"="<<setw(3)<<i*j;
+}
+cout<<endl;
+}
+return 0;
+}
+24.利用循环打印如下图形，行数由输入的值决定：
+*
+* *
+* * *
+#include <iostream>
+#include <iomanip>
+using namespace std;
+void main( )
+{
+	int i,j;
+	for(i=1;i<=3;i++)
+	{
+		for(j=1;j<=i;j++)
+			cout<<setw(2)<<"*";
+		cout<<endl;
+	}
+	
+}
+
+
+25.利用循环打印如下图形，行数由输入的值决定：
+*
+***
+*****
+
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+void main( )
+{
+	int i,j;
+	for(i=1;i<=3;i++)
+	{
+		for(j=1;j<=2*i-1;j++)
+			cout<<setw(2)<<"*";
+		cout<<endl;
+	}
+	
+}
+
+26. 利用循环打印如下图形，行数由输入的值决定：
+* * *
+* *
+*
+#include <iostream>
+#include <iomanip>
+using namespace std;
+void main( )	
+{
+	int i,j;
+	for(i=3;i>=1;i--)
+	{
+		for(j=1;j<=i;j++)
+			cout<<setw(2)<<"*";
+		cout<<endl;
+	}
+	
+}
+
+27.利用循环打印如下图形，行数由输入的值决定：
+*****
+***
+*
+
+28.  利用循环打印输出由星号组成的金字塔，行数由输入的值决定：
+*	
+* *
+* * *
+29.利用循环打印输出由星号组成的金字塔，行数由输入的值决定：
+*	
+***
+*****
+
+30. 利用循环输出由数字组成的金字塔，行数由输入的值决定。
+1
+2 2
+3 3 3
+31.编写程序打印图案
+    利用循环语句编程，打印下列图形：
+	          *
+	       *  *
+        *  *  *
+    *  *  *  *
+    *  *  *  
+    *  *
+    *
+
+
+四．数组
+32.编写程序，利用数组计算并保存斐波那契数列的前二十项。输出时每行输出5项，斐波那契数列的前两项为1，之后的每一项均为前两项之和。
+#include<iostream>
+using namespace std;
+int main(){
+	double a,b,c,count=0;
+	a=1;
+	b=2;
+cout<<a<<" "<<a<<" "<<b<<" ";
+do{
+a=a+b;
+c=a;
+cout<<a<<" ";
+a=b;
+b=c;
+count++;}
+while(count<17);
+cout<<endl;
+return 0;
+}
+33.将数组a[5]用初始化的方式给前四个元素赋初始值，然后令每一个元素依次向后移动一位并输出该数组所有元素。
+#include<stdio.h>
+ int main()
+ {int k;
+	 int a[5]={1,2,3,4};
+	 k=a[5];
+	 for(int j=4;j>=0;j--)
+		 a[j+1]=a[j];
+	 a[0]=k;
+	 for(int i=0;i<=4;i++)
+		 printf("%d ",a[i]);
+	 return 0;
+ }
+34.输入五个数到数组a[5]中，按照从小到大的顺序输出。
+#include<iostream>
+  #include<algorithm>
+  using namespace std;                              
+  int main()
+  {
+	  int a[5],i;
+		  for( i=0;i<=4;i++)
+		  cin>>a[i];
+		  sort(a,a+5);
+ for( i=0;i<=4;i++)
+	 cout<<a[i]<<endl;
+ return 0;
+  }
+35.输入五个数到数组a[5]中，按照从大到小的顺序输出
+

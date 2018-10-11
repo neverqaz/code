@@ -1,0 +1,148 @@
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+public class loan extends JFrame{
+	loan(){
+		JPanel jp1=new JPanel();
+		jp1.setLayout(new BorderLayout(5,2));
+		JLabel []jl=new JLabel[5];
+		JTextField []jf=new JTextField[5];
+		add(jp1,GridLayout.CENTER);
+		add(new JButton("ok"),BorderLayout.SOUTH);
+		for(int i=0;i<5;i++){
+			 jl[i]=new JLabel("t");
+			jf[i]=new JTextField(8);}
+	for(int i=0;i<5;i++){
+		jp1.add(jl[i]);
+	    jp1.add(jf[i]);}
+	}
+public static void main(String[] args) {
+	loan j=new loan();
+	j.setVisible(true);
+	j.setSize(300, 200);
+	j.setDefaultCloseOperation(loan.EXIT_ON_CLOSE);
+	j.setLocationRelativeTo(null);
+
+	}
+
+}
+class jisuan{
+	double rate,years,money;
+	 jisuan(double rate,double years,double money){
+		this.rate=rate;
+		this.years=years;
+		this.money=money;}
+	 double total(){
+		 return Math.pow(money*(1+rate), years);}
+	 double everyloan(){
+		 return total()/(12*4);
+	 }}
+2.
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+public class loan extends JFrame{
+	JTextField jf=new JTextField("");
+	JTextField jf1=new JTextField(""); 
+	JTextField jf2=new JTextField(""); 
+	JTextField jf3=new JTextField(""); 
+	JTextField jf4=new JTextField("");
+	loan(){
+		JPanel jp1=new JPanel();
+		jp1.setLayout(new GridLayout(5,2,-1200,0));
+		add(jp1,BorderLayout.CENTER);
+		JButton jbt=new JButton("ok");
+		        JLabel jl=new JLabel("rate ");
+		        JLabel jl1=new JLabel("years");
+		        JLabel jl2=new JLabel("money");
+		        JLabel jl3=new JLabel("everymouths");
+		        JLabel jl4=new JLabel("total");
+		        JTextField jf=new JTextField("");
+		    	JTextField jf1=new JTextField(""); 
+		    	JTextField jf2=new JTextField(""); 
+		    	JTextField jf3=new JTextField(""); 
+		    	JTextField jf4=new JTextField("");
+		        jp1.add(jl);
+		        jp1.add(jf);
+		        jp1.add(jl1);
+		        jp1.add(jf1);
+		        jp1.add(jl2);
+		        jp1.add(jf2);
+		        jp1.add(jl3);
+		        jp1.add(jf3);
+		        jp1.add(jl4);
+		        jp1.add(jf4);
+	 add(jbt,BorderLayout.SOUTH);
+	
+	jbt.addActionListener(new f());}
+	class f implements ActionListener {
+
+		public void actionPerformed(ActionEvent arg0) {
+	    double r=Double.parseDouble(jf.getText());
+		int y=Integer.parseInt(jf1.getText());
+		double m=Double.parseDouble(jf2.getText());
+			jisuan yr=new jisuan(r,y,m);
+			jf4.setText(String.valueOf(yr.total()));
+			jf3.setText(String.valueOf(yr.everyloan()));}}
+	public static void main(String[] args) {
+	loan j=new loan();
+	j.setVisible(true);
+	j.setSize(300, 200);
+	j.setDefaultCloseOperation(loan.EXIT_ON_CLOSE);
+	j.setLocationRelativeTo(null);
+
+	}
+
+}
+class jisuan{
+	double rate,years,money;
+	 jisuan(double rate,int years,double money){
+		this.rate=rate;
+		this.years=years;
+		this.money=money;}
+	 double total(){
+		 return Math.pow(money*(1+rate), years);}
+	 double everyloan(){
+		 return total()/(12*4);
+	 }}
+跳转界面
+import java.awt.*;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.*;
+import javax.swing.*;
+public class jb{
+public static void main(String args[]){
+JFrame f=new JFrame("点我跳转");
+Container contentPane=f.getContentPane();
+contentPane.setLayout(new GridLayout(1,2)); 
+Icon icon=new ImageIcon("b.jpg");
+JLabel label2=new JLabel("a",icon,JLabel.CENTER);
+label2.setHorizontalTextPosition(JLabel.CENTER);
+contentPane.setLayout(new FlowLayout( FlowLayout.CENTER,10,10));
+JButton bb=new JButton("图片");
+bb.addActionListener(new ActionListener(){
+public void actionPerformed(ActionEvent e){
+JFrame bf=new JFrame("新窗体");
+Icon icon=new ImageIcon("enter.jpg");
+JLabel label2=new JLabel(icon); 
+bf.getContentPane().add(label2); 
+bf.setSize(300,360);
+bf.show();
+}});
+contentPane.add(label2);
+contentPane.add(bb);
+f.pack();
+f.show();
+}}

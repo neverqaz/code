@@ -1,0 +1,149 @@
+--主键
+create table emp (id number constraint id_pr primary key ,name1 varchar(8));
+create table emp9 (id number ,name1 varchar(8) ,constraint aba_pr primary key(id,name1));
+--外键
+create table emp1(id number references emp(id),name varchar(8));
+
+--复合外键
+create table emp0(id number ,name varchar(8) ,constraint fk_nam1e foreign key(id,name) references emp9(id,name1));
+
+
+--主键另外写法
+create table emp2(id number,name varchar(8),id1 number, constraint pk_id primary key(id),constraint fk_name foreign key(id1) references emp(id))
+--check 约束的写法
+create table emp4(id number check(id in(1,2 ,3)),name varchar(8));
+
+不带约束名称的：
+create table userInfo (
+id number(6) primary key,--主键
+name varchar2(20) not null,--非空
+sex number(1),
+age number(3) default 18,
+birthday date,
+address varchar2(50),
+email varchar2(25) unique,--唯一
+tel number(11),
+deptno number(2) references dept(deptno)—外键
+);
+带约束名称：
+create table userInfo (
+id number(6) constraint id_pk primary key,
+name varchar2(20) constraint name_nn not null,
+sex number(1),
+age number(3) default 18,
+birthday date,
+address varchar2(50),
+email varchar2(25) constraint email_uqe unique,
+tel number(11),
+deptno number(2) constraint dept_deptno_ref references dept(deptno)
+);
+列模式：
+create table userInfo (
+id number(6),
+name varchar2(20),
+sex number(1),
+age number(3) default 18,
+birthday date,
+address varchar2(50),
+email varchar2(25),
+tel number(11),
+deptno number(2),
+constraint id_pk primary key (id),--也可以两个以上，联合主键
+constraint dept_deptno_ref foreign key (deptno) references dept(deptno),
+constraint emial_name_uqe unique (email, name)
+);
+Alter模式：
+alter table userInfo add(msn varchar2(20));
+alter table userInfo modify(msn varchar2(25));
+alter table userInfo drop(msn);
+alter table userInfo drop constraint id_pk;
+alter table userInfo add constraint id_pk primary key (id);
+3、创建视图
+create table v$_dept_view
+as
+select deptno, dname from dept;
+--重新编译视图
+alter view v$_dept_view compile;
+提示：视图一般是一个表或多个表的查询或子查询，这样可以减少代码量，但同时增加了对数据库视图的维护程度，如：某个表字段被删除或是修改，视图也要重新创建或修改，同时占用了数据库的一部分空间；视图就是一个虚拟的表格；
+4、创建索引
+普通索引：create index idx_dpt_dname on dept(dname);
+联合索引：create index idx_dept_dname_deptno on dept(dname, deptno);
+--唯一索引
+create unique index idx_emp_ename on scott.emp(ename);
+--反向键索引
+create index idx_emp_rev_no on scott.emp(empno) reverse;
+--位图索引
+create bitmap index idx_emp_name on scott.emp(dname);
+--索引组织表,一定要有主键
+create table tab (
+id int primary key,
+name varchar2(20)
+) organization index;
+--索引组织表的insert效率非常低
+--分区表索引
+create index idx_name on table(col) local/global;
+--索引分区
+提示：当给表创建主键或唯一键约束时，系统也会创建一个约束给该字段；同样创建索引也会占用数据库空间；索引在访问、查询的时候效率有提高，但是在修改表的时候效率就会降低；
+5、创建序列
+create sequence seq;
+select seq.nextval from dual;
+insert into tab values(sql.nextval, ‘music’);
+create sequence seqtab
+start with 2 –从2开始
+increment by 3—每次加3
+nomaxvalue—没有最大值
+minvalue 1—最小值1
+nocycle—不循环
+nocache;--不缓存
+--修改序列 ，不能修改起始值
+alter sequence seqtab
+maxvalue 1000;
+6、创建同义词
+同义词，顾名思义就是说别名、或是另一个名字。
+create synonym scott_emp for scott.emp;
+create public synonym scott_dept for scott.dept;
+select * from scott_emp;
+select * from scott_dept;
+7、创建表空间
+create tablespace HooMS
+datafile 'E:\HooMS.dbf'
+size 5M
+autoextend on next 2M maxsize 10M;
+--创建用户、分配可以操作表空间
+create user hoo
+identified by hoo
+default tablespace HooMS
+temporary tablespace temp;
+--创建表空间
+create tablespace myMS
+datafile 'c:\myMS.dbf'
+size 1M
+autoextend on;
+--扩展表空间--修改表空间大小
+alter database
+datafile 'c:\myMS.dbf'
+resize 2M;
+--扩展表空间--添加数据文件
+alter tablespace myMS
+add datafile 'c:\myMS_2.dbf'
+size 1M;
+--设置dbf文件自动增长
+alter database
+datafile 'c:\myMS_2.dbf'
+autoextend on next 2M maxsize 4M;
+--表空间重命名
+alter tablespace myMS
+rename to hooMS;
+--分离表空间（脱机）
+alter tablespace hooMS
+offline temporary;
+--归档模式下脱机
+alter tablespace hooMS
+offline immediate;
+--使表空间联机
+alter tablespace hooMS online;
+--删除无数据的表空间
+drop tablespace hooMS;
+--删除带数据的表空间
+drop tablespace hooMS
+including contents;

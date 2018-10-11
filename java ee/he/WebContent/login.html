@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>login</title>
+<script >
+function check(){
+alert("用户名或密码不能为空"); 
+var name=document.getElementById("name").value;
+var password=document.getElementById("password").value;
+if(name.trim().length==0||password.trim().length==0){alert("用户名或密码不能为空")return false;}
+document.getElementById("sb").submit();
+}
+
+</script>
+</head>
+<body>
+<form method="post"  action="check.jsp"id="sb" onsubmit="return check()">
+<table align="center">
+<caption color="red" ><h1 >login</h1></caption>
+<tr><td><b>帐号:</b></td><td><input type="text" name="name" style="width: 150px; height: 15px; " id="name"></input></td></tr>
+<tr><td><b>密码:</b></td><td><input type="password" name="password" style="width: 150px; height: 15px; "id="password"></input></td></tr>
+<tr><td></td><td align="center"><br><input type="submit"  value="login">&nbsp&nbsp&nbsp<input type="reset"  value="cansl"></td></tr>
+</table></form>
+</body>
+</html>

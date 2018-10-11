@@ -1,0 +1,155 @@
+.checkout{
+ padding: 5em 0;
+
+}
+.container {
+    width: 1170px;
+padding-right: 15px;
+padding-left: 15px;
+margin-right: auto;
+margin-left: auto;font-size: 100%;
+font-family: 'Open Sans', sans-serif;line-height: 1.42857143;
+color: #333;
+}
+.checkout h3 {
+    font-size: 1em;
+    color: #212121;
+    text-transform: uppercase;
+    margin: 0 0 3em;
+font-weight: 500;
+line-height: 1.1;font-family: 'Lato', sans-serif;box-sizing: border-box;
+}
+.slideInLeft {
+    -webkit-animation-name: slideInLeft;
+    animation-name: slideInLeft;
+}
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+@framekey slideInLeft{
+0% {
+    opacity: 0;
+    -webkit-transform: translateX(-2000px);
+    transform: translateX(-2000px);
+}
+100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+0% {
+    opacity: 0;
+    -webkit-transform: translateX(-2000px);
+    -ms-transform: translateX(-2000px);
+    transform: translateX(-2000px);
+}
+100% {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+}
+
+
+}
+.checkout h3 span {
+    color: #00CD00;
+}
+table.timetable_sub {
+    width: 100%;
+    margin: 0 auto;
+background-color: transparent;border-spacing: 0;
+border-collapse: collapse;box-sizing: border-box;font-size: 100%;
+font-family: 'Open Sans', sans-serif;line-height: 1.42857143;
+color: #333;
+}
+.timetable_sub thead {
+    background: #00EE00;box-sizing: border-box;
+}
+.timetable_sub th, .timetable_sub td {
+    text-align: center;
+    padding: 7px;
+    font-size: 14px;
+    color: #212121;
+}
+.timetable_sub th {
+    background:#006400;
+    color: #fff !important;
+    text-transform: capitalize;
+    font-size: 13px;
+    border-right: 1px solid #000;
+}
+.timetable_sub td {
+    border: 1px solid #00FF00;
+}
+
+.invert-image a {
+    color: #337ab7;
+    text-decoration: none;background-color: transparent;
+}
+
+a:active, a:hover {
+    outline: 0;
+}
+td.invert-image a img {
+    width: 30%;
+  
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+vertical-align: middle;
+    vertical-align: middle;
+    
+        border-top-color: currentcolor;
+        border-top-style: none;
+        border-top-width: 0px;
+        border-right-color: currentcolor;
+        border-right-style: none;
+        border-right-width: 0px;
+        border-bottom-color: currentcolor;
+        border-bottom-style: none;
+        border-bottom-width: 0px;
+        border-left-color: currentcolor;
+        border-left-style: none;
+        border-left-width: 0px;
+        border-image-outset: 0;
+        border-image-repeat: stretch;
+        border-image-slice: 100%;
+        border-image-source: none;
+        border-image-width: 1;
+
+
+}
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+body a:hover {
+    text-decoration: none;
+        text-decoration-line: none;
+        text-decoration-style: solid;
+        text-decoration-color: currentcolor;
+}
+a:hover, a:focus {
+    color: #23527c;
+    text-decoration: underline;
+}
+a:active, a:hover {
+    outline: 0;
+}
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+a {
+    background-color: transparent;
+}
+
+
+
+
+
+

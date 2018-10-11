@@ -1,0 +1,65 @@
+实验一
+#include <iostream.h>
+#include <stdlib.h>
+#include <string.h>
+typedef char ZF[15];
+template <class A1,class A2,class A3> class SeqList;	           
+ template <class A1,class A2,class A3> class SListNumde {	       	
+ friend class SeqList<A1,A2,A3>;	      
+ private:
+     A1 num;
+     A2 score1;
+     A3 score2;	
+	 ZF name;
+ };
+template <class A1,class A2,class A3> class SeqList{
+      private:
+          SListNumde<A1,A2,A3>  *elem;    
+	      int Max;	    	
+	      int len; 	
+	  public:
+		  int Ins(A1 x1,ZF x2,A2 x3,A3 x4, int i);
+		  void cre(int n);
+	 	  int  Remove(A1 &x1,ZF &x2,A2 &x3,A3 &x4,int i );
+};		      
+template <class A1,class A2,class A3> void SeqList<A1,A2,A3>::cre(int n)
+{
+	 int i,j;
+    len=0;Max=n;elem=new  SListNumde<A1,A2,A3>[n]; 
+	cout<<"输入元素个数";
+	cin>>j;
+    for(i=0;i<j;i++)
+   		cin>>elem[i].num>>elem[i].name>>elem[i].score1>>elem[i].score2;
+	len=j;
+	for(i=0;i<len;i++)
+ cout<<elem[i].num <<" "<<elem[i].name<<" "<<elem[i].score1<<" "<<elem[i].score2<<endl;
+	cout<<endl;
+}
+template <class A1,class A2,class A3> int SeqList<A1,A2,A3>::Ins(A1 x1,ZF x2,A2 x3,A3 x4, int i)
+ {
+    int j;
+	if (i<1||i>len+1)  return 0;      
+   					       
+       for(j=len;j>=i;j--)
+          elem[j]=elem[j-1];		
+     elem[i-1].num=x1; strcpy(elem[i-1].name,x2);elem[i-1].score1=x3 ;elem[i-1].score1=x4; 
+		  len++;	
+		  cout<<"输出插入后的线性表"<<endl;
+		  for(int k=0;k<len;k++)
+cout<<elem[k].num<<" "<<elem[k].name <<" "<<elem[k].score1<<" "<<elem[k].score2 <<endl;
+		  cout<<endl;
+          return 1;              
+     }
+void main()
+{
+	SeqList <int,int,int> L;
+	int n,i;
+	int c1,c3,c4;
+	ZF c2;
+	cout<<"输入n的值";
+	cin>>n;
+	L.cre(n);
+	cout<<"输入i,c1,c2,c3的值";
+	cin>>i>>c1>>c2>>c3>>c4;
+	L.Ins(c1,c2,c3,c4,i);
+   }

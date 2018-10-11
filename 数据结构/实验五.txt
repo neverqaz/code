@@ -1,0 +1,71 @@
+实验五
+#include<iostream.h>
+#include<stdlib.h>
+#include<string.h>
+const int length=10;
+typedef char ZF[20];
+template <class A1,class A2,class A3>class stack;
+template<class A1,class A2,class A3>class stacknode{
+friend class stack<A1,A2,A3>;
+private:
+	ZF name;
+	A1 num;
+	A2 score1;
+	A3 score2;
+	stacknode<A1,A2,A3> *point;
+};
+template <class A1,class A2,class A3>class stack{
+public:
+	stack();
+	void create(int n);
+	void print();
+	int push(A1 e1,ZF e,A2 e2,A3 e3);
+private:
+	stacknode<A1,A2,A3> *top,*base;
+	int stacksize;
+};
+template <class A1,class A2,class A3>
+stack<A1,A2,A3>::stack(){
+	base=new stacknode<A1,A2,A3>[length];
+	top=base;
+	stacksize=length;
+}
+ template <class A1,class A2,class A3>
+	 void stack<A1,A2,A3>::create(int n){
+	 for(int i=1;i<=n;++i){
+	 cin>>(*top).num>>(*top).name>>(*top).score1>>(*top).score2;
+	 ++top;
+	 }
+ }
+ template <class A1,class A2,class A3>
+	 void stack<A1,A2,A3>::print(){
+ stacknode<A1,A2,A3> *r;
+ for(r=top-1;r>=base;r--){
+ cout<<(*r).num<<" "<<(*r).name<<" "<<(*r).score1<<" "<<(*r).score2<<endl;
+ }}
+template <class A1,class A2,class A3>
+int stack<A1,A2,A3>::push(A1 e1,ZF e,A2 e2,A3 e3){
+(*(top)).num=e1;
+strcpy((*(top)).name,e);
+(*(top)).score1=e2;
+(*(top)).score2=e3;
+++top;
+return 1;
+}
+
+ void main(){
+ stack<int, int,int>M;
+ int n,b,s1,s2;
+ ZF e;
+ cout<<"请输入学生人数"<<endl;
+cin>>n;
+cout<<"请输入学号，姓名，成绩1，成绩2"<<endl;
+ M.create(b);
+ cout<<"输出顺序栈表为"<<endl;
+ M.print();
+cout<<"请输入要插入的学生学号，姓名，成绩1，成绩2"<<endl;
+cin>>b>>e>>s1>>s2;
+M.push(b,y,s1,s2);
+cout<<"输出顺序栈表为"<<endl;
+ M.print();
+ }

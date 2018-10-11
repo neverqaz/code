@@ -1,0 +1,49 @@
+interface g{
+	int a=100;
+	int jisuan(int x);
+	int jisuan1(int x,int y);
+	int jisuan2(int x,int y,int z);}
+class x的平方 implements g{
+
+	public int jisuan(int x){
+		return x*x;
+	}
+
+	public int jisuan1(int x, int y) {
+		// TODO Auto-generated method stub
+		return x+y;
+	}
+
+	public int jisuan2(int x, int y, int z) {
+		// TODO Auto-generated method stub
+		return x*y*z;
+	}}
+	 class x的立方 implements g{
+
+		public int jisuan(int x){
+			return x*x*x;
+		}
+
+		public int jisuan1(int x, int y) {
+			// TODO Auto-generated method stub
+			return x+y;
+		}
+
+		public int jisuan2(int x, int y, int z) {
+			// TODO Auto-generated method stub
+			return x+y+z;
+		}}
+	 public class c {
+	 public static void main(String[] args) {
+		 x的立方 x2=new x的立方();
+		 x的平方 x1=new x的平方();
+		 System.out.println(x1.a);
+		 System.out.println(x1.jisuan(2));
+		 System.out.println(x1.jisuan1(2,4));
+		 System.out.println(x1.jisuan2(2,7,5));
+		 System.out.println(x2.a);
+		 System.out.println(x2.jisuan(2));
+		 System.out.println(x2.jisuan1(2,4));
+		 System.out.println(x2.jisuan2(2, 7, 5));
+		}
+}

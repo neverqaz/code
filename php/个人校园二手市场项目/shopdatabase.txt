@@ -1,0 +1,12 @@
+create database shop;
+use shop;
+create table user(userid int primary key auto_increment,name varchar(50),teil varchar(50),address varchar(1000),sex varchar(2),email varchar(30),password varchar(30),compus_card varchar(30),accept int);
+create table product(userid int references user(userid),pid int primary key auto_increment, name varchar(50),productname varchar(100), description varchar(1000), picpath varchar(100), postdate DATETIME);
+create table shoucang(userid int,pid int,name varchar(50),teil varchar(50),address varchar(1000),productname varchar(50),email varchar(30),description varchar(1000),picpath varchar(1000), postdate datetime);
+create table micro(userid int references user(userid),mid int primary key auto_increment, name varchar(50),title varchar(100), description varchar(1000), picpath varchar(100), postdate DATETIME);
+create table followmicro(userid int references user(userid),fid int primary key auto_increment,mid int references micro(mid),name varchar(50), description varchar(1000), picpath varchar(100), postdate DATETIME);
+
+
+
+
+

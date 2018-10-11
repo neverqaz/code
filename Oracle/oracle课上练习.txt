@@ -1,0 +1,385 @@
+SQL> alter user scott identified by qaz123;
+
+用户已更改。
+
+SQL> alter user scott account unlock;
+
+用户已更改。
+
+SQL> conn scott/qaz123@oracle10;
+已连接。
+SQL> desc emp;
+ 名称                                      是否为空? 类型
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                     NOT NULL NUMBER(4)
+ ENAME                                              VARCHAR2(10)
+ JOB                                                VARCHAR2(9)
+ MGR                                                NUMBER(4)
+ HIREDATE                                           DATE
+ SAL                                                NUMBER(7,2)
+ COMM                                               NUMBER(7,2)
+ DEPTNO                                             NUMBER(2)
+
+SQL> select *from emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM 
+---------- ---------- --------- ---------- -------------- ---------- ---------- 
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 17-12月-80            800            
+        20                                                                      
+                                                                                
+      7499 ALLEN      SALESMAN        7698 20-2月 -81           1600        300 
+        30                                                                      
+                                                                                
+      7521 WARD       SALESMAN        7698 22-2月 -81           1250        500 
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM 
+---------- ---------- --------- ---------- -------------- ---------- ---------- 
+    DEPTNO                                                                      
+----------                                                                      
+      7566 JONES      MANAGER         7839 02-4月 -81           2975            
+        20                                                                      
+                                                                                
+      7654 MARTIN     SALESMAN        7698 28-9月 -81           1250       1400 
+        30                                                                      
+                                                                                
+      7698 BLAKE      MANAGER         7839 01-5月 -81           2850            
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM 
+---------- ---------- --------- ---------- -------------- ---------- ---------- 
+    DEPTNO                                                                      
+----------                                                                      
+      7782 CLARK      MANAGER         7839 09-6月 -81           2450            
+        10                                                                      
+                                                                                
+      7788 SCOTT      ANALYST         7566 19-4月 -87           3000            
+        20                                                                      
+                                                                                
+      7839 KING       PRESIDENT            17-11月-81           5000            
+        10                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM 
+---------- ---------- --------- ---------- -------------- ---------- ---------- 
+    DEPTNO                                                                      
+----------                                                                      
+      7844 TURNER     SALESMAN        7698 08-9月 -81           1500          0 
+        30                                                                      
+                                                                                
+      7876 ADAMS      CLERK           7788 23-5月 -87           1100            
+        20                                                                      
+                                                                                
+      7900 JAMES      CLERK           7698 03-12月-81            950            
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM 
+---------- ---------- --------- ---------- -------------- ---------- ---------- 
+    DEPTNO                                                                      
+----------                                                                      
+      7902 FORD       ANALYST         7566 03-12月-81           3000            
+        20                                                                      
+                                                                                
+      7934 MILLER     CLERK           7782 23-1月 -82           1300            
+        10                                                                      
+                                                                                
+
+已选择14行。
+SQL> set serveroutput on
+SQL> ;
+  1  declare 
+  2  ename emp.ename%type;
+  3  begin
+  4  get_name(7844,ename);
+  5  dbms_output.put_line(ename);
+  6* end;
+SQL> /
+TURNER                                                                          
+
+PL/SQL 过程已成功完成。
+
+SQL> get F:/kaoshi2.txt;
+  1  create or replace function getname(n emp.empno%type)
+  2  return emp.ename%type
+  3  as
+  4  name emp.ename%type;
+  5  begin
+  6  select ename into name from emp where empno=n;
+  7  return (name);
+  8* end getname;
+SQL> /
+
+函数已创建。
+
+SQL> select getname(7844) from dual;
+
+GETNAME(7844)                                                                   
+--------------------------------------------------------------------------------
+TURNER                                                                          
+
+SQL> edit F:/kaoshi2.txt;
+
+SQL> get F:/kaoshi2.txt;
+  1  create or replace package s is 
+  2  procedure getn(id in emp.empno%type,name out emp.ename%type);
+  3* function getna(id emp.empno%type)return emp.ename%type;end;
+SQL> /
+
+程序包已创建。
+
+SQL> desc s;
+PROCEDURE GETN
+参数名称                       类型                    输入/输出默认值?
+------------------------------ ----------------------- ------ --------
+ ID                             NUMBER(4)               IN    
+ NAME                           VARCHAR2(10)            OUT   
+FUNCTION GETNA RETURNS VARCHAR2(10)
+参数名称                       类型                    输入/输出默认值?
+------------------------------ ----------------------- ------ --------
+ ID                             NUMBER(4)               IN    
+
+
+
+SQL> edit F:/kaoshi2.txt;
+
+SQL> get F:/kaoshi2.txt;
+  1  create or replace package body s is 
+  2  procedure  getn(id in emp.empno%type,name out emp.ename%type) is
+  3  begin
+  4  select ename into name from emp where empno=id;
+  5  end getn;
+  6  function getna(id emp.empno%type)
+  7  return emp.ename%type
+  8  is 
+  9  name emp.ename%type;
+ 10  begin
+ 11  select ename into name from emp where empno=id;
+ 12  return (name);
+ 13  end getna;
+ 14* end;
+SQL> /
+
+程序包体已创建。
+
+SQL> edit F:/kaoshi2.txt;
+
+SQL> get F:/kaoshi2.txt;
+  1  declare 
+  2  name emp.ename%type;
+  3  begin
+  4    s.getn(7844,name);
+  5   dbms_output.put_line(name);
+  6* end;
+SQL> /
+TURNER                                                                          
+
+PL/SQL 过程已成功完成。
+
+SQL> select s.getna(7844) from dual;
+
+S.GETNA(7844)                                                                   
+--------------------------------------------------------------------------------
+TURNER                                                                      
+
+
+SQL> create table log1 (id int primary key,log_type varchar(34),log_time date);
+
+表已创建。
+
+SQL> create sequence log1_id start with 1 increment by 1;
+
+序列已创建。
+
+SQL> edit F:/kaoshi2.txt;
+
+SQL> get F:/kaoshi2.txt;
+  1  create or replace trigger student1_log 
+  2  after delete or update or insert on student1
+  3  for each row
+  4  begin
+  5  if deleting then insert into log1 values(log_id.nextval,'删除',sysdate);
+  6  elsif inserting then insert into log1 values(log1_id.nextval,'插入',sysdate);
+  7  else insert into log1 values(log1_id.nextval,'更新',sysdate);
+  8  end if;
+  9* end;
+ 10  /
+
+触发器已创建
+SQL> alter table student1 drop(id);
+
+表已更改。
+SQL> alter table student1 add(id number(34) primary key);
+
+表已更改。
+
+
+
+
+SQL> desc student1;
+ 名称                                      是否为空? 类型
+ ----------------------------------------- -------- ----------------------------
+ NAME                                      NOT NULL VARCHAR2(23)
+ ID                                        NOT NULL NUMBER(34)
+
+SQL> insert into student1 values('zhangsan',122131);
+
+已创建 1 行。
+SQL> insert into student1 values('zh',1231);
+
+已创建 1 行。
+
+SQL> delete from student1 where name='zh';
+
+已删除 1 行。
+
+SQL> update student1 set name=name||'imau';
+
+已更新 1 行。
+ 
+SQL> select id,log_type,to_char(log_time,'yyyy-mm-dd hh:MM:ss') as time  from log1;
+
+        ID LOG_TYPE                           TIME                              
+---------- ---------------------------------- -------------------               
+         1 插入                               2018-05-17 05:05:21               
+         2 插入                               2018-05-17 05:05:53               
+        21 删除                               2018-05-17 05:05:45               
+         3 更新                               2018-05-17 05:05:59               
+
+SQL> conn sys/oracle123456@oracle10 as sysdba;
+已连接。
+SQL> create user songyouli identified by qaz123;
+
+用户已创建。
+SQL> grant create session to songyouli;
+
+授权成功。
+ 
+SQL> grant create table to songyouli;
+
+授权成功。
+SQL>  grant unlimited tablespace to songyouli;
+
+授权成功。
+SQL> grant select on scott.emp to songyouli;
+
+授权成功。
+
+SQL> conn songyouli/qaz123@oracle10;
+;
+已连接。
+SQL> select *from scott.emp;
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM 
+---------- ---------- --------- ---------- -------------- ---------- ---------- 
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 17-12月-80            800            
+        20                                                                      
+                                                                                
+      7499 ALLEN      SALESMAN        7698 20-2月 -81           1600        300 
+        30                                                                      
+                                                                                
+      7521 WARD       SALESMAN        7698 22-2月 -81           1250        500 
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM 
+---------- ---------- --------- ---------- -------------- ---------- ---------- 
+    DEPTNO                                                                      
+----------                                                                      
+      7566 JONES      MANAGER         7839 02-4月 -81           2975            
+        20                                                                      
+                                                                                
+      7654 MARTIN     SALESMAN        7698 28-9月 -81           1250       1400 
+        30                                                                      
+                                                                                
+      7698 BLAKE      MANAGER         7839 01-5月 -81           2850            
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM 
+---------- ---------- --------- ---------- -------------- ---------- ---------- 
+    DEPTNO                                                                      
+----------                                                                      
+      7782 CLARK      MANAGER         7839 09-6月 -81           2450            
+        10                                                                      
+                                                                                
+      7788 SCOTT      ANALYST         7566 19-4月 -87           3000            
+        20                                                                      
+                                                                                
+      7839 KING       PRESIDENT            17-11月-81           5000            
+        10                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM 
+---------- ---------- --------- ---------- -------------- ---------- ---------- 
+    DEPTNO                                                                      
+----------                                                                      
+      7844 TURNER     SALESMAN        7698 08-9月 -81           1500          0 
+        30                                                                      
+                                                                                
+      7876 ADAMS      CLERK           7788 23-5月 -87           1100            
+        20                                                                      
+                                                                                
+      7900 JAMES      CLERK           7698 03-12月-81            950            
+        30                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE              SAL       COMM 
+---------- ---------- --------- ---------- -------------- ---------- ---------- 
+    DEPTNO                                                                      
+----------                                                                      
+      7902 FORD       ANALYST         7566 03-12月-81           3000            
+        20                                                                      
+                                                                                
+      7934 MILLER     CLERK           7782 23-1月 -82           1300            
+        10                                                                      
+                                                                                
+
+已选择14行。
+
+SQL> delete from scott.emp where empno=787620;
+delete from scott.emp where empno=787620
+                  *
+第 1 行出现错误: 
+ORA-01031: 权限不足 
+SQL> conn sys/oracle123456@oracle10 as sysdba;
+已连接。
+SQL> create public synonym log2 for scott.log1;
+
+同义词已创建。
+
+SQL> select *from scott.log2;
+select *from scott.log2
+                   *
+第 1 行出现错误: 
+ORA-00942: 表或视图不存在 
+
+
+SQL> select *from log2;
+
+        ID LOG_TYPE                           LOG_TIME                          
+---------- ---------------------------------- --------------                    
+         1 插入                               17-5月 -18                        
+         2 插入                               17-5月 -18                        
+        21 删除                               17-5月 -18                        
+         3 更新                               17-5月 -18                        
+
+显示游标的使用；
+declare 
+cursor bq is select *from scott.emp;
+bq_record scott.emp%rowtype;
+begin
+open bq;
+fetch bq into bq_record;
+while bq%found loop
+dbms_output.put_line(bq_record.ename||','||bq_record.empno);
+fetch bq into bq_record;
+end loop;
+close bq;
+end;

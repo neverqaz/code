@@ -1,0 +1,47 @@
+deepin下mysql相关
+1.安装mysql：
+
+　　sudo apt-get install mysql-server mysql-client
+
+　　登陆后查看数据库当前编码：SHOW VARIABLES LIKE 'character%';
+
+2.修改默认编码为utf-8
+
+　　
+
+　　修改/etc/mysql/my.cnf (默认安装路径下) （标签下没有的添加，有的修改）
+
+　　[mysqld]
+
+　　collation-server = utf8_unicode_ci
+init-connect='SET NAMES utf8'
+character-set-server= utf8
+
+　　[mysql]
+
+　　default-character-set= utf8
+
+　　[client]
+
+　　default-character-set = utf8
+
+3.查询的一些命令
+
+　　停止MySQL数据库服务：
+
+　　$ sudo systemctl stop mysql.service
+　　启动MySQL数据库服务：
+
+　　$ sudo systemctl start mysql.service
+　　重启MySQL数据库服务：
+
+　　$ sudo systemctl restart mysql.service
+　　查看MySQL运行状态：
+
+　　$ sudo systemctl status mysql.service
+
+
+
+
+
+<mysql>show variables like ‘character%’; 

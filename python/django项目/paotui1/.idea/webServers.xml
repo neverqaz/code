@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="92dc65b5-046d-4dba-a9ba-ed6e8e0f9c6a" name="paotui" url="http://123.206.43.75">
+        <fileTransfer host="123.206.43.75" port="22" rootFolder="/usr/local/programe" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

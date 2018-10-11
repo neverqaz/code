@@ -1,0 +1,74 @@
+pycharm
+Django
+mysql
+eclipse
+///apache:https://blog.csdn.net/u013132758/article/details/48502413
+///tomcat
+///php
+1.进入账号内
+
+sudo -i
+2.重启apache
+
+sudo /etc/init.d/apache2 restart
+3.安装php-mysql扩展插件
+
+sudo apt-get install php5-mysql
+4.更新系统软件
+
+sudo apt-get update
+5.建立软连接
+
+sudo ln -s /usr/share/phpmyadmin/ /var/www/html
+6.用编辑器打开文件
+
+sudo gedit /etc/php5/apache2/php.ini
+7.链接mysql
+
+sudo mysql -u root -p
+8.卸载软件
+
+sudo apt-get autoremove phpmyadmin
+9.清楚卸载残留
+
+sudo dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P
+10.用终端打开文件
+
+vi /etc/php5/cli/php.ini
+11.php扩展
+
+sudo apt-get install php5-mysql php5-curl php5-gd php5-intl php-pear php5-imagick php5-imap php5-mcrypt php5-memcache php5-ming php5-ps php5-pspell php5-recode php5-snmp php5-sqlite php5-tidy php5-xmlrpc php5-xsl
+12.默认开启小键盘
+
+终端中输入：
+
+sudo vi /etc/rc.local
+打开rc.local。
+在exit 0前输入
+for tty in /dev/tty[1-9]*;do
+setleds -D +num < $tty
+done
+保存退出。就行了
+
+13.文件权限说明
+$ sudo chmod -R 777 刻度文件夹下权限
+
+
+            sudo chmod 600 ××× （只有所有者有读和写的权限）
+            sudo chmod 644 ××× （所有者有读和写的权限，组用户只有读的权限）
+            sudo chmod 700 ××× （只有所有者有读和写以及执行的权限）
+            sudo chmod 666 ××× （每个人都有读和写的权限）
+            sudo chmod 777 ××× （每个人都有读和写以及执行的权限）
+            0 [000] 无任何权限
+            4 [100] 只读权限
+            6 [110] 读写权限
+14.安装 .sh软件
+15.解压文件
+tar -xvjf file.tar.bz2
+sh ./netbeans-8.2-php-linux-x64.sh
+16. vim 查看文件
+17.上传服务器：$ scp -r game/ root@118.89.238.205:/usr/
+18.软连接（1）find / -name uwsgi
+（2）ln -fs /usr/local/python3/bin/uwsgi uwsgi
+19.卸载软件：sudo aptitude purge lantern
+20.安装nodejs：https://blog.csdn.net/qq_34183451/article/details/79938281

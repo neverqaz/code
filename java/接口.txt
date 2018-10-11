@@ -1,0 +1,66 @@
+import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+class DrawCicle extends JPanel
+{ int r=50;
+	protected void paintComponent(Graphics g)
+  {
+	   super.paintComponent(g);
+	   g.drawOval(100, 100, r, r);
+  }
+  public void Enlarge()
+  {
+	  r++;
+	  repaint();
+	  
+  }
+    
+	
+}
+public class Shijian extends JFrame {
+	JButton jbt=new JButton("OK");
+	DrawCicle dc=new DrawCicle();
+	public Shijian()
+	{ JPanel jp=new JPanel();
+	  jbt.addActionListener(new OKlistener());
+	  jp.add(jbt);
+	  add(jp,BorderLayout.NORTH);
+	  add(dc,BorderLayout.CENTER);
+		
+	}
+	class OKlistener implements ActionListener
+     {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			
+			dc.Enlarge();
+			// TODO Auto-generated method stub
+			
+		}
+    	 
+    	 
+     }
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+      Shijian frame=new Shijian();
+      
+      
+      frame.setSize(300, 200);
+      frame.setVisible(true);
+      frame.setLocationRelativeTo(null);
+	}
+	
+
+}
+

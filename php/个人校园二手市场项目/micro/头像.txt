@@ -1,0 +1,5 @@
+<div style="width:400px; height:90px; padding-left:10px; padding-top:10px; background-color:#fff;">    
+       <div style="width: 74px; height: 74px; float:left; border-radius: 50%; border: 3px solid #eee; overflow: hidden;">    
+           <img src="img/gk.jpg" width="80" height="80" />    
+       </div>   
+</div> 

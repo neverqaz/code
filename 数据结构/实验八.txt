@@ -1,0 +1,91 @@
+#include <iostream.h>
+#include <stdlib.h>
+class List;	            
+
+ class ListNode {	        	
+ friend class List;	        
+ private:
+     int Data;		        
+     ListNode *next;        //结点指针		
+ };
+
+ class List {	                  	
+ public:
+	 List(){ L=NULL;}
+	 int cre(int n);
+	 int Ins(int i,int e);
+	 int Delete(int i,int &e );
+     void prn();
+ private:
+     ListNode *L;    
+ };
+ int List::cre(int n)
+ {ListNode  *M,*X;
+   int i;
+  M=new ListNode;
+ if(M==NULL) exit(0);
+ M->next=M;
+ for(i=n;i>0;--i){ 
+	 X=new ListNode;
+     if(X==NULL) exit(0);
+     X->Data=i*10;//i*10存入Data域；
+     X->next=M->next;//M指针指向的next域数据给了X指针指向的next域
+     M->next=X;//X指针存入M指向的next域；
+   }
+   L=M;return 1;
+ }
+ int List::Delete(int i,int &e )
+ {
+	 ListNode  *p,*q;
+	 int j;
+     p=L;  j=0;
+     while (p->next!=L && j<i-1) {
+		 p=p->next;  ++j;}
+	  if ((p->next==L) || j>i-1) return 0;
+    q=p->next;  
+    p->next=q->next  ; 
+    e=q->Data;  
+    delete  q;
+    return 1;}
+
+ void List::prn()
+ {
+	 ListNode *q;
+   q=L->next;
+   while(q!=L){
+	cout<<q->Data<<" ";
+    q=q->next;
+   }
+  cout<<endl;
+ }
+ int List::Ins(int i, int e)
+ {int j;
+  ListNode  *y,*z;
+  y=L;
+  j=0;
+  while(y->next!=L && j<i-1){
+	  y=y->next;
+      ++j;
+  }
+if((y->next==L&&j<i-1) || j>i-1) return 0;
+z=new ListNode;
+if(z==NULL) exit(0);
+z->Data=e;
+z->next=y->next;
+y->next=z;
+return 1;
+}
+void main()
+{
+ List K;
+ int j,x,g,n,s;
+ cin>>x>>j>>g;
+ K.cre(x);
+ K.prn();
+ K.Ins(j,g);
+ K.prn();
+ cin>>n;
+ K.Delete(n,s);
+ cout<<"s="<<s<<endl;
+ K.prn();
+ }

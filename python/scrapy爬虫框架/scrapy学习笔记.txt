@@ -1,0 +1,230 @@
+一．爬虫基础知识回顾
+（一）scrapy vs requests+beautifulsoup
+1.requests 和beautisoup 都是库，scrapy是框架吗。
+2.Scrapy框架中可以加入requests和beautifulsoup
+3.Scrapy基于twisted（异步io框架），性能是最大优势
+4.Scrapy方便扩展，提供很多内置功能
+5.Scrapy内置css和xpath selector非常方便，beautifulsoup最大的缺    点就是慢
+（二）网页分类（常见的类型服务）
+1.静态网页：在服务器端提前生成好的页面
+2.动态网页
+3.Webservice（retapi）：通过ajax和restapi进行交互
+（三）爬虫能做什么
+1.搜索引擎--百度，Google，垂直领域搜索引擎（类似知道要搜索关于汽车的搜索引擎）
+2.推荐引擎--今日头条
+3.机器学习的数据样本
+4.数据分析
+（四）正则表达式
+1.为什么要用正则表达式（模式匹配）
+（1）eg. <span>1天前</span>获取数字‘1’而不要‘天前’
+（2）提取字符串的重要因素
+（3）判断是否符合模式
+2.目录 
+（1）特殊字符
+1）^ $ ? + {2} {2,} {2,5} |
+2）[] [^] [a-z] .
+3）\s \S \w \W
+4）[\u4E00-\u9FA5] () \d
+
+
+
+
+
+
+
+import re
+line='bobby123'
+# if line=='bobby123':
+#     pass
+#定义模式regex_str14
+
+regex_str="^b.*3$"
+#'^b'代表b开始字符， ‘.’代表任意字符，‘*’代表 前面的字符可以重复恒多变,'3$'必须以‘3’结尾
+
+#'+'代表加号前面的字符至少出现一次
+
+line1='booooooobby123'
+regex_str3=".*?(b.+?b).*"
+#提取booooooob ’？‘打破贪婪匹配
+regex_str2=".*?(b.*?b).*"#'?'表示从左边的第一个符合?(b, ?b
+result=re.match(regex_str2,line1)
+if result:#(模式字符串，匹配字符串)
+    print(result.group(1))#提取模式括号里的内容
+    print('yes')
+else :
+    print('no')
+regex_str1="^b.3$"#模式定义是匹配三个字符
+if re.match(regex_str1,line):#(模式字符串，匹配字符串)
+    print('yes')
+else :
+    print('no')
+#{2} {2,} {2,5}代表出现前面字符的次数分别2次，2次以上，2以上5以下
+regex_str6=".*(b.{2,5}b).*"
+#’|‘或的关系
+line5='bobby123'
+regex_str7="bobby|bobby123"#该模式是bobby或者是Bobby123都可以
+regex_str8="((boobby|bobby)123)"
+req=re.match(regex_str8,line5)
+if req :
+    print('req.group(1):'+req.group(1))
+    print("req.group(2):"+req.group(2))
+#'[]'代表中括号里的任意字符都可以匹配
+line7='xobby123'
+regex_str9="([azsx]obby123)"#该模式是字符第一位只要出现a，z，s，x都可以匹配
+
+req1=re.match(regex_str9,line7)
+if req1 :
+    print('req1.group(1):'+req1.group(1))
+line8='18548019624'
+regex_str10="(1[48357][0-9]{8}[^1]$)"#该模式[0-9]0-9中的任意字符出现9次并且最后一位不等于1
+#'[*.mkjj]'代表× .没有被转yi
+req2=re.match(regex_str10,line8)
+if req2 :
+    print('req2.group(1):'+req2.group(1))
+#\s 代表空格的意思
+#\S代表不为空格的意思
+#\w代表任意字符包括【A-Za-z0-9_】
+#\W代表不为任意字符
+line9='你 好'
+regex_str11="(你\s好)"#该模式你好中间出现空格字符匹配
+regex_str12="(你\S+好)"#该模式你好中间不出现空格字符匹配
+#'[*.mkjj]'代表× .没有被转yi
+req3=re.match(regex_str11,line9)
+if req3 :
+    print('req3.group(1):'+req3.group(1))
+#[\u4E00-\u9FA5]代表提取出现连续汉字
+line11='study in 北京大学'
+regex_str14=".*?([\u4E00-\u9FA5]+大学)"
+req4=re.match(regex_str14,line11)
+if req4:
+    print(req4.group(1))
+#'\d'代表数字
+line16='QQ出生于2001年'
+regex_str14='.*?(\d+)年'#或者是'.*(\d{4})年'
+req5=re.match(regex_str14,line16)
+if req5:
+print(req5.group(1))
+（五）深度优先和广度优先
+1.网站的树结构
+ （1） 深度优先算法
+
+
+
+
+（2）广度优先算法
+
+
+
+
+（六）爬虫的去重策略
+1.将访问过的url保存到数据库中（效率低）
+2.将访问过的url保存到set中，只需要o（1）的代价就可以查询url（内存占用大）
+3.url经过md5等方法哈希后保存到set中（scrapy采用这种方式）
+4.用bitmap方法，将访问过的url通过hash函数映射到某一位（冲突非常高不适用）
+5.Bloomfilter方法对bitmap进行改进，多重hash函数降低冲突
+（七）字符串编码
+     1.
+   
+文件必须指明utf-8编码
+二．Scrapy的用法
+1.安装 scrapy
+
+2.创建scrapy项目
+（1）项目名：ArticleSpider
+scrapy startproject ArticleSpider
+（2）cd ArticleSpider/
+（3）爬虫名jobbloe ,爬取的网站网址：blog.jobbole.com
+scrapy genspider jobbole blog.jobbole.com
+（4）运行爬虫名为jobbole命令：scrapy crawl jobbole
+（5）查看有几种模板，scrapy genspider --list
+（6）选择crawl模板：scrapy genspider -t crawl lagou www.lagou.com
+3.利用xpath提取需要的值
+（1）xpath简介
+1)Xpath使用路径表达式在xml和html中进行导航
+2)Xpath包含标准函数库
+3)Xpath是一个w3c的标准
+（2）Xpath的节点关系
+1）父节点
+2）子节点
+3）同袍节点
+4）先辈节点
+5）后辈节点
+（3）Xpath的语法
+       
+
+
+
+4.利用scrapy shell 调试xpath
+(1)scrapy shell ‘http://blog.jobbole.com/114253/’
+(2)scrapy shell -s USER_AGENT='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36' https://www.zhihu.com/question/34500647/
+
+
+(3)写入文件:with open(‘/home/never/Documents/python/zhuhu.html’,’wb’) as f:
+f.write(response.text.encode(‘utf8’))
+5.css 选择器
+     
+
+
+
+
+
+
+
+
+
+6.安装mysql
+（1）(centos7) sudo yum install python-devel mysql-devel
+（2）pip install -i http://pypi.douban.com/simple/ mysqlclient
+7.利用django scrapy items 用django models 写item
+教程：https://github.com/scrapy-plugins/scrapy-djangoitem
+7.理解cookie和session的区别
+（1）Cookie
+     
+
+
+
+Http的状态码：表示服务器的状态
+
+8.爬虫和反爬虫
+  
+ 
+
+
+
+
+
+(2)轮番切换user—agent
+https://github.com/hellysmile/fake-useragent
+（2）代理ip设置
+（3）制作IP代理池爬取ip数据
+（4）Github上的一种https://github.com/aivarsk/scrapy-proxies
+（5）收费版的ip代理：https://github.com/scrapy-plugins/scrapy-crawlera
+（6）Tor：http://www.theonionrouter.com/projects/torbrowser.html.en
+这个浏览器一般隐藏ip黑客用的多
+9.利用selenium操控浏览器
+   Api：https://selenium-python.readthedocs.io/api.html
+    
+（1）.sudo pip install selenium
+（2）https://github.com/mozilla/geckodriver/releases/download/v0.21.0/geckodriver-v0.21.0-linux64.tar.gz
+（3）微博开放平台：http://open.weibo.com/
+（4）Phantomjs: http://phantomjs.org/download.html放到uer/bin
+（5）Scrapy https://github.com/flisky/scrapy-phantomjs-downloader
+（6）Python支持无界面的chrome的
+（1）sudo pip install pyvirtualdisplay
+（2）sudo apt-get install xvfb
+（3）pip install xvfbwrapper
+
+from pyvirtualdisplay import Display
+display=Display(visible=0,size=(800,600))
+display.start()
+browser=webdriver.Chrome()
+browser.get()
+(7)scrapy提供的支持无界面splash 浏览器https://github.com/scrapy-plugins/scrapy-splash
+(8)Selenium grid
+(9)操控浏览器https://github.com/scrapy-plugins/scrapy-splash
+10.爬虫的暂停与重启：(1)在项目新建目录job_info
+(3)scrapy crawl lagou -s JOBDIR=Job_info/001
+11.收索引擎：https://github.com/medcl/elasticsearch-rtf
+    
+
+	

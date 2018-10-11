@@ -1,0 +1,277 @@
+1.数组的搜索
+
+import java.util.Arrays;
+import java.util.Scanner;
+public class foreach {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stubste
+		int n;
+		System.out.println("数组的个数：13 ");
+		Scanner input=new Scanner(System.in);
+		n=input.nextInt();
+		int [] a=new int [15];
+		for(int i=1;i<=n;i++)
+			a[i]=i*2+1;//数组初始化
+		for(int b:a) //for-each
+			System.out.print(b+" ");//数组的输出
+		System.out.println(Arrays.binarySearch(a,11));//搜索数组的位置
+	}
+
+}
+2.数组的复制：（有问题）
+import java.util.Scanner;
+public class foreach {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+				int n,x;
+				System.out.println("输入目标数组的初始值的个数："); 
+				Scanner input=new Scanner(System.in);
+				n=input.nextInt();
+				System.out.println("输入复制数组值的个数：");
+				x=input.nextInt();
+				int [] a=new int[n];
+				int [] b=new int[x];
+				for(int i=1;i<=n;i++)
+					a[i]=i+1;
+				for(int c:a)
+					System.out.println(c+" ");
+				for(int i=1;i<=n;i++)
+					b[i]=a[i];
+				for(int f:b)
+						System.out.println(f+" ");
+			
+			}
+
+		}
+3.判断是不是回文字符
+import java.util.Scanner;
+
+
+public class methods1 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		String a=input.next();
+		int low,high;
+		low=0;
+		high=a.length()-1;
+		while(high>=low){
+			if(a.charAt(low)!=a.charAt(high))
+					break;
+			low++;
+			high--;}
+		if(high>low)
+			System.out.println("不是");
+			else
+				System.out.println("是");
+		
+
+	}
+4. 判断是不是回文字符（StringBuffer reverse 逆序反转输出）
+import java.util.Scanner;
+public class methods2 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner input =new Scanner(System.in);
+		String a=input.next();
+		StringBuffer s=new StringBuffer(a);
+		s.reverse().toString();
+		if(s.equals(a))
+			System.out.println("是");
+		else
+			System.out.println("不是");	
+	}
+
+}
+5.统计随机输出的字符串各个字符出现的次数
+public class 字符串和数组的结合 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		char []a=new char [100];
+		int i;
+		for (i=0;i<100;i++)
+			a[i]=(char)(97+(int)(Math.random()*26));
+		for(i=0;i<100;i++)
+			System.out.print(a[i]+" ");
+		System.out.print("\n");
+		int []count=new int [26];
+		for(i=0;i<100;i++)
+			count [a[i]-97]++;
+		for(i=0;i<count.length;i++)
+			System.out.print(count[i]+" "+(char)(i+97)+" ");
+
+	}
+
+}
+7.求A^B的最后三位数表示的整数。
+说明：A^B的含义是“A的B次方”
+ 
+
+Input
+输入数据包含多个测试实例，每个实例占一行，由两个正整数A和B组成（1<=A,B<=10000），如果A=0, B=0，则表示输入数据的结束，不做处理。
+ 
+
+Output
+对于每个测试实例，请输出A^B的最后三位表示的整数，每个输出占一行。 
+ 
+
+Sample Input
+2 3
+12 6
+6789 10000
+0 0
+ 
+
+Sample Output
+8
+984
+1
+ 
+
+import java.util.Scanner;
+
+
+public class 字符串和数组的结合 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*int n;*/
+		Scanner input=new Scanner (System.in);
+		long  a,b,c,t,e,d,f;
+		for(;;){
+			a=input.nextLong();
+			b=input.nextLong();
+			
+			c=u(a,b);
+			if(a==0&&b==0)break;
+			t=c%10;//个位
+			b=c/10;
+			e=b%10;//十位
+			d=b/10;
+			f=d%10;//百位
+			System.out.print(f+e+t);}
+
+}private   static  long u(long d,long k){
+	long sum=1;
+	for(long i=1;i<=k;i++)
+		sum=sum*d;
+	return sum;}
+	
+	
+}
+界面
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.TextField;
+
+import javax.swing.*;
+public class d {
+	
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+           JFrame j= new JFrame("宋有利的账户");
+          GridLayout a=new GridLayout(4,3);
+           //j.setLayout(new FlowLayout());
+           j.add(new Label("您确认将您的存款过户到该账户上吗？"));
+           j.setLayout(a);
+           TextField k=new TextField();
+           j.add(k);
+           k.setBackground(Color.blue);
+           k.setEditable(true);
+           k.setSize(253,567 );
+           k.setForeground(Color.white);
+          // j.add(new Label("dagshsjah"));
+           j.addMouseListener(null);
+            JButton w=new JButton("确认");
+            j.add(w);
+            w.setPreferredSize(null);
+            w.setForeground(Color.white);
+            w.setBackground(Color.black);
+           j.add(new JButton("取消"));
+           j.setSize(400, 400);
+           j.setVisible(true);
+           j.setDefaultCloseOperation(j.EXIT_ON_CLOSE);
+            j.setLocationRelativeTo(null);
+           
+
+	}
+
+} 
+5.点击按钮圆变大
+import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+class m extends JPanel{
+		int r=50,d=10;
+		protected void paintComponent(Graphics k){
+			super.paintComponent(k);
+			k.drawOval(d, d, r, r);}
+		void s() {
+			r=r+50;
+			d=d+10;
+			repaint();}
+		void m(){
+			r=r-50;
+			d=d-10;
+			repaint();
+		}
+		
+	}
+	class d extends JFrame{
+		JButton f=new JButton("变大");
+		JButton f2=new JButton("复原");
+		m dc=new m();
+		boolean h;
+		void d(){
+			add(dc,BorderLayout.CENTER);
+			add(f,BorderLayout.NORTH);
+			add(f2,BorderLayout.SOUTH);
+			f.setSize(100,100);
+			f.addActionListener(new OKlistener());
+			f2.setSize(100,100);
+			f2.addActionListener(new OKlistener());}
+	class OKlistener implements ActionListener{
+public void actionPerformed(ActionEvent arg0) {
+			dc.s();}}}
+public class 变大圆  {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		d f1=new d();
+		f1.d();
+		f1.setVisible(true);
+		f1.setSize(500, 600);
+		f1.setTitle("songyouli");
+		f1.setDefaultCloseOperation(d.EXIT_ON_CLOSE);}}

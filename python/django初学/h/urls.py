@@ -1,0 +1,35 @@
+"""h URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/1.11/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.conf.urls import url, include
+    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+"""
+from django.conf.urls import url,include
+from django.contrib import admin
+from imau import views
+#import xadmin
+urlpatterns = [
+    #url(r'^admin/', xadmin.site.urls),
+    url(r'^admin/', admin.site.urls),
+    url(r'^$',views.index),
+     url(r'^f/$',views.F.as_view()),
+    url(r'^add/(\d+)/(\d+)$',views.index),
+        #url(r'^df/$',include('imau.url'))
+    url(r'^time/',views.time1),
+    url(r'^fg/$',views.fg),
+    url(r'^search/$',views.Search.as_view()),
+    url(r'^form/$',views.FormTest.as_view(),name='go_form'),
+    url(r'^sql/$',views.sqlTest),
+   # url(r'^search/$', views.list),
+ url(r'login/$',views.login),
+    url(r'^loginout/$',views.loginout)
+]

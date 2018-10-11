@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+</head>
+<body>
+<h1>表单传值：</h1>
+<form action="{% url 'go_form' %}" method="post" id="form">
+    <label for="text">文本框输入：</label>
+  <input type="text "name="text">
+    <br>
+     <label for="password">密码输入：</label>
+    <input type="password" name="password"/>
+<br>
+    <select name="school">
+        <option value="内农大">内农大</option>
+         <option value="内工大">内工大</option>
+        <option value="内农大">内农大</option>
+         <option value="内农大">内农大</option>
+
+    </select>
+<br>
+    <input type="checkbox" name="car" value="car1"/>我有一辆小汽车<br>
+    <input type="checkbox" name="car" value="bike"/>我有一辆自行车<br>
+    <input type="checkbox" name="car" value="bus"/>我有一辆公交<br>
+        <br>
+        <input type="submit" value="提交">
+</form>
+<br>
+<form>
+    <input type="text" name="name"value="{% ifequal message.name|slice:'5'取前五个 'booby' %}boooy{% else %}booydyg{% endifequal %}" placeholder="请输入姓名"/>
+
+
+</form>
+</body>
+</html>

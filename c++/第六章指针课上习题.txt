@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+int main(){
+	void w(int *p,int *x);
+	int a,b;
+	int *pointera,*pointerb;
+	cin>>a>>b;
+	cout<<a<<" "<<b<<endl;
+	pointera=&a;
+	pointerb=&b;
+	w(pointera,pointerb);
+	cout<<a<<" "<<b<<endl;
+return 0;}
+void w(int *p,int *x){
+	int t;
+		if(*x>*p){
+		t=*x;
+		*x=*p;
+		*p=t;}}

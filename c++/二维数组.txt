@@ -1,0 +1,110 @@
+
+1.求3*4每行元素的和以及平均值每列元素的和以及平均值，所有数的平均值，和
+#include<iostream>
+#include<iomanip>
+using namespace std;
+const n=3,m=4;
+int main(){
+	void jisuan(int c[][m]);
+	void printarray(int a[][m]);
+	void scanfarray(int b[][m]);
+	int d[n][m];
+	scanfarray(d);
+	jisuan(d);
+	printarray(d);
+	
+return 0;}
+void printarray(int a[][m]){
+int i,j;
+cout<<"这是一个"<<n<<"*"<<m<<"二维数组请输入对应数组个数值："<<endl;
+for(i=0;i<n;i++){
+	for(j=0;j<m;j++)
+		cout<<a[i][j]<<" ";
+	cout<<endl;
+}}
+void scanfarray(int b[][m]){
+	int i,j;
+	cout<<"这是一个"<<n<<"*"<<m<<"二维数组输出值："<<endl;
+	for(i=0;i<n;i++){
+	for(j=0;j<m;j++)
+		cin>>b[i][j];
+}}
+void jisuan(int c[][m]){
+	int i,j;
+	double sumX[n]={0},sumY[m]={0},averageX[n],averageY[m],sum=0,average;
+	for(i=0;i<n;i++){
+		for(j=0;j<m;j++){
+			sum=sum+c[i][j];
+			sumX[i]=sumX[i]+c[i][j];
+			sumY[j]=sumY[j]+c[i][j];
+		}
+		averageX[i]=sumX[i]/m;
+		}
+	average=sum/(n*m);
+	cout<<"总和："<<sum<<" "<<"平均值："<<average<<endl;
+
+
+cout<<"各行和：";
+	for(i=0;i<n;i++)cout<<fixed<<setprecision(2)<<sumX[i]<<" ";cout<<endl;
+	cout<<"各行平均值：";
+	for(i=0;i<n;i++)cout<<fixed<<setprecision(2)<<averageX[i]<<" ";cout<<endl;
+	cout<<"各列和：";
+	for(j=0;j<m;j++){cout<<fixed<<setprecision(2)<<sumY[j]<<" ";averageY[j]=sumY[j]/n;}cout<<endl;
+	cout<<"各列平均值：";
+    for(j=0;j<m;j++)cout<<fixed<<setprecision(2)<<averageY[j]<<" ";cout<<endl;}
+
+2.求3*4矩阵所有元素中的最大值以及最大值的行下标和列下标。
+#include<iostream>
+using namespace std;
+const n=3,m=4;
+int main  (){
+		int array(int b[][m]);
+		int a[n][m];
+	cout<<array(a);
+	return 0;}
+	int array(int b[][m]){
+		int j,l;
+			for(int i=0;i<n;i++){
+	        for(int k=0;k<m;k++)
+		      cin>>b[i][k];}
+			for( i=0;i<n;i++){
+				for(int k=0;k<m;k++)
+					if(b[j][l]<b[i][k]){
+						j=i;l=k;}
+			}
+			cout<<"行下标："<<j<<"列下标:"<<l<<endl;
+		return b[j][l];}
+3.转置矩阵
+#include<iostream>
+using namespace std;
+const n=3,m=4;
+int main(){
+	int a[n][m],b[m][n],i,j;
+	for(i=0;i<n;i++){
+		for(j=0;j<m;j++)cin>>a[i][j];}
+	for(i=0;i<m;i++){
+		for(j=0;j<n;j++)
+	b[i][j]=a[j][i];}
+	cout<<"转置后"<<endl;
+for(i=0;i<m;i++){
+		for(j=0;j<n;j++)cout<<b[i][j]<<" ";cout<<endl;}
+	
+return 0;}
+4.转置方阵。
+#include <iostream>
+using namespace std;
+const n=3;
+int main (){
+	int a[n][n],i,j,t;
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++)cin>>a[i][j];}
+	for(i=0;i<n;i++){
+		for(j=0;j<i;j++){
+			t=a[i][j];
+			a[i][j]=a[j][i];
+			a[j][i]=t;}}
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++)cout<<a[i][j]<<" ";cout<<endl;}
+	return 0;}
+
+

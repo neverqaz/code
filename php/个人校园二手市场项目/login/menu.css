@@ -1,0 +1,361 @@
+.top_bg1 {
+    background: #C1FFC1;
+
+}
+.wrap1 {
+    margin: 0 auto;
+    width: 80%;
+
+}
+.main_top1 {
+    padding: 2% 4%;
+}
+h2.style {
+    font-size: 1.8em;
+    color: #5e5e5e;
+    text-transform: capitalize;
+}
+.header1 {
+
+    padding: 0 4%;
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+
+}
+.logo1 {
+    float: left;
+    margin: 14px 0;
+}
+.fontq{
+
+
+font-style: 35px;
+
+
+}
+.logo1 ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+font-style: inherit;
+font-variant-caps: inherit;
+font-weight: inherit;
+font-stretch: inherit;
+font-size: inherit;
+line-height: inherit;
+font-family: inherit;
+font-size-adjust: inherit;
+font-kerning: inherit;
+font-optical-sizing: ;
+font-variant-alternates: inherit;
+font-variant-east-asian: inherit;
+font-variant-ligatures: inherit;
+font-variant-numeric: inherit;
+font-variant-position: inherit;
+font-language-override: inherit;
+font-feature-settings: inherit;
+font-variation-settings: ;
+}
+.log_reg1 {
+    border-right: 1px solid rgb(60, 60, 60);
+    padding: 12px 16px;
+    float: right;
+font: inherit;
+vertical-align: baseline;
+}
+.log_reg1 ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+font-style: inherit;
+font-variant-caps: inherit;
+font-weight: inherit;
+font-stretch: inherit;
+font-size: inherit;
+line-height: inherit;
+font-family: inherit;
+font-size-adjust: inherit;
+font-kerning: inherit;
+font-optical-sizing: ;
+font-variant-alternates: inherit;
+font-variant-east-asian: inherit;
+font-variant-ligatures: inherit;
+font-variant-numeric: inherit;
+font-variant-position: inherit;
+font-language-override: inherit;
+font-feature-settings: inherit;
+font-variation-settings: ;
+} 
+.log_reg1 ul li {
+    display: inline-block;
+list-style: none;
+    font: inherit;
+        font-style: inherit;
+        font-variant-caps: inherit;
+        font-weight: inherit;
+        font-stretch: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        font-family: inherit;
+        font-size-adjust: inherit;
+        font-kerning: inherit;
+        font-optical-sizing: ;
+        font-variant-alternates: inherit;
+        font-variant-east-asian: inherit;
+        font-variant-ligatures: inherit;
+        font-variant-numeric: inherit;
+        font-variant-position: inherit;
+        font-language-override: inherit;
+        font-feature-settings: inherit;
+        font-variation-settings: ;
+}
+.log_reg1 li a {
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 0.8125em;
+    display: block;
+    padding: 5px 8px;
+    color: #777777;
+    text-transform: uppercase;
+    -webkit-text-stroke: 0.5px;
+text-decoration: none;
+}
+.log_reg1 span.log {
+    font-size: 0.8125em;
+    color: #777777;
+    text-transform: lowercase;
+    -webkit-text-stroke: 0.5px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+        font-size: inherit;
+    vertical-align: baseline;
+list-style: none;
+}
+.clear {
+    clear: both;
+}
+
+.web_search1 {
+    position: relative;
+    float: right;
+    width: 28.33333%;
+    border-right: 1px solid rgb(60, 60, 60);
+    padding: 6px 10px;
+}
+.web_search1 form {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+.web_search1 form:active, .web_search1 form:hover {
+    background: #ffffff;
+    -webkit-transition-property: width;
+    -moz-transition-property: width;
+    -ms-transition-property: width;
+    transition-property: width;
+    -webkit-transition-duration: .5s;
+    -moz-transition-duration: .5s;
+    -ms-transition-duration: .5s;
+    transition-duration: .5s;
+}
+
+.web_search1 input[type="text"] {
+    font-family: 'Maven Pro', sans-serif;
+    padding: 8px 20px;
+    outline: none;
+    border: none;
+    width: 76%;
+    background: none;
+    font-size: 1em;
+    color: #333333;
+}
+.web_search1 input[type="submit"] {
+    background: url(../images/search.png) no-repeat 0px 4px;
+    border: none;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.header_btm1 {
+    padding: 0 4%;
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+
+}
+.menu_s {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+    float: left;
+}
+.menu_s ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+font: inherit;
+    font-style: inherit;
+    font-variant-caps: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    font-size-adjust: inherit;
+    font-kerning: inherit;
+    font-optical-sizing: ;
+    font-variant-alternates: inherit;
+    font-variant-east-asian: inherit;
+    font-variant-ligatures: inherit;
+    font-variant-numeric: inherit;
+    font-variant-position: inherit;
+    font-language-override: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: ;
+}
+.menu_s ul li {
+    float: left;
+    border-left: 1px solid rgb(226, 226, 226);
+    list-style: none;
+}
+.menu_s ul li.active a {
+    color: #57C5A0;
+}
+.menu_s ul li a {
+    display: block;
+    padding: 26px 30px;
+    color: #2d2d2d;
+    font-size: 1.1em;
+    text-transform: capitalize;
+    -webkit-text-stroke: 0.2px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+text-decoration: none;
+}
+.header_right1 {
+    float: right;
+}
+.header_right1 ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.header_right1 ul li {
+    display: inline-block;
+}
+.header_right1 ul li a {
+    font-family: 'Maven Pro', sans-serif;
+    display: block;
+    line-height: 1.8em;
+    font-size: 1em;
+    color: #ffffff;
+    padding: 20px 26px;
+    border-left: 1px solid rgb(226, 226, 226);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.header_right1 ul li a > i.art {
+    background: url(../images/art.png) no-repeat 4px 8px;
+}
+.header_right1 ul li a > i {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+    transition: none;
+}
+.header_right1 ul li a span.color1 {
+    background: #999999;
+}
+.header_right1 ul li a span {
+    background: #57C5A0;
+    padding: 5px 8px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.header_right1 ul li:nth-child(2) a {
+    border-right: 1px solid rgb(226, 226, 226);
+}
+
+.header_right1 ul li a {
+    font-family: 'Maven Pro', sans-serif;
+    display: block;
+    line-height: 1.8em;
+    font-size: 1em;
+    color: #ffffff;
+    padding: 20px 26px;
+    border-left: 1px solid rgb(226, 226, 226);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+.header_right1 ul li a > i.cart {
+    background: url(../images/cart.png) no-repeat 5px 8px;
+}
+.header_right1 ul li a > i {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+    transition: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+zoomIn {
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+}

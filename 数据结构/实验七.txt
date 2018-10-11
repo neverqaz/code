@@ -1,0 +1,107 @@
+
+实验七
+#include <iostream.h>
+#include <stdio.h>
+#include <assert.h>
+template <class A1,class A2,class A3,class A4> class Queue;
+template <class A1,class A2,class A3,class A4> class QueueNode {	
+friend class Queue<A1,A2,A3,A4>;
+private: 
+    A1 xuehao;
+	A2 name;
+A3 age;
+A4 score;//队列结点数据
+    QueueNode<A1,A2,A3,A4> *link;  //结点链指针
+};    
+template <class A1,class A2,class A3,class A4> class Queue {	
+public: 
+    Queue ( ) { rear=front=NULL; }
+    ~Queue ( );						
+    void EnQueue (A1 I1,A2 I2,A3 I3,A4 I4 );
+    void DeQueue (A1 &e1,A2 &e2,A3 &e3,A4 &e4 );    
+    void GetFront (A1 &e1,A2 &e2,A3 &e3,A4 &e4 );					
+    void MakeEmpty ( ) { front = rear ; }
+    int IsEmpty ( ) { return  front->link == NULL; }
+	void prn();
+	void cre(int n);
+private: 
+    QueueNode<A1,A2,A3,A4> *front, *rear; //队列指针
+};
+template <class A1,class A2,class A3,class A4> Queue<A1,A2,A3,A4>::~Queue ( ) {
+                       //队列的析构函数
+   QueueNode<A1,A2,A3,A4> *p;
+    while ( front != NULL ) {	
+                      //逐个结点释放
+        p = front;  front = front->link;  delete p;
+    }
+}
+template <class A1,class A2,class A3,class A4> void Queue<A1,A2,A3,A4>:: EnQueue (A1 I1,A2 I2,A3 I3,A4 I4 ) {
+//将新元素I1插入到队列的队尾 
+    if ( front->link == NULL )
+	{front->link = rear = new QueueNode<A1,A2,A3,A4>;
+	rear->xuehao=I1;rear->name=I2; rear->age=I3; rear->score=I4;rear->link=NULL;}
+    else 
+	{rear = rear->link = new QueueNode<A1,A2,A3,A4>;
+	rear->xuehao=I1;rear->name=I2; rear->age=I3; rear->score=I4;rear->link=NULL;}
+}
+template <class A1,class A2,class A3,class A4> void Queue<A1,A2,A3,A4>::DeQueue (A1 &e1,A2 &e2,A3 &e3,A4 &e4) {
+//删去队头结点，并返回队头元素的值
+    assert ( !IsEmpty ( ) );	//判队空的断言
+    QueueNode<A1,A2,A3,A4> *p = front->link;		
+    e1=p->xuehao;e2=p->name; e3=p->age; e4=p->score;	//保存队头的值
+     front->link= p->link;    //新队头
+    if (p==rear)  rear=front;   
+    delete p;	 
+   		
+}
+template <class A1,class A2,class A3,class A4> void Queue<A1,A2,A3,A4>::GetFront (A1 &e1,A2 &e2,A3 &e3,A4 &e4 ) {
+//若队不空，则函数返回队头元素的值; 
+//若队空，则函数返回0。
+    assert ( !IsEmpty ( ) );			
+ e1=front->link ->xuehao;e2=front->link ->name; e3=front->link ->age;e4=front->link ->score;	}
+template <class A1,class A2,class A3,class A4> void Queue<A1,A2,A3,A4>::prn( ) {
+   QueueNode<A1,A2,A3,A4> *p = front->link;
+   while(p!=NULL)
+   {
+	   cout<<"("<<p->xuehao<<" "<<p->name<<" "<<p->age<<" "<<p->score<<")"<<" ";
+       p=p->link;
+   }
+   cout<<endl;
+}
+template <class A1,class A2,class A3,class A4> void Queue<A1,A2,A3,A4>::cre(int n) {
+   QueueNode<A1,A2,A3,A4> *p;
+   front=rear=new QueueNode<A1,A2,A3,A4>;
+   front->link=NULL;
+   for(int i=n;i>0;--i)
+     {
+	   p=new QueueNode<A1,A2,A3,A4>;
+	   cin>>p->xuehao>>p->name>>p->age>>p->score;
+	   p->link=NULL;
+	   rear->link=p;rear=p;
+   }
+   
+}
+void main()
+{
+	Queue <int,char,int,int > M;
+	int k,x1,x3,x4,a1,a3,a4,b1,b3,b4;
+	char x2,a2,b2;
+	cin>>k;
+	M.cre(k);
+	M.prn();
+    M.DeQueue(A1,A2,A3,A4);
+	cout<<a1<<" "<<a2<<” “<<a3<<” ”<<a4<<endl;
+	M.prn();
+	cout<<"x1=";
+	cin>>x1;
+    cout<<"x2=";
+	cin>>x2;
+cout<<"x3=";
+	cin>>x3;
+cout<<"x4=";
+	cin>>x4;
+	M.EnQueue(x1,x2,x3,x4);
+    M.GetFront(b1,b2,b3,b4);
+	cout<<b1<<" "<<b2<<” “<<b3<<” “<<b4<<endl;
+    M.prn();
+}

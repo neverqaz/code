@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* CSS Document */
+.ul_css
+{
+	list-style:none;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	background-color:#333;
+}
+.li_css_a
+{
+	display:block;
+	color:#FF0;
+	text-align:center;
+	padding:14px 16px;
+	text-decoration: none;
+}
+.li_css
+{
+	float:left;
+	border-right:1px solid #0F6;
+}
+.li_cin_name
+{
+	float: right;
+	display: block;
+	color:#FF0;
+	text-align:center;
+	padding:14px 16px;
+}
+.main_pic
+{
+	float:none;
+}
+
+.gallery_pics
+{
+	margin:5px;
+	border: 5px solid #ccc;
+	float: left;
+	width:300px;
+}
+
+.gallery_pics:hover
+{
+	border: 5px solid #9F3;
+	background-color:#0C3;
+}
+
+.gallery_caption
+{
+	padding:15px;
+	text-align:left;
+	font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+	
+	width:300px;
+	float: left;
+}
+
+.gallery_name
+{
+	padding:15px;
+	text-align:left;
+    float: left;
+	font: italic 10px;
+}
+
+.gallery_description
+{
+	padding:15px;
+	text-align:left;
+	margin-top: 2px;
+    float: left;
+}
+.gallery_form
+{
+	float:left;
+}
+
+

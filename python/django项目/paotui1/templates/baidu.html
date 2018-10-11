@@ -1,0 +1,20 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="{% static 'baidumap.css' %}">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=unrcs1AVyGvK5Y085KID6mBmkrK62Dmw"|safe></script>
+    <title>校园跑腿网</title>
+</head>
+<body><div><p>校园跑腿网</p></div>
+      <div id="r-result">请输入您要查询的地方:<input type="text" id="suggestId" size="20" value="百度"/></div>
+	<div id="searchResultPanel"></div>
+<div id="l-map"></div>
+
+
+</body>
+</html>
+<script language="javascript" src="{% static 'baidumap.js' %}"></script>

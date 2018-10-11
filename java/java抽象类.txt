@@ -1,0 +1,32 @@
+abstract class m{
+	abstract double maji();
+	abstract double tiji();}
+class sanjiaoxing extends m{
+	double length,wide,h;
+ sanjiaoxing(double length,double wide,double h){
+			this.length=length; 
+			 this.wide=wide;
+			 this.h=h;}
+double maji(){
+		return 0.5*length*wide;}
+double tiji() {
+	return maji()*h;}
+}
+class yuan extends m{
+	double r,h;
+	yuan(double r,double h){
+		this.r=r;
+		this.h=h;}
+double maji(){
+	return 3.14*r*r;}
+double tiji(){
+	return maji()*h;}
+}
+public class d {
+	public static void main(String[] args) {
+	m u,u1;
+	u=new sanjiaoxing(3,4,5);
+	u1=new yuan(1,4);
+	System.out.println("三角形的面积："+u.maji()+"\n"+"对应体积："+u.tiji());
+System.out.println("圆的面积："+u1.maji()+"\n"+"圆柱体积："+u1.tiji());
+	}}

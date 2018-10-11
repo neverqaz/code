@@ -1,0 +1,82 @@
+1. #include<iostream>
+using namespace std;
+int main(){
+	int d(int x,int y);
+	int p(int u,int n );
+	int a,b;
+	for(;cin>>a>>b;)
+		cout<<"最大公约数："<<d(a,b)<<"\n"<<"最小公倍数："<<p(a,b)<<endl;
+	return 0;}
+
+int d(int x,int y){
+	int c,max;
+	if(x<y){
+		max=x;
+		x=y;
+		y=max;}
+for(;(c=x%y)!=0;){
+		x=y;
+	    y=c;}
+return y;}
+int p(int u,int n ){
+return (u*n/d(u,n));}
+
+3．
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main(){
+	int a(int d);
+	int k;
+	for(;cin>>k;){
+		a(k);
+	cout<<endl;}
+	return 0;}
+int a(int d){
+	bool  f=true;
+	for(int i=2;i<=d;i++){
+		if(d%i==0){f=false;break;}}
+	    if(f) cout<<d<<"是素数"<<endl;
+		else cout<<d<<"不是素数"<<endl;
+return 0;
+}
+4.1
+#include<iostream>
+using namespace std;
+inline	int u(int d);
+int main(){
+ 
+	int s,g,k,f;
+	for(;cin>>s>>g>>k;){
+	  f=u(s)+u(g)+u(k);
+	  cout<<f<<endl;}
+return 0;}
+
+ inline int u(int d){
+	int sum=1;
+	for(int i=1;i<=d;i++){
+		sum=sum*i;
+}
+
+return sum;
+
+}
+4.2
+#include<iostream>
+using namespace std;
+int main(){
+	int a(int y);
+	int c,b,g,m;
+	cin>>b>>g>>m;
+         c=a(b)+a(g)+a(m);
+     	       cout<<c<<endl;
+return 0;
+}
+int a(int y){
+	int f;
+	if(y<=1)f=1;
+	else
+	   f=y*a(y-1);
+	
+	return f;
+}

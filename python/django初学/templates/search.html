@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="{% static 'css/common.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+<script type="text/javascript" src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+<title>图书管理</title>
+</head>
+<body>
+	<div class="crumb-wrap">
+		<div class="crumb-list">
+			<i class="icon-font"></i> 首页 <span class="crumb-step">&gt;</span> <span
+				class="crumb-name">管理系统</span> <span class="crumb-step">&gt;</span>
+			<span class="crumb-name">图书管理</span>
+		</div>
+	</div>
+	<div class="search-wrap">
+		<div class="search-content">
+			<form name="selectForm" method="post" action="/search/">
+				<table class="search-tab">
+					<tr>
+						<th width="120">书名关键字:</th>
+						<td>
+              <input class="common-text" placeholder="书名关键字"
+							name="book_name" id="bookName" value="" type="text"
+							onKeyDown="if(event.keyCode==13)return false;">
+						</td>
+						<th width="120">作者:</th>
+						<td>
+              <input class="common-text" placeholder="请输入作者"
+  							name="book_author" id="author" value="" type="text"
+  							onKeyDown="if(event.keyCode==13)return false;">
+						</td>
+						<th width="120">图书编号:</th>
+						<td><input class="common-text" placeholder="图书编号"
+							name="book_number" id="bookNum" value="" type="text"
+							onKeyDown="if(event.keyCode==13)return false;">
+						</td>
+						<td rowspan  = "2" >
+                <input style = "height: 100px;"
+                class="btn btn-primary btn2" name="sub" id="submitbtn" value="查询" type="submit">
+            </td>
+					</tr>
+					<tr>
+						<th>价格区间</th>
+						<td>
+							<input style="width: 80px" name="minPrice" id="minPrice" type="number" value="0">
+							至
+							<input style="width: 80px" name="maxPrice" id="maxPrice" type="number" value="100">
+						</td>
+						<th width="120">书籍类型</th>
+						<td>
+              <select id="book_type" name = "book_type">
+                <option value = "" selected>不限</option>
+                  {% for foo in s %}
+                    <option value = "{{ foo.type_name }}" >{{ foo.type_name }}</option>
+
+                  {% endfor %}
+
+
+              </select>
+						</td>
+						<th width="120">出版社:</th>
+						<td>
+              <select id="BookHouse" name = "BookHouse">
+                <option value = "" selected>不限</option>
+                  {% for f in hose %}
+                      <option value = "{{ f.house_name }}" >{{ f.house_name }}</option>
+                  {% endfor %}
+
+              </select>
+            </td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	<div id="resultDiv"></div>
+</body>
+</html>

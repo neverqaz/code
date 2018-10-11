@@ -1,0 +1,233 @@
+一．Git是项目开发版本控制，
+（1）为什么引入版本控制？
+A.最大的问题是代码冲突，例如，代码的覆盖。
+二．知识点：
+1.设置开发者的个人信息（email，name）
+（1）配置全局信息：git config --global user.name “never”
+          git config --global user.email ”1532105342@qq.com“
+
+never@never-PC:~$ git config --global user.name "never"
+never@never-PC:~$ git  config --global user.email "1532105342@qq.com"
+(2)查看配置的全局信息：git config -l
+2.创建仓库（版本库）：可以保存用户所编写的代码的日志记录
+（1）开发项目，首先必须有一个仓库（磁盘上的文件夹）
+Eg 创建文件夹event1（mkdir /home/never/Documents/windows1/htdocs/event1）：
+(3)将event1定义为我们的仓库：cd event1
+         (3.1)初始化仓库（将event1文件夹变为git管理仓库）：git init（执行完之后在event1j创建了.git 目录是仓库信息死了都不能改）
+3.添加文件（文件的基本管理）：所有文件都必须使用utf-8（）
+   （1）在event1目录下建立一个hello.py文件
+        （1.1）查看当前仓库的状态：git status
+         （1.2）将文件hello.py加入到暂存库：git add hello.py
+                 (此时文件并没有提交到主分支master（仓库）上：主分支是我们真正运行程序的所有代码)
+          （1.3）提交文件信息（一般都会添加上一些注释数据”-m“）：
+git commit -m “New Python File-hello.py Create”
+(提交完成之后意味着程序发布成功了）
+            (两步变一步：git commit -a -m”New Python File-hello.py Create”)
+（2）查看hello.py文件的日志信息：git log hello.py
+3.修改仓库文件(工作区操作)
+（1）文件修改完成之后查看状态：git status
+（2）文件修改之后的不同：git diff hello.py
+      “+”表示内容增加的部分，”-“表示内容的删除的部分
+（3）提交仓库： git commit -a -m “Update hello.py File .Add Two Lines”
+4.工作区与暂存区
+（1）工作区就是当前电脑的操作目录
+     ”“””（（1））在之前所编bj写的hello.py 文件保存在用户的工作区
+          （（2））当add命令之后，实际将所修改的文件提交到暂存区
+           （（3））使用commit命令之后，才表示真正的发出了修改，而真正可以运行的程序保存到master分支上
+“”“”
+（2）增加第二个文件world.py   
+  
+        
+        查看状态git status
+5.暂存区操作
+（1）将两个文件加入到暂存区”.”：git add .
+（2）提交
+6.版本回退
+（1）commit id 就是代码回退的主要操作
+（2）查询当前修改后的日志信息：git log --pretty=oneline
+（3）在master分支上会有一个HEAD指针存在，而这个指针默认情况下永远指向最后一次提交的位置
+（4）回退一步：git reset --hard HEAD~1
+（5）回复到最新版本就要找到最新的commit id=cf78a05
+（1）git reflog（cf78a05 HEAD@{1}: commit: change Two files)
+
+
+（2）恢复最后一次提交:git reset --hard cf78a05
+ 
+7.文件修改问题
+（1）git diff HEAD hello.py最后一次提交比较不同
+8.撤销修改
+（1）没add：恢复到上一次的提交状态：git checkout -- hello.py
+（2）已add，未commit：从暂存区退出内容：（a）git reset HEAD hello.py
+                                        （b）git checkout -- hello.py
+
+   
+9.删除文件
+（1）从磁盘删除文件world.py
+（2）提交更新：git commit -a -m”delete world.py”
+（3）恢复文件：git reset --hard HEAD （删除文件的commit id）
+
+
+三．Git 远程仓库github
+     1.生成一个SSH Key ，需要生成一个RSA编码的key:ssh-keygen -t rsa -C "1532105342@qq.com"
+　　　　　默认保存路径：/home/never/.ssh/id_rsa
+２．打开github的设置界面：设置ssh公钥（id_rs.pub文件）
+３．添加远程仓库：test仓库地址：https://github.com/neverqaz/test.git
+４．把github仓库与本地仓库关联：(1)git remote add origin https://github.com/neverqaz/test.git
+  (2)git remote add test git@github.com:neverqaz/test.git
+５．将我们所有的本地仓库内容推送远程仓库(利用“-u”参数进行本地master和远程master关联)github：git push -u origin master
+６．切换回一个origin仓库：git remote set-url origin https://github.com/neverqaz/test.git
+７．查看远程服务器端已经存在的仓库信息 :git remote -v
+８．删除一个远程test仓库：git remote rm test
+９．修改hello.py文件，world.py文件并且提交到服务器上：(1)git commit -a -m “change two file print content”(2)将代码推送到远程origin仓库中master分支上：git push origin master
+    四.克隆仓库：
+            1.在github上初始化一个新的仓库：ver时选中
+Initialize this repository with a README（表示自动初始化一个仓库，并且自动存在一个“README”的文件）
+2.在本地磁盘上进行仓库的克隆操作：git clone https://github.com/neverqaz/var.git
+五.克隆其他开源项目 （点击项目fork）
+      。Bootstrap：https://github.com/twbs/bootstrap
+      。https://github.com/mybatis
+六．分支管理（very importent）
+
+（一）.创建与合并分支：（利用分支可以实现多人开发的模式）
+      主分支（master）主要是作为程序的发布使用，一般很少在主分支上进行代码的开发，一般在各自的子分支上进行代码的开发
+（二）.分支策略
+
+
+
+
+
+HEAD指针永远指向当前工作的分支
+        Master主分支是发布版本
+
+   所以需要把brh与master分支进行合并
+
+
+
+
+（二）.实际操作：
+1.创建分支： git branch brh
+2.查看分支： git branch
+3.切换到brh分支（让HEAD指针指向brh分支）：
+                             git checkout brh
+4.创建并切换分支：git checkout -b brh
+5.删除分支：(1)回到master分支：git checkout master  
+(2)删除分支：git branch -d brh
+6.在brh分支上进行代码的修改：
+
+                   eg.修改.hello.txt并提交:
+                        git commit -a -m "update hello.txt"
+                俩个分支是完全彼此独立
+7.俩个分支都存在，都提交到远程服务器上：
+   （1）git remote set-url origin https://github.com/neverqaz/var.git
+
+        （2）git push origin master
+         （3）git push origin brh
+  8.最终发布版本在master分支上，所以要将brh和master分支进行合并：（1）在主分支上：git checkout master
+                    (2)git merge brh(这次合并“Fast-forward
+“快速合并方式不会产生新的commit id 而是利用了brh子分支的commit id)
+8.删除brh分支：git branch -d brh
+9.提交master分支：git push origin master
+10.删除远程分支brh：git push origin --delete brh
+（三）分支的操作管理
+1.建立分支brh：git checkout -b brh
+2.修改分支名称：git branch -m brh syl
+3.将分支推送到服务器端：git push origin syl
+4.查看全部分支：（包括远程和本地的）：git branch -a
+                （只查看远程remote的分支） ：git branch -r
+                   （只查看本地local的分支）：git branch -l 
+5推送创建同名空分支可以删除远程分支：git branch syl
+                                        git push origin :syl               
+
+（四）冲突解决（多人合作）
+1.同一个文件的同时在分支上增加修改，修改的内容同为“+”或”-“时冲突自动解决
+2.又”+“又”-“时手动解决
+     
+1.模拟操作：
+（1）.建立并切换的brh分支上：git checkout -b brh
+（2）在brh分支上修改hello.py文件
+（3）在brh上提交此文件：git commit -a -m”update hello.py”
+（4）切换回master分支：git checkout master
+（5）在master分支上也修改hello.py文件
+（6）在master分支上提交：git commit -a -m “create 213134324”
+（7）合并分支：git merge brh（冲突出现）
+（8）查看冲突的内容：git status
+（9）查看hello.py文件
+（10）手工修改hello.py 文件
+（11）修改完之后提交：git commit -a -m “confilct print”
+（12）向服务器端提交信息：git push origin master
+（13）查看合并的情况：git log --graph --pretty=oneline(”graph“采用绘图的方式进行显示)
+（14）删除分支：git branch -d brh
+（五）分支的管理策略
+   
+1.git merge --no-ff -m “no faster forword”(非fast forward合并)使用该方式合并带有一次提交所以要设置注释
+
+(六)分支暂存
+1.分支提交到暂存：git add .
+2.暂时停止开发（保存）：git stash
+3.列出暂时寄存的状态：git stash list
+4.暂存区的恢复：（1）先恢复然后在删除暂存区：git stash apply
+                                             git stash drop
+             (2)恢复的同时也将暂存区的内容删除：git stash pop
+（七）补丁 patch
+1.补丁并不是针对所有代码的修改，只是针对局部的修改
+
+2.利用git diff生成标准的patch
+(1).在分支上修改完成并且在分支提交完成之后将代码的变化给开发者
+(2)生成补丁：git diff master>mypat(“>”表示输出此时会生成一个mybat的补丁文件)
+(3)切换master主分支：git checkout master
+(4)补丁的应用：git checkout -b cdv
+                              git apply mybat
+                              git commit -a -m “mybat apply”
+（5）生效补丁：git checkout master
+                git merge --no-ff -m “patch activity” cdv(合并分支)
+3.利用git format-patch 生成git专用补丁
+（1）在分支上修改完成并且在分支提交完成之后
+（2）与源代码进行比较自动生成补丁（类似与email数据）：
+            git format-patch -M master
+            (表示与master分支进行比较“-M”是指定分支）
+（3）补丁的应用：git am 0002-qaz.py-update2.patch
+（4）同上
+
+（八）多人协作开发
+
+1.Git clone
+2.新键并切换到brh分支
+3.如何下载子分支：git merge origin/brh
+
+
+
+
+七．标签管理：
+（一）创建标签
+1.标签是分支定义的别名，分支本身都会进行指针的配置（分支都会指向某一个commit id），但是标签是一个固定的内容（标签永远指向一个commit id）
+2.标签可以标记一个提交点
+（1）为master分支定义一个标签：git tag v1.0
+（2）查看标签：git tag
+（3）查看日志信息啊:git log --pretty=oneline --abbrev-commit
+（4）针对一个commit id=8019553 定义标签：git tag v0.6 8019553
+（5）查看标签的完整内容：git show v0.6
+（6）添加标签是设置注释信息：git tag -a v0.7 -m “hello” 694bf81
+3.利用GPG为标签进行加密：
+(1).如果开发者只希望自己来修改标签，必须加密
+(2)GPG下载地址：https://www.gnupg.org
+(1)测试gpg是否安装成功：gpg -help
+(2)生成自己的密钥：gpg --gen-key
+(3)密钥号（gpg key）：1CCBC207E8EE8D04，用户id（uid）：never <1532105342@qq.com>
+(4)生成密钥撤销的证书：gpg --gen-revoke 1CCBC207E8EE8D04
+(5)列出所有的密钥：gpg --list-keys
+(6)文件的加密与解密：为了在传输过程的安全
+(a)文件加密：gpg --recipient 1CCBC207E8EE8D04 --output /home/never/Documents/git/file.txt --encrypt /home/never/Documents/git/文件加密.txt
+(b)加密方法：gpg --recipient （用户的gpg key）--output （输出文件路径） --encrypt (需加密文件的路径)
+(c)对加密文件进行解密操作：gpg --decrypt /home/never/Documents/git/file.txt >/home/never/Documents/git/file1.txt
+(d)解密方法(”>“代表输出的意思)：gpg --decrypt (加密文件路径)>（输出文件路径）
+（7） 使用GPG生成标签：加密标签只需要设置”-s“参数
+（a）使用GPG加密标签：git tag -s v0.9 -m “gpg handle tag” 2222aed
+（b）出问题用这个：git tag -u ”never” -s v0.9 -m “gpg handle tag” 2222aed
+4.标签管理
+（1）删除标签：git tag -d v1.0
+（2）将标签推送到服务器上：git push origin v0.9
+（3）将标签一次性推送多个标签：git push origin --tags
+（4）删除服务器上某一个标签：（1）先删本地标签：git tag -d
+                                                 v0.7 
+(2)删除远程标签：
+git push origin :refs/tags/v0.7                             

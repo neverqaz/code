@@ -1,0 +1,30 @@
+import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+public class f extends JFrame{
+	f(){ 
+		JButton jbt=new JButton("ok");
+		jbt.addActionListener(new abs());
+		add(jbt,BorderLayout.SOUTH);}
+	class abs implements ActionListener{
+
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			System.out.println("ok 被点击了");
+		}}
+public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		f a=new f();
+		a.setVisible(true);
+		a.setSize(300, 200);
+		a.setLocationRelativeTo(null);
+		a.setDefaultCloseOperation(f.EXIT_ON_CLOSE);
+
+	}
+
+}
+

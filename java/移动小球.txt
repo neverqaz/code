@@ -1,0 +1,149 @@
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+
+public class Shubiao extends JFrame{
+   public Shubiao()
+   {
+	   Mianban mb=new Mianban("Welcome to java");
+	   add(mb);
+   }
+	/**
+	 * @param args
+	 */
+	
+   public static void main(String[] args) {
+		// TODO Auto-generated method stub
+           Shubiao sa=new Shubiao();
+           sa.setSize(300, 400);
+           sa.setVisible(true);
+           sa.setLocationRelativeTo(null);
+           sa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+}
+class Mianban extends JPanel
+{String message="Welcome to java";
+ int  x=200;
+ int y=200;
+   public Mianban(String message)
+   {this.message=message;
+	A a=new A();   
+   Timer timer=new Timer(100,a);
+   timer.start();
+   }
+class A implements ActionListener
+{
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		if(x>getWidth())
+			x=-30;
+		x=x+90;
+		repaint();
+	}
+
+}
+   protected void paintComponent(Graphics g)
+{
+   super.paintComponent(g);
+   g.drawString(message, x, y);
+}
+}
+
+
+
+
+
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+
+public class Shubiao extends JFrame{
+   public Shubiao()
+   {
+	   Mianban mb=new Mianban();
+	   add(mb);
+	   mb.setFocusable(true);
+   }
+	/**
+	 * @param args
+	 */
+	
+   public static void main(String[] args) {
+		// TODO Auto-generated method stub
+           Shubiao sa=new Shubiao();
+           sa.setSize(300, 400);
+           sa.setVisible(true);
+           sa.setLocationRelativeTo(null);
+           sa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+}
+class Mianban extends JPanel
+{char c='K';
+ int  x=200;
+ int y=200;
+   public Mianban()
+   {
+	A a=new A();   
+   addKeyListener(new A());
+   }
+class A implements KeyListener
+{
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		switch(e.getKeyCode())
+		{
+		case KeyEvent.VK_UP:y=y+5;break;
+		case KeyEvent.VK_DOWN:y=y-5;break;
+		case KeyEvent.VK_RIGHT:x=x+5;break;
+		case KeyEvent.VK_LEFT:x=x-5;break;
+		default:c=e.getKeyChar();
+		}
+		repaint();
+	}
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+}
+   protected void paintComponent(Graphics g)
+{
+   super.paintComponent(g);
+   g.drawString(String.valueOf(c), x, y);
+}
+}
+

@@ -1,0 +1,90 @@
+1.
+class Login extends JFrame {
+ private JPanel   backgroundpanel;
+ private JPanel   panel;
+ private JPanel   panel2;
+ private JTextField  usernameBox;
+ private JPasswordField passwordBox;
+ private JButton  button;
+ private int   height = 319;
+ private int   width = 452;
+ private ImageIcon  ii  = new ImageIcon("special-window-BG.png");
+ private JLabel   image;
+ public Login() {
+  setLayout(null);
+  setTitle("Login");
+  setSize(width,height);
+  setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  setLayout(null);
+  buildPanel();
+  add(backgroundpanel);
+  setVisible(true);
+ }
+ private void buildPanel() {
+  usernameBox = new JTextField(20);
+  passwordBox = new JPasswordField(20);
+  button = new JButton("Login");
+  image = new JLabel(ii);
+  backgroundpanel = new JPanel();
+  panel = new JPanel();
+  panel2 = new JPanel();
+  backgroundpanel.add(panel);
+  backgroundpanel.add(panel2);
+  backgroundpanel.add(image);
+  panel.setBackground(Color.red);
+  panel.setBounds(0, 0, 10, 10);
+  panel.setOpaque(false);
+  panel2.setBackground(Color.blue);
+  panel2.setBounds(0, 0, 10, 10);
+  panel2.setOpaque(false);
+  panel.add(passwordBox);
+  panel2.add(button);
+  backgroundpanel.setOpaque(false);
+  backgroundpanel.isOptimizedDrawingEnabled();
+  backgroundpanel.setBounds(0, 0, width, height);
+2.
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+public class LoginPanel extends JPanel {
+ private static final long serialVersionUID = 1L;
+ BufferedImage image;
+ LoginPanel(BufferedImage image) {
+  super(new GridBagLayout());
+  this.image = image;
+  JPanel controls = new JPanel(new BorderLayout(15,35));
+  controls.setOpaque(false);
+  controls.setBorder(new EmptyBorder(110,0,0,0));
+  JPanel fields = new JPanel(new GridLayout(0,1,30,30));
+  fields.setOpaque(false);
+  controls.add(fields, BorderLayout.CENTER);
+  fields.add(new JTextField(20));
+  fields.add(new JPasswordField(20));
+  JPanel button = new JPanel(new GridBagLayout());
+  button.setOpaque(false);
+  controls.add(button, BorderLayout.PAGE_END);
+  button.add(new JButton("Log In"));
+  Dimension prefSize = new Dimension(image.getWidth(),image.getHeight());
+  setPreferredSize(prefSize);
+  add(controls);
+ }
+ @Override
+ public void paintComponent(Graphics g) {
+  super.paintComponent(g);
+  g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+ }
+ public static void main(String[] args) throws Exception {
+  URL url = new URL(" CodeGo.net 
+  final BufferedImage image = ImageIO.read(url); 
+  SwingUtilities.invokeLater(new Runnable() {
+   public void run() {
+    LoginPanel p = new LoginPanel(image);
+    JOptionPane.showMessageDialog(null, p);
+   }
+  });
+ }
+}
+
