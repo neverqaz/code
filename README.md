@@ -27,6 +27,8 @@
     * 用户评论管理
 * （拓展功能，收费项）
     * 聊天功能
+* 流程图：
+.<div align=center><img width="80%" height="600" src="https://raw.githubusercontent.com/neverqaz/code/master/%E5%9B%BE%E7%89%872.png"></div>
 * 接口的使用
 1. 短信服务接口："https://api.miaodiyun.com/20150822/affMarkSMS/sendSMS"
 2. 订单支付流程：
@@ -38,12 +40,14 @@
     * 算路线距离接口：http://api.map.baidu.com/direction/v1?mode=riding&origin=人大&destination=北京大学&region=北京&output=json&ak=您的AK
     * 定位加导航起调地图接口：
 http://api.map.baidu.com/direction?origin=latlng:34.264642646862,108.95108518068|name:我家&destination=大雁塔&mode=driving&region=西安&output=html&src=webapp.baidu.openAPIdemo
-
+.<div align=center><img width="100%" height="350" src="https://raw.githubusercontent.com/neverqaz/code/master/%E8%B7%AF%E5%BE%84%E5%AF%BC%E8%88%AA%E5%9B%BE.png"></div>
 
     * 根据经纬度坐标由丰泰餐厅到内蒙古农业大学c座 调起百度地图的加密链接：
 http://api.map.baidu.com/direction?origin=40.812727%2C111.723332&destination=40.812365%2C111.721962&mode=walking&region=%E5%91%BC%E5%92%8C%E6%B5%A9%E7%89%B9%E5%B8%82&output=html&src=webapp.baidu.openAPIdemo
     * 以及路线距离测算的链接：
 http://api.map.baidu.com/direction/v1?mode=walking&origin=40.812727%2C111.723332&destination=40.812365%2C111.721962&output=json&region=%E5%91%BC%E5%92%8C%E6%B5%A9%E7%89%B9%E5%B8%82&ak=unrcs1AVyGvK5Y085KID6mBmkrK62Dmw
+* 利用原型迭代工具画的界面：
+.<div align=center><img width="60%" height="450" src="https://raw.githubusercontent.com/neverqaz/code/master/%E7%95%8C%E9%9D%A21.png"></div>
 
 
 
