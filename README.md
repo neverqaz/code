@@ -37,6 +37,7 @@
     * 订单退款接口：https://docs.open.alipay.com/api_1/alipay.trade.refund/
     
 3. 百度地图接口：
+    * 百度地图利用js写的根据输入后点击或者直接点击获取该点的位置信息和经纬度坐标：http://neverqaz.cn/baidu/
     * 算路线距离接口：http://api.map.baidu.com/direction/v1?mode=riding&origin=人大&destination=北京大学&region=北京&output=json&ak=您的AK
     * 定位加导航起调地图接口：
 http://api.map.baidu.com/direction?origin=latlng:34.264642646862,108.95108518068|name:我家&destination=大雁塔&mode=driving&region=西安&output=html&src=webapp.baidu.openAPIdemo
