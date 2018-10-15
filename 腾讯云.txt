@@ -1,44 +1,46 @@
-1.ls   ²é¿´Ä¿Â¼
+1.ls   æŸ¥çœ‹ç›®å½•
 2.cd 
-cd ~  ½øĞĞµ±Ç°ÓÃ»§µÄ¼ÒÄ¿Â¼
+cd ~  è¿›è¡Œå½“å‰ç”¨æˆ·çš„å®¶ç›®å½•
 
-cd - ½øÈëÉÏ´ÎÄ¿Â¼
+cd - è¿›å…¥ä¸Šæ¬¡ç›®å½•
 
-cd .. ½øÈëÉÏÒ»¼¶Ä¿Â¼
+cd .. è¿›å…¥ä¸Šä¸€çº§ç›®å½•
 
-cd . ½øÈëµ±Ç°Ä¿Â¼
-3.cp ¸´ÖÆÃüÁî
--r ¸´ÖÆÄ¿Â¼
+cd . è¿›å…¥å½“å‰ç›®å½•
+3.cp å¤åˆ¶å‘½ä»¤
+-r å¤åˆ¶ç›®å½•
 
--p Á¬´øÎÄ¼şÊôĞÔ¸´ÖÆ
+-p è¿å¸¦æ–‡ä»¶å±æ€§å¤åˆ¶
 
--d ÈôÔ´ÎÄ¼şÊÇÁ´½ÓÎÄ¼ş£¬Ôò¸´ÖÆÁ´½ÓÊôĞÔ
+-d è‹¥æºæ–‡ä»¶æ˜¯é“¾æ¥æ–‡ä»¶ï¼Œåˆ™å¤åˆ¶é“¾æ¥å±æ€§
 
--a Ïàµ±ÓÚ -pdr
-4.¼ôÇĞ»ò¸ÄÃûÃüÁî£ºmv 
-mv [Ô­ÎÄ¼ş»òÄ¿Â¼] [Ä¿±êÄ¿Â¼]
-ÎÒÃÇ°Ñ rootÏÂµÄ Êé¼®2 ¼ôÇĞµ½ tmp ÏÂ ²¢ÇÒÖØÃüÃû (mv Êé¼®2 /tmp/Êé¼®2¹ş¹ş)
-5.mkdir-p Êé¼®2/java±à³ÌË¼Ïë
-mkdir Êé¼®2
-6.°²×°°ü
-yum list ÁĞ³öËùÓĞ¿ÉÓÃrpm°ü×ÊÔ´
-ËÑË÷Ä³¸ö°ü: yum search  ¡®keywords¡¯ or yum list |grep ¡®keywords¡¯
-yum °²×°°ü: yum install -y  filename(°üÃû)
-yum Ğ¶ÔØ°ü: yum remove  -y filename (°üÃû)
-yumÉı¼¶°ü: yum update -y filename(°üÃû)
+-a ç›¸å½“äº -pdr
+4.å‰ªåˆ‡æˆ–æ”¹åå‘½ä»¤ï¼šmv 
+mv [åŸæ–‡ä»¶æˆ–ç›®å½•] [ç›®æ ‡ç›®å½•]
+æˆ‘ä»¬æŠŠ rootä¸‹çš„ ä¹¦ç±2 å‰ªåˆ‡åˆ° tmp ä¸‹ å¹¶ä¸”é‡å‘½å (mv ä¹¦ç±2 /tmp/ä¹¦ç±2å“ˆå“ˆ)
+5.mkdir-p ä¹¦ç±2/javaç¼–ç¨‹æ€æƒ³
+mkdir ä¹¦ç±2
+6.å®‰è£…åŒ…
+yum list åˆ—å‡ºæ‰€æœ‰å¯ç”¨rpmåŒ…èµ„æº
+æœç´¢æŸä¸ªåŒ…: yum search  â€˜keywordsâ€™ or yum list |grep â€˜keywordsâ€™
+yum å®‰è£…åŒ…: yum install -y  filename(åŒ…å)
+yum å¸è½½åŒ…: yum remove  -y filename (åŒ…å)
+yumå‡çº§åŒ…: yum update -y filename(åŒ…å)
 
-yum grouplist  ÁĞ³öËùÓĞµÄÌ×¼ş
-yum groupinstall    °²×°Ì×¼ş
-yum groupremove   Ğ¶ÔØÌ×¼ş  
+yum grouplist  åˆ—å‡ºæ‰€æœ‰çš„å¥—ä»¶
+yum groupinstall    å®‰è£…å¥—ä»¶
+yum groupremove   å¸è½½å¥—ä»¶  
 https://blog.csdn.net/TynMhxx/article/details/78820634
 
-°²×°mysql
-//ÏÂÔØmysqlµÄrepoÔ´
+å®‰è£…mysql
+//ä¸‹è½½mysqlçš„repoæº
 
 [rooot@localhost ~ ] wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
 
-//°²×°,½«»ñµÃÁ½¸ömysqlµÄyum repoÔ´£º/etc/yum.repos.d/mysql-#community.repo£¬/etc/yum.repos.d/mysql-community-source.repo
+//å®‰è£…,å°†è·å¾—ä¸¤ä¸ªmysqlçš„yum repoæºï¼š/etc/yum.repos.d/mysql-#community.repoï¼Œ/etc/yum.repos.d/mysql-community-source.repo
 
 [rooot@localhost ~ ] rpm -ivh mysql-community-release-el7-5.noarch.rpm
- ÉèÖÃÔÚ  http://www.cnblogs.com/yangyabo/p/5301364.html
+ è®¾ç½®åœ¨  http://www.cnblogs.com/yangyabo/p/5301364.html
 https://blog.csdn.net/NotesChapter/article/details/79140817
+* CentOS7å®‰è£…iptablesé˜²ç«å¢™:https://www.cnblogs.com/zuikeol/p/9647711.html
+*iptablesé˜²ç«å¢™è¯¦ç»†è®¾ç½®ï¼šhttps://www.linuxidc.com/Linux/2017-10/147238.htm
